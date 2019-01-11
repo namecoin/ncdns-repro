@@ -1,0 +1,29 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/hlandau/madns.git
+git_hash: '[% config.var_p.id.${"gopkg.in/hlandau/madns.v1"} %]'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: gopkg.in/hlandau/madns.v1
+  go_lib_deps:
+    - github.com,miekg,dns
+    - github.com,hlandau,buildinfo
+    - github.com,hlandau,xlog
+  go_lib_install:
+    - gopkg.in/hlandau/madns.v1
+    - gopkg.in/hlandau/madns.v1/merr
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: github.com,miekg,dns
+    project: github.com,miekg,dns
+  - name: github.com,hlandau,buildinfo
+    project: github.com,hlandau,buildinfo
+  - name: github.com,hlandau,xlog
+    project: github.com,hlandau,xlog

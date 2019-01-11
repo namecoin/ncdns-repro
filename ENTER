@@ -1,0 +1,2 @@
+#!/bin/sh
+exec nix-shell -p perl perlPackages.PathTiny perlPackages.YAMLLibYAML perlPackages.TemplateToolkit perlPackages.IOCaptureOutput perlPackages.FileCopyRecursive perlPackages.StringShellQuote perlPackages.SortVersions perlPackages.DataUUID perlPackages.DataDump perlPackages.DigestSHA perlPackages.FileTemp perlPackages.JSON debootstrap runc

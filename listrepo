@@ -1,0 +1,3 @@
+#!/bin/sh
+set -e
+go list -f '{{range $imp := .Deps}}{{printf "%s\n" $imp}}{{end}}' 'github.com/namecoin/ncdns'|sort -u|xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | awk "{print \"$GOPATH/src/\" \$0}" | (while read line; do x="$line"; while [ ! -e "$x/.git" -a ! -e "$x/.hg" ]; do x=${x%/*}; if [ "$x" = "" ]; then break; fi; done; echo "$x"; done) | sort -u | (while read line; do echo ${line#$GOPATH/src/}; done)

@@ -1,3 +1,6 @@
 [submodule "rbm"]
 	path = rbm
 	url = https://git.torproject.org/builders/rbm.git
+[submodule "tor-browser-build"]
+	path = tor-browser-build
+	url = https://git.torproject.org/builders/tor-browser-build.git

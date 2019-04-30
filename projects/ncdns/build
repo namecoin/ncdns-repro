@@ -1,6 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 [% c("var/set_default_env") -%]
 [% pc('go', 'var/setup', { go_tarfile => c('input_files_by_name/go') }) %]
+[% IF c("var/linux") %]
+  [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
+
+  tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+  export PATH="/var/tmp/dist/binutils/bin:$PATH"
+
+  export CGO_ENABLED=1
+[% END -%]
 distdir=/var/tmp/dist/[% project %]
 mkdir -p $distdir
 

@@ -12,8 +12,23 @@ var:
   go_lib_install:
     - github.com/coreos/go-systemd/journal
   go_lib_deps: []
+  build_go_lib_pre: |
+    [% IF c("var/linux") %]
+      [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
+
+      tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+      export PATH="/var/tmp/dist/binutils/bin:$PATH"
+
+      export CGO_ENABLED=1
+    [% END -%]
 
 input_files:
   - project: container-image
   - name: go
     project: go
+  - name: '[% c("var/compiler") %]'
+    project: '[% c("var/compiler") %]'
+    enable: '[% c("var/linux") %]'
+  - name: binutils
+    project: binutils
+    enable: '[% c("var/linux") %]'

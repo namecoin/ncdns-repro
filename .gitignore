@@ -1,3 +1,12 @@
-out/
-tmp/
-*.swp
+/git_clones
+/hg_clones
+/gclient
+/out
+/release
+/alpha
+/alpha_nightly
+/nightly
+/testbuild
+/rbm.local.conf
+/logs
+/tmp

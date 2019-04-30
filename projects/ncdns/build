@@ -28,10 +28,16 @@ go install -ldflags '-s' github.com/namecoin/ncdns/...
 #  go build -ldflags '-s' "$x"
 #done
 
-ls $GOPATH/bin
+[% IF c("var/linux-x86_64") -%]
+  GOPATHBIN="${GOPATH}/bin"
+[% ELSE -%]
+  GOPATHBIN="${GOPATH}/bin/${GOOS}_${GOARCH}"
+[% END -%]
+
+ls $GOPATHBIN
 
 for x in ncdns ncdumpzone ncdt generate_nmc_cert tlsrestrict_chromium_tool; do
-  cp -a $GOPATH/bin/"$x"[% IF c("var/windows") %].exe[% END %] $distdir/
+  cp -a $GOPATHBIN/"$x"[% IF c("var/windows") %].exe[% END %] $distdir/
 done
 
 cd $distdir

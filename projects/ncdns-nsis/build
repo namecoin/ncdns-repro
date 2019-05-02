@@ -1,0 +1,53 @@
+#!/bin/bash
+[% c("var/set_default_env") -%]
+
+distdir=/var/tmp/dist/[% project %]
+mkdir -p "$distdir"
+
+# We need to install a recent version of python-pefile so that it works
+# in a x86_64 container:
+# https://github.com/TheTorProject/tor-messenger-build/pull/10
+tar xf $rootdir/[% c('input_files_by_name/python-pefile') %]
+cd $(echo [% c('input_files_by_name/python-pefile') %] | sed s/\.tar\.gz$//)
+python setup.py install --user
+cd ..
+
+tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/nsis') %]
+export PATH="/var/tmp/dist/nsis/bin:$PATH"
+
+cd "$distdir"
+
+tar -C . -xf $rootdir/[% project %]-[% c('version') %].tar.gz
+mv ./ncdns-nsis-*/* ./
+
+NSISFLAGS="-V2"
+OUTFN=build/bin/ncdns-[% c("version") %]-[% c("arch") %]-install.exe
+
+ARTIFACTS="$distdir/build/artifacts"
+NEUTRAL_ARTIFACTS="$distdir/artifacts"
+
+mkdir -p "${ARTIFACTS}"
+
+mkdir -p /var/tmp/dist/plain-binaries
+tar -C /var/tmp/dist/plain-binaries -xf $rootdir/[% c('input_files_by_name/plain-binaries') %]
+cp /var/tmp/dist/plain-binaries/*.exe /var/tmp/dist/plain-binaries/*.dll  ${ARTIFACTS}
+
+mkdir /var/tmp/dist/bind
+unzip -d /var/tmp/dist/bind $rootdir/[% c('input_files_by_name/bind') %]
+cp /var/tmp/dist/bind/*.exe /var/tmp/dist/bind/*.dll ${ARTIFACTS}
+
+cp $rootdir/[% c('input_files_by_name/dnssec-trigger') %] ${ARTIFACTS}
+
+[% IF c("var/windows-x86_64") %]
+  cp $rootdir/[% c('input_files_by_name/namecoin-core') %] ${ARTIFACTS}
+[% END %]
+
+cp $rootdir/[% c('input_files_by_name/consensusj-namecoin') %] ${ARTIFACTS}/bitcoinj-daemon.jar
+
+mkdir -p build/bin
+makensis ${NSISFLAGS} -DPOSIX_BUILD=1 -DNCDNS_PRODVER=[% c('var/ncdns_nsis_version') %] [% c('var/arch_nsis_args') %] "-DARTIFACTS=$ARTIFACTS" "-DNEUTRAL_ARTIFACTS=$NEUTRAL_ARTIFACTS" "-DDNSSEC_TRIGGER_FN=[% c('input_files_by_name/dnssec-trigger') %]" "-DNAMECOIN_FN=[% c('input_files_by_name/namecoin-core') %]" "-DOUTFN=${OUTFN}" ncdns.nsi
+
+# Working around NSIS braindamage
+mv "${OUTFN}" torbrowser-install-tmp.exe
+python $rootdir/pe_checksum_fix.py
+mv torbrowser-install-tmp2.exe [% dest_dir _ '/' _ c('filename') %]

@@ -20,3 +20,5 @@ else
   git submodule update --init
   make -C tor-browser-build submodule-update
 fi
+
+cp tor-browser-build/projects/tor-browser/pe_checksum_fix.py projects/ncdns-nsis/

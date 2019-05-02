@@ -1,0 +1,56 @@
+# vim: filetype=yaml sw=2
+version: '[% pc("ncdns", "version") %]'
+git_url: https://github.com/namecoin/ncdns-nsis.git
+git_hash: 'f3f7c7a7a13897044e4499cd89d61bf9c2b1d07e'
+filename: 'ncdns-[% c("version") %]-[% c("arch") %]-install-[% c("var/build_id") %].exe'
+
+var:
+  bind_version: '9.15.7'
+  consensusj_namecoin_version: '0.3.2.1'
+  dnssec_trigger_version: '0.17'
+  namecoin_core_version: '0.21.0.1'
+  # Used for PE metadata.
+  # Must be a 4-tuple without leading 'v' for NSIS to be happy.
+  ncdns_nsis_version: '0.1.2.0'
+  container:
+    use_container: 1
+  deps:
+    - python
+    - python-future
+    - unzip
+
+targets:
+  windows-x86_64:
+    var:
+      arch_nsis_args: '-DNCDNS_64BIT=1'
+      bind_arch: 'x64'
+  windows-i686:
+    var:
+      arch_nsis_args: '-DNO_NAMECOIN_CORE'
+      bind_arch: 'x86'
+
+input_files:
+  - project: container-image
+  - project: plain-binaries
+    name: plain-binaries
+  - name: bind
+    URL: 'https://ftp.isc.org/isc/bind/[% c("var/bind_version") %]/BIND[% c("var/bind_version") %].[% c("var/bind_arch") %].zip'
+    file_gpg_id: 1
+    gpg_keyring: isc.gpg
+  - name: dnssec-trigger
+    URL: 'https://www.nlnetlabs.nl/downloads/dnssec-trigger/dnssec_trigger_setup_[% c("var/dnssec_trigger_version") %].exe'
+    file_gpg_id: 1
+    gpg_keyring: nlnetlabs.gpg
+  - name: namecoin-core
+    URL: 'https://www.namecoin.org/files/namecoin-core/namecoin-core-[% c("var/namecoin_core_version") %]/namecoin-nc[% c("var/namecoin_core_version") %]-win64-setup-unsigned.exe'
+    sha256sum: f82c070daa086c2243d641bb07a31d6dc272e191a7792860974d0cd1f0b97873
+    enable: '[% c("var/windows-x86_64") %]'
+  - name: consensusj-namecoin
+    URL: 'https://www.namecoin.org/files/ConsensusJ-Namecoin/[% c("var/consensusj_namecoin_version") %]/namecoinj-daemon-0.3.2-SNAPSHOT.jar'
+    sha256sum: 6b35d5a31eb74b4870c8a6c37dd53563aa63b64810fdedb5192f2a77396e190f
+  - project: nsis
+    name: nsis
+  - filename: pe_checksum_fix.py
+  - name: python-pefile
+    URL: https://files.pythonhosted.org/packages/7e/9b/f99171190f04cd23768547dd34533b4016bd582842f53cd9fe9585a74c74/pefile-2017.11.5.tar.gz
+    sha256sum: 675c35ee0e1677db9e80d2f48d8a7ff2cf38e6207e8cd5e2a2c6d126db025854

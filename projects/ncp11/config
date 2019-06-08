@@ -1,0 +1,27 @@
+version: '[% c("abbrev") %]'
+git_url: https://github.com/namecoin/ncp11.git
+git_hash: f060446368cc5d754da04a5663982b2098705a4a
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - github.com,miekg,pkcs11
+    - github.com,namecoin,pkcs11mod
+  cgo: 1
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: '[% c("var/compiler") %]'
+    project: '[% c("var/compiler") %]'
+    enable: '[% c("var/cgo") %]'
+  - name: binutils
+    project: binutils
+    enable: '[% c("var/linux") && c("var/cgo") %]'
+  - name: github.com,miekg,pkcs11
+    project: github.com,miekg,pkcs11
+  - name: github.com,namecoin,pkcs11mod
+    project: github.com,namecoin,pkcs11mod

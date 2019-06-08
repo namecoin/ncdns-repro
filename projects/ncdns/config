@@ -28,6 +28,21 @@ targets:
     var:
       arch_deps:
         - libcap-dev
+  windows:
+    var:
+      go_lib_deps:
+        - github.com,golang,groupcache
+        - github.com,hlandau,degoutils
+        - github.com,hlandau,dexlogconfig
+        - github.com,hlandau,ncbtcjsontypes
+        - github.com,hlandauf,btcjson
+        - github.com,kr,pretty
+        - github.com,miekg,dns
+        - gopkg.in,hlandau,madns.v1
+        - gopkg.in,hlandau,easyconfig.v1
+        - gopkg.in,hlandau,service.v2
+        - golang.org,x,net
+        - golang.org,x,sys
 
 input_files:
   - project: container-image
@@ -63,3 +78,6 @@ input_files:
     project: github.com,hlandau,degoutils
   - name: golang.org,x,net
     project: golang.org,x,net
+  - name: golang.org,x,sys
+    project: golang.org,x,sys
+    enable: '[% c("var/windows") %]'

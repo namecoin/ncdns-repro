@@ -31,6 +31,12 @@ targets:
     var:
       arch_deps:
         - libcap-dev
+  windows:
+    var:
+      go_lib_deps:
+        - github.com,btcsuite,winsvc
+        - gopkg.in,hlandau,svcutils.v1
+        - gopkg.in,hlandau,easyconfig.v1
 
 input_files:
   - project: container-image
@@ -42,6 +48,9 @@ input_files:
   - name: binutils
     project: binutils
     enable: '[% c("var/linux") %]'
+  - name: github.com,btcsuite,winsvc
+    project: github.com,btcsuite,winsvc
+    enable: '[% c("var/windows") %]'
   - name: gopkg.in,hlandau,svcutils.v1
     project: gopkg.in,hlandau,svcutils.v1
   - name: gopkg.in,hlandau,easyconfig.v1

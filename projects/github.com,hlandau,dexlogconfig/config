@@ -24,6 +24,14 @@ var:
       export CGO_ENABLED=1
     [% END -%]
 
+targets:
+  windows:
+    var:
+      go_lib_deps:
+        - github.com,hlandau,xlog
+        - gopkg.in,hlandau,easyconfig.v1
+        - github.com,hlandau,buildinfo
+
 input_files:
   - project: container-image
   - name: go
@@ -40,5 +48,6 @@ input_files:
     project: gopkg.in,hlandau,easyconfig.v1
   - name: github.com,coreos,go-systemd
     project: github.com,coreos,go-systemd
+    enable: '[% ! c("var/windows") %]'
   - name: github.com,hlandau,buildinfo
     project: github.com,hlandau,buildinfo

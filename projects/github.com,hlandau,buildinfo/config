@@ -11,10 +11,25 @@ var:
   go_lib: github.com/hlandau/buildinfo
   go_lib_deps:
     - gopkg.in,hlandau,easyconfig.v1
+  build_go_lib_pre: |
+    [% IF c("var/linux") %]
+      [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
+
+      tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+      export PATH="/var/tmp/dist/binutils/bin:$PATH"
+
+      export CGO_ENABLED=1
+    [% END -%]
 
 input_files:
   - project: container-image
   - name: go
     project: go
+  - name: '[% c("var/compiler") %]'
+    project: '[% c("var/compiler") %]'
+    enable: '[% c("var/linux") %]'
+  - name: binutils
+    project: binutils
+    enable: '[% c("var/linux") %]'
   - name: gopkg.in,hlandau,easyconfig.v1
     project: gopkg.in,hlandau,easyconfig.v1

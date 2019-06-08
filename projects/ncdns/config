@@ -20,6 +20,9 @@ var:
     - golang.org,x,net
 
 targets:
+  linux:
+    var:
+      cgo: 1
   linux-i686:
     var:
       arch_deps:
@@ -28,6 +31,9 @@ targets:
     var:
       arch_deps:
         - libcap-dev
+  osx-x86_64:
+    var:
+      cgo: 0
   windows:
     var:
       go_lib_deps:
@@ -43,6 +49,7 @@ targets:
         - gopkg.in,hlandau,service.v2
         - golang.org,x,net
         - golang.org,x,sys
+      cgo: 0
 
 input_files:
   - project: container-image
@@ -50,10 +57,10 @@ input_files:
     project: go
   - name: '[% c("var/compiler") %]'
     project: '[% c("var/compiler") %]'
-    enable: '[% c("var/linux") %]'
+    enable: '[% c("var/cgo") %]'
   - name: binutils
     project: binutils
-    enable: '[% c("var/linux") %]'
+    enable: '[% c("var/linux") && c("var/cgo") %]'
   - name: github.com,hlandau,xlog
     project: github.com,hlandau,xlog
   - name: github.com,hlandau,dexlogconfig

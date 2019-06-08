@@ -1,14 +1,23 @@
 #!/bin/bash
 [% c("var/set_default_env") -%]
 [% pc('go', 'var/setup', { go_tarfile => c('input_files_by_name/go') }) %]
-[% IF c("var/linux") %]
+[% IF c("var/cgo") %]
   [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
 
-  tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
-  export PATH="/var/tmp/dist/binutils/bin:$PATH"
+  [% IF c("var/linux") %]
+    tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+    export PATH="/var/tmp/dist/binutils/bin:$PATH"
+  [% END -%]
 
-  export CGO_ENABLED=1
+  [% IF c("var/osx") -%]
+    export CGO_CFLAGS="[% c("var/FLAGS") %] -mmacosx-version-min=10.7"
+    export CGO_CXXFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+    export CGO_LDFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+    export CC="$clangdir/bin/clang"
+    export CXX="$clangdir/bin/clang++"
+  [% END -%]
 [% END -%]
+export CGO_ENABLED=[% c("var/cgo") %]
 distdir=/var/tmp/dist/[% project %]
 mkdir -p $distdir
 

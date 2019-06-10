@@ -1,0 +1,29 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/safetlsa.git
+git_hash: '818ee2aef753c7f761cd26fbc5e4fde015f66b70'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/namecoin/safetlsa
+  go_lib_deps:
+    - github.com,miekg,dns
+    - ncdns
+  build_go_lib_pre: |
+    export CGO_ENABLED=0
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: github.com,miekg,dns
+    project: github.com,miekg,dns
+  - name: ncdns
+    project: ncdns
+    # Build ncdns as a library, not an executable.
+    # TODO: refactor this once our build_go_lib executable patch is merged by upstream Tor
+    var:
+      go_lib_no_output: 0

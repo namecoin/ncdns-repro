@@ -1,0 +1,34 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/certdehydrate-dane-rest-api.git
+git_hash: '2eeb272f4bb7dffc13e39a609b308656a5a121ea'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - github.com,miekg,dns
+    - github.com,namecoin,crosssign
+    - github.com,namecoin,qlib
+    - github.com,namecoin,safetlsa
+    - gopkg.in,hlandau,easyconfig.v1
+  cgo: 0
+  build_go_lib_pre: |
+    export CGO_ENABLED=[% c("var/cgo") %] 
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: gopkg.in,hlandau,easyconfig.v1
+    project: gopkg.in,hlandau,easyconfig.v1
+  - name: github.com,miekg,dns
+    project: github.com,miekg,dns
+    # v1.0.15 is the last tagged release that still works with q.
+    git_hash: '7064f7248f5fa5fd79382a76328b4e200b79e4ae'
+  - name: github.com,namecoin,crosssign
+    project: github.com,namecoin,crosssign
+  - name: github.com,namecoin,qlib
+    project: github.com,namecoin,qlib
+  - name: github.com,namecoin,safetlsa
+    project: github.com,namecoin,safetlsa

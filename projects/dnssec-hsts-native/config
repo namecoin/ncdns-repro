@@ -22,7 +22,7 @@ input_files:
     project: gopkg.in,hlandau,easyconfig.v1
   - name: github.com,miekg,dns
     project: github.com,miekg,dns
-    # v1.0.15 is the last tagged release that still works with q.
-    git_hash: '7064f7248f5fa5fd79382a76328b4e200b79e4ae'
+    var:
+      dns_q_compat: 1
   - name: github.com,namecoin,qlib
     project: github.com,namecoin,qlib

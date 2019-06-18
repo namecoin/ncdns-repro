@@ -1,0 +1,42 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/miekg/pkcs11.git
+git_hash: '[% config.var_p.id.${"github.com/miekg/pkcs11"} %]'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/miekg/pkcs11
+  cgo: 1
+  build_go_lib_pre: |
+    [% IF c("var/cgo") %]
+      [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
+
+      [% IF c("var/linux") %]
+        tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+        export PATH="/var/tmp/dist/binutils/bin:$PATH"
+      [% END -%]
+
+      [% IF c("var/osx") -%]
+        export CGO_CFLAGS="[% c("var/FLAGS") %] -mmacosx-version-min=10.7"
+        export CGO_CXXFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+        export CGO_LDFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+        export CC="$clangdir/bin/clang"
+        export CXX="$clangdir/bin/clang++"
+      [% END -%]
+    [% END -%]
+
+    export CGO_ENABLED=[% c("var/cgo") %]
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: '[% c("var/compiler") %]'
+    project: '[% c("var/compiler") %]'
+    enable: '[% c("var/cgo") %]'
+  - name: binutils
+    project: binutils
+    enable: '[% c("var/linux") && c("var/cgo") %]'

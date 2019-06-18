@@ -14,6 +14,7 @@ git github.com/kr/pretty a0c635c0aede2cb0c2f8bb0f0d70485fbdd11bd4 heads/master
 git github.com/kr/text e2ffdb16a802fe2bb95e2e35ff34f0e53aeef34f heads/master
 git github.com/mattn/go-isatty 7fcbc72f853b92b5720db4a6b8482be612daef24 heads/master
 git github.com/miekg/dns 8a56deec68a78bfea6e73db7b086175eb8beec8b heads/master
+git github.com/miekg/pkcs11 cb39313ec884f2cd77f4762875fe96aecf68f8e3 tags/v1.0.2
 git github.com/namecoin/ncdns 19534f1dcfd1151bd9c072459caac12f6fb384df tags/v0.0.6
 git github.com/ogier/pflag 45c278ab3607870051a2ea9040bb85fcb8557481 heads/master
 git github.com/shiena/ansicolor a422bbe96644373c5753384a59d678f7d261ff10 heads/master

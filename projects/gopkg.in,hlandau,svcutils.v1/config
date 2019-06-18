@@ -9,17 +9,40 @@ var:
   container:
     use_container: 1
   go_lib: gopkg.in/hlandau/svcutils.v1
+  go_lib_install:
+    - gopkg.in/hlandau/svcutils.v1
+    - gopkg.in/hlandau/svcutils.v1/caps
+    - gopkg.in/hlandau/svcutils.v1/chroot
+    - gopkg.in/hlandau/svcutils.v1/dupfd
+    - gopkg.in/hlandau/svcutils.v1/exepath
+    - gopkg.in/hlandau/svcutils.v1/passwd
+    - gopkg.in/hlandau/svcutils.v1/pidfile
+    - gopkg.in/hlandau/svcutils.v1/setuid
+    - gopkg.in/hlandau/svcutils.v1/systemd
   build_go_lib_pre: |
-    [% IF c("var/linux") %]
+    [% IF c("var/cgo") %]
       [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
 
-      tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
-      export PATH="/var/tmp/dist/binutils/bin:$PATH"
+      [% IF c("var/linux") %]
+        tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+        export PATH="/var/tmp/dist/binutils/bin:$PATH"
+      [% END -%]
 
-      export CGO_ENABLED=1
+      [% IF c("var/osx") -%]
+        export CGO_CFLAGS="[% c("var/FLAGS") %] -mmacosx-version-min=10.7"
+        export CGO_CXXFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+        export CGO_LDFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+        export CC="$clangdir/bin/clang"
+        export CXX="$clangdir/bin/clang++"
+      [% END -%]
     [% END -%]
 
+    export CGO_ENABLED=[% c("var/cgo") %]
+
 targets:
+  linux:
+    var:
+      cgo: 1
   linux-i686:
     var:
       arch_deps:
@@ -28,6 +51,12 @@ targets:
     var:
       arch_deps:
         - libcap-dev
+  osx-x86_64:
+    var:
+      cgo: 0
+  windows:
+    var:
+      cgo: 0
 
 input_files:
   - project: container-image
@@ -35,7 +64,7 @@ input_files:
     project: go
   - name: '[% c("var/compiler") %]'
     project: '[% c("var/compiler") %]'
-    enable: '[% c("var/linux") %]'
+    enable: '[% c("var/cgo") %]'
   - name: binutils
     project: binutils
-    enable: '[% c("var/linux") %]'
+    enable: '[% c("var/linux") && c("var/cgo") %]'

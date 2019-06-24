@@ -1,6 +1,9 @@
-version: 0.0.8
+#version: 0.0.8
 git_url: https://github.com/namecoin/ncdns.git
-git_hash: 'v[% c("version") %]'
+# Using latest master branch because we need the RPC timeout feature.  Once
+# it's in a tagged release, we'll go back to using a version tag here.
+#git_hash: 'v[% c("version") %]'
+git_hash: '4ea036742bd5b10a7b56765355dcc88724632f32'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:
@@ -14,6 +17,7 @@ var:
     - github.com,hlandauf,btcjson
     - github.com,kr,pretty
     - github.com,miekg,dns
+    - github.com,namecoin,tlsrestrictnss
     - gopkg.in,hlandau,madns.v1
     - gopkg.in,hlandau,easyconfig.v1
     - gopkg.in,hlandau,service.v2
@@ -44,6 +48,7 @@ targets:
         - github.com,hlandauf,btcjson
         - github.com,kr,pretty
         - github.com,miekg,dns
+        - github.com,namecoin,tlsrestrictnss
         - gopkg.in,hlandau,madns.v1
         - gopkg.in,hlandau,easyconfig.v1
         - gopkg.in,hlandau,service.v2
@@ -77,6 +82,8 @@ input_files:
     project: github.com,hlandauf,btcjson
   - name: github.com,miekg,dns
     project: github.com,miekg,dns
+  - name: github.com,namecoin,tlsrestrictnss
+    project: github.com,namecoin,tlsrestrictnss
   - name: gopkg.in,hlandau,madns.v1
     project: gopkg.in,hlandau,madns.v1
   - name: github.com,kr,pretty

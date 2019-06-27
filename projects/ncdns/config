@@ -18,6 +18,7 @@ var:
     - gopkg.in,hlandau,easyconfig.v1
     - gopkg.in,hlandau,service.v2
     - golang.org,x,net
+  go_lib_no_output: 1
 
 targets:
   linux:

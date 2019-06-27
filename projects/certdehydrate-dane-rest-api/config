@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
-git_url:  https://github.com/namecoin/dnssec-hsts-native.git
-git_hash: '70cc6b40311abe70ab12a71303f69ff027dcf0f4'
+git_url:  https://github.com/namecoin/certdehydrate-dane-rest-api.git
+git_hash: '2eeb272f4bb7dffc13e39a609b308656a5a121ea'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:
@@ -8,7 +8,9 @@ var:
     use_container: 1
   go_lib_deps:
     - github.com,miekg,dns
+    - github.com,namecoin,crosssign
     - github.com,namecoin,qlib
+    - github.com,namecoin,safetlsa
     - gopkg.in,hlandau,easyconfig.v1
   cgo: 0
   build_go_lib_pre: |
@@ -24,5 +26,9 @@ input_files:
     project: github.com,miekg,dns
     var:
       dns_q_compat: 1
+  - name: github.com,namecoin,crosssign
+    project: github.com,namecoin,crosssign
   - name: github.com,namecoin,qlib
     project: github.com,namecoin,qlib
+  - name: github.com,namecoin,safetlsa
+    project: github.com,namecoin,safetlsa

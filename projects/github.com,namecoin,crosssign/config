@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
-git_url:  https://github.com/namecoin/qlib.git
-git_hash: '99c375238fe562c99a2c691c433a28f90fd15afe'
+git_url:  https://github.com/namecoin/crosssign.git
+git_hash: '44408047169ecb5b56346855e0bc931a06872eb0'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'
@@ -8,9 +8,7 @@ build: '[% c("projects/go/var/build_go_lib") %]'
 var:
   container:
     use_container: 1
-  go_lib: github.com/namecoin/qlib
-  go_lib_deps:
-    - github.com,miekg,dns
+  go_lib: github.com/namecoin/crosssign
   build_go_lib_pre: |
     export CGO_ENABLED=0
 
@@ -18,7 +16,3 @@ input_files:
   - project: container-image
   - name: go
     project: go
-  - name: github.com,miekg,dns
-    project: github.com,miekg,dns
-    var:
-      dns_q_compat: 1

@@ -1,0 +1,33 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/ncprop279.git
+git_hash: 'd72977987d841fa0b7fa51108a868263e7f4a9a0'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - github.com,miekg,dns
+    - gopkg.in,hlandau,easyconfig.v1
+    - gopkg.in,hlandau,madns.v1
+    - ncdns
+  cgo: 0
+  build_go_lib_pre: |
+    export CGO_ENABLED=[% c("var/cgo") %] 
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: github.com,miekg,dns
+    project: github.com,miekg,dns
+  - name: gopkg.in,hlandau,easyconfig.v1
+    project: gopkg.in,hlandau,easyconfig.v1
+  - name: gopkg.in,hlandau,madns.v1
+    project: gopkg.in,hlandau,madns.v1
+  - name: ncdns
+    project: ncdns
+    # Build ncdns as a library, not an executable.
+    # TODO: refactor this once our build_go_lib executable patch is merged by upstream Tor
+    var:
+      go_lib_no_output: 0

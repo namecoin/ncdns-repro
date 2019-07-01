@@ -1,0 +1,18 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/crosssignnameconstraint.git
+git_hash: '76052b08844e6b81678430656c5fc9f79a49f795'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/namecoin/crosssignnameconstraint
+  build_go_lib_pre: |
+    export CGO_ENABLED=0
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go

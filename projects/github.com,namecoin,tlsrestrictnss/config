@@ -1,0 +1,43 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/tlsrestrictnss.git
+git_hash: '01a37997e55de687f4b5228e0e9315a6d698bd2a'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/namecoin/tlsrestrictnss
+  go_lib_deps:
+    - github.com,hlandau,xlog
+    - github.com,namecoin,crosssignnameconstraint
+  go_lib_install:
+    - github.com/namecoin/tlsrestrictnss
+    - github.com/namecoin/tlsrestrictnss/tlsrestrictnsssync
+  build_go_lib_pre: |
+    export CGO_ENABLED=0
+
+targets:
+  windows:
+    var:
+      go_lib_deps:
+        - github.com,hlandau,xlog
+        - github.com,namecoin,crosssignnameconstraint
+        - gopkg.in,hlandau,easyconfig.v1
+        - golang.org,x,sys
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: github.com,hlandau,xlog
+    project: github.com,hlandau,xlog
+  - name: github.com,namecoin,crosssignnameconstraint
+    project: github.com,namecoin,crosssignnameconstraint
+  - name: gopkg.in,hlandau,easyconfig.v1
+    project: gopkg.in,hlandau,easyconfig.v1
+    enable: '[% c("var/windows") %]'
+  - name: golang.org,x,sys
+    project: golang.org,x,sys
+    enable: '[% c("var/windows") %]'

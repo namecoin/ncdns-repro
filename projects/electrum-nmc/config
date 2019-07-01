@@ -1,0 +1,11 @@
+# vim: filetype=yaml sw=2
+filename: '[% project %]-[% c("version") %]-[% c("var/build_id") %].tar.gz'
+version: 3.3.6
+var:
+  container:
+    use_container: 1
+
+input_files:
+  - project: container-image
+  - URL: 'https://beta.namecoin.org/files/electrum-nmc/electrum-nmc-[% c("version") %]/Electrum-NMC-[% c("version") %].tar.gz'
+    sha256sum: 45bc7a84beece562d0b9fdb0f185a9edb0703f3aef80ab546f8ccfc2a9a21953

@@ -38,6 +38,10 @@ ls $GOPATHBIN
 
 cp -a $GOPATHBIN/dnssec_hsts[% IF c("var/windows") %].exe[% END %] $distdir/
 
+# TODO: This JSON file is only tested on GNU/Linux, and definitely won't work
+# on Windows because the "path" field is wrong for Windows.
+cp -a $GOPATH/src/github.com/namecoin/dnssec-hsts-native/setup/org.namecoin.dnssec_hsts.json $distdir/
+
 cd $distdir
 [% c('tar', {
      tar_src   => [ '.' ],

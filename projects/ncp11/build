@@ -1,0 +1,70 @@
+#!/bin/bash
+[% c("var/set_default_env") -%]
+[% pc('go', 'var/setup', { go_tarfile => c('input_files_by_name/go') }) %]
+[% IF c("var/cgo") %]
+  [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]
+
+  [% IF c("var/linux") %]
+    tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/binutils') %]
+    export PATH="/var/tmp/dist/binutils/bin:$PATH"
+  [% END -%]
+
+  [% IF c("var/osx") -%]
+    export CGO_CFLAGS="[% c("var/FLAGS") %] -mmacosx-version-min=10.7"
+    export CGO_CXXFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+    export CGO_LDFLAGS="[% c("var/FLAGS") %] -stdlib=libc++ -mmacosx-version-min=10.7"
+    export CC="$clangdir/bin/clang"
+    export CXX="$clangdir/bin/clang++"
+  [% END -%]
+[% END -%]
+export CGO_ENABLED=[% c("var/cgo") %]
+distdir=/var/tmp/dist/[% project %]
+mkdir -p $distdir
+
+[% FOREACH dep = c("var/go_lib_deps") -%]
+  tar -C /var/tmp/dist -xf [% c('input_files_by_name/' _ dep) %]
+[% END -%]
+
+mkdir -p $GOPATH/src/github.com/namecoin
+tar -C $GOPATH/src/github.com/namecoin -xf [% project %]-[% c('version') %].tar.gz
+mv $GOPATH/src/github.com/namecoin/ncp11-[% c('version') %] $GOPATH/src/github.com/namecoin/ncp11
+
+go install -ldflags '-s' -buildmode c-shared github.com/namecoin/ncp11
+
+#mkdir -p /var/tmp/build
+#tar -C /var/tmp/build -xf [% project %]-[% c('version') %].tar.gz
+#cd /var/tmp/build/[% project %]-[% c('version') %]
+
+#mkdir -p "$GOPATH/src/github.com/namecoin"
+#ln -sf "$PWD" "$GOPATH/src/github.com/namecoin/ncdns"
+
+#mkdir -p out
+#cd out
+#for x in .. ../ncdumpzone ../generate_nmc_cert; do
+#  go build -ldflags '-s' "$x"
+#done
+
+[% IF c("var/linux") %]
+  BUILTPATH=${GOPATH}/pkg/${GOOS}_${GOARCH}_shared/github.com/namecoin/ncp11.a
+[% ELSE -%]
+  BUILTPATH=${GOPATH}/pkg/${GOOS}_${GOARCH}/github.com/namecoin/ncp11.a
+[% END -%]
+
+[% IF c("var/linux") %]
+  OUTFILE=libncp11.so
+[% ELSIF c("var/osx") -%]
+  OUTFILE=libncp11.dylib
+[% ELSIF c("var/windows") -%]
+  OUTFILE=ncp11.dll
+[% ELSE -%]
+  echo "Unsupported OS; this might not work properly"
+  OUTFILE=libncp11.so
+[% END -%]
+
+cp -a ${BUILTPATH} $distdir/$OUTFILE
+
+cd $distdir
+[% c('tar', {
+     tar_src   => [ '.' ],
+     tar_args  => '-czf ' _ dest_dir _ '/' _ c('filename'),
+   }) %]

@@ -1,4 +1,4 @@
-#version: 0.0.8
+version: 0.0.9
 git_url: https://github.com/namecoin/ncdns.git
 # Using latest master branch because we need the RPC timeout feature.  Once
 # it's in a tagged release, we'll go back to using a version tag here.

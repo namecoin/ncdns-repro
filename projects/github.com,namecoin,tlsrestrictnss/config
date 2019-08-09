@@ -1,4 +1,4 @@
-version: '[% c("abbrev") %]'
+version: '0.0.3'
 git_url:  https://github.com/namecoin/tlsrestrictnss.git
 git_hash: '01a37997e55de687f4b5228e0e9315a6d698bd2a'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'

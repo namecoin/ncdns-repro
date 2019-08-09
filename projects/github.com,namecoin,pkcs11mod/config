@@ -1,4 +1,4 @@
-version: '[% c("abbrev") %]'
+version: '0.0.1'
 git_url:  https://github.com/namecoin/pkcs11mod.git
 git_hash: '[% config.var_p.id.${"github.com/namecoin/pkcs11mod"} %]'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'

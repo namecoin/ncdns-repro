@@ -1,4 +1,4 @@
-version: '[% c("abbrev") %]'
+version: '0.0.1'
 git_url:  https://github.com/namecoin/certdehydrate-dane-rest-api.git
 git_hash: '2eeb272f4bb7dffc13e39a609b308656a5a121ea'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'

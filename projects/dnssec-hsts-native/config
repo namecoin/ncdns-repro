@@ -1,4 +1,4 @@
-version: '[% c("abbrev") %]'
+version: '0.0.1'
 git_url:  https://github.com/namecoin/dnssec-hsts-native.git
 git_hash: 'b1e78c890146cd9a58bec8defd684be443a946da'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'

@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url: https://github.com/namecoin/ncp11.git
-git_hash: f060446368cc5d754da04a5663982b2098705a4a
+git_hash: 7fbf1057d7053d9fb72f72ea795ca8bb36672552
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

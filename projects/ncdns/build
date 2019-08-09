@@ -29,7 +29,6 @@ mkdir -p $GOPATH/src/github.com/namecoin
 tar -C $GOPATH/src/github.com/namecoin -xf [% project %]-[% c('version') %].tar.gz
 mv $GOPATH/src/github.com/namecoin/ncdns-[% c('version') %] $GOPATH/src/github.com/namecoin/ncdns
 
-go generate github.com/namecoin/ncdns/x509
 go install -ldflags '-s' github.com/namecoin/ncdns/...
 
 #mkdir -p /var/tmp/build

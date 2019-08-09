@@ -3,7 +3,7 @@ git_url: https://github.com/namecoin/ncdns.git
 # Using latest master branch because we need the RPC timeout feature.  Once
 # it's in a tagged release, we'll go back to using a version tag here.
 #git_hash: 'v[% c("version") %]'
-git_hash: '4ea036742bd5b10a7b56765355dcc88724632f32'
+git_hash: '006f537e01cf20db01b18e399ed51f57211db91c'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:
@@ -18,6 +18,7 @@ var:
     - github.com,kr,pretty
     - github.com,miekg,dns
     - github.com,namecoin,tlsrestrictnss
+    - github.com,namecoin,x509-signature-splice
     - gopkg.in,hlandau,madns.v1
     - gopkg.in,hlandau,easyconfig.v1
     - gopkg.in,hlandau,service.v2
@@ -49,7 +50,7 @@ targets:
         - github.com,hlandauf,btcjson
         - github.com,kr,pretty
         - github.com,miekg,dns
-        - github.com,namecoin,tlsrestrictnss
+        - github.com,namecoin,x509-signature-splice
         - gopkg.in,hlandau,madns.v1
         - gopkg.in,hlandau,easyconfig.v1
         - gopkg.in,hlandau,service.v2
@@ -85,6 +86,8 @@ input_files:
     project: github.com,miekg,dns
   - name: github.com,namecoin,tlsrestrictnss
     project: github.com,namecoin,tlsrestrictnss
+  - name: github.com,namecoin,x509-signature-splice
+    project: github.com,namecoin,x509-signature-splice
   - name: gopkg.in,hlandau,madns.v1
     project: gopkg.in,hlandau,madns.v1
   - name: github.com,kr,pretty

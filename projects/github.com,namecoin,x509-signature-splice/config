@@ -1,0 +1,22 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/x509-signature-splice.git
+# go1.11 branch
+git_hash: 'c3ef8e04f5bd6315a4a9476964df6c410700913a'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/namecoin/x509-signature-splice
+  go_lib_install:
+    - github.com/namecoin/x509-signature-splice/x509
+  build_go_lib_pre: |
+    export CGO_ENABLED=0
+    go generate github.com/namecoin/x509-signature-splice/x509
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go

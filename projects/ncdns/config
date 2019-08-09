@@ -50,6 +50,7 @@ targets:
         - github.com,hlandauf,btcjson
         - github.com,kr,pretty
         - github.com,miekg,dns
+        - github.com,namecoin,tlsrestrictnss
         - github.com,namecoin,x509-signature-splice
         - gopkg.in,hlandau,madns.v1
         - gopkg.in,hlandau,easyconfig.v1

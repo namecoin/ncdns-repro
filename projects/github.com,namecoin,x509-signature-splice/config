@@ -1,7 +1,13 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/namecoin/x509-signature-splice.git
-# go1.11 branch
-git_hash: 'c3ef8e04f5bd6315a4a9476964df6c410700913a'
+# Branch of x509-signature-splice depends on the version of the Go compiler:
+# [0   , 1.9 ): go1.6 branch
+# [1.9 , 1.10): go1.9 branch
+# [1.10, 1.11): go1.10 branch
+# [1.11, 1.12): go1.11 branch
+# [1.12, 1.13): go1.12 branch
+# [1.13, ....): master branch
+git_hash: '[% IF versioncmp(pc("go", "version"), "1.9") < 0 %]5e831cca2a00cc9f8390402b94491c351e638789[% ELSIF versioncmp(pc("go", "version"), "1.10") < 0 %]f245e132977c92cf5f13dd07c57379adb6a1b85a[% ELSIF versioncmp(pc("go", "version"), "1.11") < 0 %]86d8100c6e042cd4225b7dfe8834841e88d8f2f9[% ELSIF versioncmp(pc("go", "version"), "1.12") < 0 %]c3ef8e04f5bd6315a4a9476964df6c410700913a[% ELSIF versioncmp(pc("go", "version"), "1.13") < 0 %]3df077daf9e5c88ffb3578f1071e96e318375a0d[% ELSE %]6274abb8133f46c71e1d8fc71653a480f078a532[% END %]'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

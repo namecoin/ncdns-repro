@@ -1,7 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/miekg/dns.git
-# v1.0.15 is the last tagged release that still works with q.
-git_hash: '[% IF !c("var/dns_q_compat") -%][% config.var_p.id.${"github.com/miekg/dns"} %][% ELSE %]7064f7248f5fa5fd79382a76328b4e200b79e4ae[% END %]'
+git_hash: '[% config.var_p.id.${"github.com/miekg/dns"} %]'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

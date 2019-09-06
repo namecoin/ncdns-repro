@@ -1,6 +1,6 @@
-version: '0.0.1'
+version: '0.0.2'
 git_url:  https://github.com/namecoin/qlib.git
-git_hash: '99c375238fe562c99a2c691c433a28f90fd15afe'
+git_hash: 'e40392470b81d18021cf5b11bd68f7814af7d2fd'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'
@@ -20,5 +20,3 @@ input_files:
     project: go
   - name: github.com,miekg,dns
     project: github.com,miekg,dns
-    var:
-      dns_q_compat: 1

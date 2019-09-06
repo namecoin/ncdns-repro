@@ -12,6 +12,9 @@ release-android-armv7: submodule-update
 release-android-x86: submodule-update
 	$(rbm) build ncdns --target release --target ncdns-android-x86
 
+release-android-aarch64: submodule-update
+	$(rbm) build ncdns --target release --target ncdns-android-aarch64
+
 release-linux-x86_64: submodule-update
 	$(rbm) build certdehydrate-dane-rest-api --target release --target ncdns-linux-x86_64
 	$(rbm) build dnssec-hsts --target release --target ncdns-linux-x86_64

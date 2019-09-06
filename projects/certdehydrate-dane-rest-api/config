@@ -24,8 +24,6 @@ input_files:
     project: gopkg.in,hlandau,easyconfig.v1
   - name: github.com,miekg,dns
     project: github.com,miekg,dns
-    var:
-      dns_q_compat: 1
   - name: github.com,namecoin,crosssign
     project: github.com,namecoin,crosssign
   - name: github.com,namecoin,qlib

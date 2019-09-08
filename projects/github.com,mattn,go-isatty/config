@@ -10,7 +10,16 @@ var:
     use_container: 1
   go_lib: github.com/mattn/go-isatty
 
+targets:
+  linux:
+    var:
+      go_lib_deps:
+        - golang.org,x,sys,unix
+
 input_files:
   - project: container-image
   - name: go
     project: go
+  - name: golang.org,x,sys,unix
+    project: golang.org,x,sys,unix
+    enable: '[% c("var/linux") %]'

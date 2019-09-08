@@ -9,9 +9,26 @@ var:
   container:
     use_container: 1
   go_lib: github.com/miekg/dns
-  go_lib_deps: []
+  go_lib_deps:
+    - golang.org,x,crypto,ed25519
+    - golang.org,x,net,ip
+    - golang.org,x,sys,unix
+
+targets:
+  windows:
+    var:
+      go_lib_deps:
+        - golang.org,x,crypto,ed25519
 
 input_files:
   - project: container-image
   - name: go
     project: go
+  - name: golang.org,x,crypto,ed25519
+    project: golang.org,x,crypto,ed25519
+  - name: golang.org,x,net,ip
+    project: golang.org,x,net,ip
+    enable: '[% ! c("var/windows") %]'
+  - name: golang.org,x,sys,unix
+    project: golang.org,x,sys,unix
+    enable: '[% ! c("var/windows") %]'

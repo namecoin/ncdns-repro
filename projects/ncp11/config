@@ -7,8 +7,8 @@ var:
   container:
     use_container: 1
   go_lib_deps:
-    - github.com,miekg,pkcs11
-    - github.com,namecoin,pkcs11mod
+    - gopkcs11
+    - gopkcs11mod
   cgo: 1
 
 input_files:
@@ -21,7 +21,7 @@ input_files:
   - name: binutils
     project: binutils
     enable: '[% c("var/linux") && c("var/cgo") %]'
-  - name: github.com,miekg,pkcs11
-    project: github.com,miekg,pkcs11
-  - name: github.com,namecoin,pkcs11mod
-    project: github.com,namecoin,pkcs11mod
+  - name: gopkcs11
+    project: gopkcs11
+  - name: gopkcs11mod
+    project: gopkcs11mod

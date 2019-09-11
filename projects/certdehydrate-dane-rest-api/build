@@ -13,7 +13,7 @@ mkdir -p $distdir
 # TODO: remove this once upstream q is fixed for current dns versions
 rm -rf $GOPATH/src/github.com/miekg/dns
 rm -rf $GOPATH/pkg/${GOOS}_${GOARCH}/github.com/miekg/dns.a
-tar -C /var/tmp/dist -xf [% c('input_files_by_name/github.com,miekg,dns') %]
+tar -C /var/tmp/dist -xf [% c('input_files_by_name/godns') %]
 
 mkdir -p $GOPATH/src/github.com/namecoin
 tar -C $GOPATH/src/github.com/namecoin -xf [% project %]-[% c('version') %].tar.gz

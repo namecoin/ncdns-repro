@@ -10,19 +10,19 @@ var:
   container:
     use_container: 1
   go_lib_deps:
-    - github.com,golang,groupcache
-    - github.com,hlandau,degoutils
-    - github.com,hlandau,dexlogconfig
-    - github.com,hlandau,ncbtcjsontypes
-    - github.com,hlandauf,btcjson
-    - github.com,kr,pretty
-    - github.com,miekg,dns
-    - github.com,namecoin,tlsrestrictnss
-    - github.com,namecoin,x509-signature-splice
-    - gopkg.in,hlandau,madns.v1
-    - gopkg.in,hlandau,easyconfig.v1
-    - gopkg.in,hlandau,service.v2
-    - golang.org,x,net
+    - gogroupcache
+    - godegoutils
+    - godexlogconfig
+    - goncbtcjsontypes
+    - gobtcjson
+    - gopretty
+    - godns
+    - gotlsrestrictnss
+    - gox509signaturesplice
+    - gomadns
+    - goeasyconfig
+    - goservice
+    - goxnet
   go_lib_no_output: 1
 
 targets:
@@ -43,20 +43,20 @@ targets:
   windows:
     var:
       go_lib_deps:
-        - github.com,golang,groupcache
-        - github.com,hlandau,degoutils
-        - github.com,hlandau,dexlogconfig
-        - github.com,hlandau,ncbtcjsontypes
-        - github.com,hlandauf,btcjson
-        - github.com,kr,pretty
-        - github.com,miekg,dns
-        - github.com,namecoin,tlsrestrictnss
-        - github.com,namecoin,x509-signature-splice
-        - gopkg.in,hlandau,madns.v1
-        - gopkg.in,hlandau,easyconfig.v1
-        - gopkg.in,hlandau,service.v2
-        - golang.org,x,net
-        - golang.org,x,sys
+        - gogroupcache
+        - godegoutils
+        - godexlogconfig
+        - goncbtcjsontypes
+        - gobtcjson
+        - gopretty
+        - godns
+        - gotlsrestrictnss
+        - gox509signaturesplice
+        - gomadns
+        - goeasyconfig
+        - goservice
+        - goxnet
+        - goxsys
       cgo: 0
 
 input_files:
@@ -69,34 +69,34 @@ input_files:
   - name: binutils
     project: binutils
     enable: '[% c("var/linux") && c("var/cgo") %]'
-  - name: github.com,hlandau,xlog
-    project: github.com,hlandau,xlog
-  - name: github.com,hlandau,dexlogconfig
-    project: github.com,hlandau,dexlogconfig
-  - name: gopkg.in,hlandau,easyconfig.v1
-    project: gopkg.in,hlandau,easyconfig.v1
-  - name: gopkg.in,hlandau,service.v2
-    project: gopkg.in,hlandau,service.v2
-  - name: github.com,golang,groupcache
-    project: github.com,golang,groupcache
-  - name: github.com,hlandau,ncbtcjsontypes
-    project: github.com,hlandau,ncbtcjsontypes
-  - name: github.com,hlandauf,btcjson
-    project: github.com,hlandauf,btcjson
-  - name: github.com,miekg,dns
-    project: github.com,miekg,dns
-  - name: github.com,namecoin,tlsrestrictnss
-    project: github.com,namecoin,tlsrestrictnss
-  - name: github.com,namecoin,x509-signature-splice
-    project: github.com,namecoin,x509-signature-splice
-  - name: gopkg.in,hlandau,madns.v1
-    project: gopkg.in,hlandau,madns.v1
-  - name: github.com,kr,pretty
-    project: github.com,kr,pretty
-  - name: github.com,hlandau,degoutils
-    project: github.com,hlandau,degoutils
-  - name: golang.org,x,net
-    project: golang.org,x,net
-  - name: golang.org,x,sys
-    project: golang.org,x,sys
+  - name: goxlog
+    project: goxlog
+  - name: godexlogconfig
+    project: godexlogconfig
+  - name: goeasyconfig
+    project: goeasyconfig
+  - name: goservice
+    project: goservice
+  - name: gogroupcache
+    project: gogroupcache
+  - name: goncbtcjsontypes
+    project: goncbtcjsontypes
+  - name: gobtcjson
+    project: gobtcjson
+  - name: godns
+    project: godns
+  - name: gotlsrestrictnss
+    project: gotlsrestrictnss
+  - name: gox509signaturesplice
+    project: gox509signaturesplice
+  - name: gomadns
+    project: gomadns
+  - name: gopretty
+    project: gopretty
+  - name: godegoutils
+    project: godegoutils
+  - name: goxnet
+    project: goxnet
+  - name: goxsys
+    project: goxsys
     enable: '[% c("var/windows") %]'

@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 20
 git_url:  https://github.com/coreos/go-systemd.git
-git_hash: '[% config.var_p.id.${"github.com/coreos/go-systemd"} %]'
+git_hash: e64a0ec8b42a61e2a9801dc1d0abe539dea79197
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

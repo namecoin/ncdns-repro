@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 2.0.16
 git_url:  https://github.com/hlandau/service.git
-git_hash: '[% config.var_p.id.${"gopkg.in/hlandau/service.v2"} %]'
+git_hash: b64b3467ebd16f64faec1640c25e318efc0c0d7b
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

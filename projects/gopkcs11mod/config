@@ -1,6 +1,6 @@
-version: '0.0.1'
+version: 0.0.1
 git_url:  https://github.com/namecoin/pkcs11mod.git
-git_hash: '[% config.var_p.id.${"github.com/namecoin/pkcs11mod"} %]'
+git_hash: f7dce61fc5379851e99cfa2111834a29e3d36305
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

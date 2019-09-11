@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 1.0.3
 git_url:  https://github.com/miekg/pkcs11.git
-git_hash: '[% config.var_p.id.${"github.com/miekg/pkcs11"} %]'
+git_hash: 210dc1e16747c5ba98a03bcbcf728c38086ea357
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

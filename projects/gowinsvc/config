@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 1.0.0
 git_url:  https://github.com/btcsuite/winsvc.git
-git_hash: '[% config.var_p.id.${"github.com/btcsuite/winsvc"} %]'
+git_hash: f8fb11f83f7e860e3769a08e6811d1b399a43722
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

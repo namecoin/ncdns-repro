@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 1.1.16
 git_url:  https://github.com/miekg/dns.git
-git_hash: '[% config.var_p.id.${"github.com/miekg/dns"} %]'
+git_hash: c67445656579a3c3836047c509073f97022da0ed
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

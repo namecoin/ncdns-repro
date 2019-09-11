@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 1.0.7
 git_url:  https://github.com/hlandau/madns.git
-git_hash: '[% config.var_p.id.${"gopkg.in/hlandau/madns.v1"} %]'
+git_hash: b82ebc776bd8a13824350c7c108180d601e38352
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

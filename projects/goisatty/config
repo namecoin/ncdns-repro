@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 0.0.9
 git_url:  https://github.com/mattn/go-isatty.git
-git_hash: '[% config.var_p.id.${"github.com/mattn/go-isatty"} %]'
+git_hash: e1f7b56ace729e4a73a29a6b4fac6cd5fcda7ab3
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

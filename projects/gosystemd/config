@@ -11,7 +11,6 @@ var:
   go_lib: github.com/coreos/go-systemd
   go_lib_install:
     - github.com/coreos/go-systemd/journal
-  go_lib_deps: []
   build_go_lib_pre: |
     [% IF c("var/linux") %]
       [% pc(c('var/compiler'), 'var/setup', { compiler_tarfile => c('input_files_by_name/' _ c('var/compiler')) }) %]

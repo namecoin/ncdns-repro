@@ -9,7 +9,6 @@ var:
   container:
     use_container: 1
   go_lib: github.com/alecthomas/template
-  go_lib_deps: []
 
 input_files:
   - project: container-image

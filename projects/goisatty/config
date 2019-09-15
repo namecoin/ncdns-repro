@@ -1,0 +1,25 @@
+version: 0.0.9
+git_url:  https://github.com/mattn/go-isatty.git
+git_hash: e1f7b56ace729e4a73a29a6b4fac6cd5fcda7ab3
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/mattn/go-isatty
+
+targets:
+  linux:
+    var:
+      go_lib_deps:
+        - goxsysunix
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: goxsysunix
+    project: goxsysunix
+    enable: '[% c("var/linux") %]'

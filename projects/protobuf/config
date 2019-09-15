@@ -1,0 +1,22 @@
+# vim: filetype=yaml sw=2
+version: 3.8.0
+git_url: https://github.com/protocolbuffers/protobuf.git
+git_hash: 09745575a923640154bcf307fba8aedff47f240a
+# TODO: This Git repo uses GPG sigs; we should switch from commit hash to GPG verification.
+filename: "[% project %]-[% c('version') %]-[% c('var/build_id') %]"
+var:
+  container:
+    use_container: 1
+  deps:
+    - build-essential
+    - automake
+    - autoconf
+    - libtool
+    - zlib1g-dev
+    - hardening-wrapper
+input_files:
+  - project: container-image
+  - project: python
+    name: python
+  - project: gcc
+    name: gcc

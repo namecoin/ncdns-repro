@@ -1,11 +1,56 @@
 # vim: filetype=yaml sw=2
-filename: '[% project %]-[% c("version") %]-[% c("var/build_id") %].tar.gz'
-version: 3.3.6
+filename: 'Electrum-NMC-[% c("version") %]-[% c("var/build_id") %].tar.gz'
+version: 3.3.7
+git_url: https://github.com/namecoin/electrum-nmc.git
+git_hash: 49e6c3a9ef5097a8131a006ffb9900b18aa8f8d3
+# TODO: This Git repo uses GPG sigs; we should switch from commit hash to GPG verification.
 var:
   container:
     use_container: 1
 
 input_files:
   - project: container-image
-  - URL: 'https://beta.namecoin.org/files/electrum-nmc/electrum-nmc-[% c("version") %]/Electrum-NMC-[% c("version") %].tar.gz'
-    sha256sum: 45bc7a84beece562d0b9fdb0f185a9edb0703f3aef80ab546f8ccfc2a9a21953
+  - project: python
+    name: python
+  - project: aiohttp
+    name: aiohttp
+  - project: aiohttp_socks
+    name: aiohttp_socks
+  - project: aiorpcx
+    name: aiorpcx
+  - project: async_timeout
+    name: async_timeout
+  - project: attr
+    name: attr
+  - project: certifi
+    name: certifi
+  - project: chardet
+    name: chardet
+  - project: colorama
+    name: colorama
+  - project: dns
+    name: dns
+  - project: ecdsa
+    name: ecdsa
+  - project: idna
+    name: idna
+  - project: idna_ssl
+    name: idna_ssl
+  - project: jsonrpclib
+    name: jsonrpclib
+  - project: multidict
+    name: multidict
+  - project: protobuf
+    name: protobuf
+  - project: pyaes
+    name: pyaes
+  - project: qdarkstyle
+    name: qdarkstyle
+  - project: qrcode
+    name: qrcode
+  - project: six
+    name: six
+  - project: typing_extensions
+    name: typing_extensions
+  - project: yarl
+    name: yarl

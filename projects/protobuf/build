@@ -1,0 +1,42 @@
+#!/bin/bash
+[% c("var/set_default_env") -%]
+[% pc('python', 'var/setup', { python_tarfile => c('input_files_by_name/python') }) %]
+[% pc('gcc', 'var/setup', { compiler_tarfile => c('input_files_by_name/gcc') }) %]
+
+shopt -s globstar
+
+mkdir -p [% dest_dir _ '/' _ c('filename') %]
+
+tar xvf [% project %]-[% c('version') %].tar.gz
+
+mkdir -p /var/tmp/dist/protoc/
+cd [% project %]-[% c('version') %]
+./autogen.sh
+./configure --prefix=/var/tmp/dist/protoc/
+make
+make install
+export PATH=/var/tmp/dist/protoc/bin:$PATH
+
+cd python
+
+python3 setup.py build
+python3 setup.py sdist --format=gztar
+
+mkdir -p /var/tmp/build/sdist/[% project %]
+tar -C /var/tmp/build/sdist/[% project %] -xvf dist/[% project %]-[% c('version') %].tar.gz
+
+mkdir -p /var/tmp/dist/[% project %]/google
+cd /var/tmp/build/sdist/[% project %]/[% project %]*/google
+cp --parents **/*.py /var/tmp/dist/[% project %]/google/
+
+cd /var/tmp/dist/[% project %]
+[% c('tar', {
+        tar_src => '.',
+        tar_args => '-czf ' _ dest_dir _ '/' _ c('filename') _ '/python-protobuf.tar.gz',
+        }) %]
+
+cd /var/tmp/dist/protoc
+[% c('tar', {
+        tar_src => '.',
+        tar_args => '-czf ' _ dest_dir _ '/' _ c('filename') _ '/protoc.tar.gz',
+        }) %]

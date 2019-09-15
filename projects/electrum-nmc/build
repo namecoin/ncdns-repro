@@ -1,12 +1,33 @@
 #!/bin/sh
 [% c("var/set_default_env") -%]
-distdir=/var/tmp/dist/[% project %]
-mkdir /var/tmp/build
-tar -C /var/tmp/build -xf Electrum-NMC-[% c("version") %].tar.gz
-cd /var/tmp/build/Electrum-NMC-[% c("version") %]
+[% pc('python', 'var/setup', { python_tarfile => c('input_files_by_name/python') }) %]
+distdir=/var/tmp/build/[% project %]
+mkdir -p /var/tmp/build/[% project %]
+tar -C /var/tmp/build/[% project %] -xf [% project %]-[% c("version") %].tar.gz
 
-cd /var/tmp/build/
+cd /var/tmp/build/[% project %]/[% project %]-*
+
+mkdir packages
+cd packages
+
+[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'colorama', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'qdarkstyle', 'qrcode', 'six', 'typing_extensions', 'yarl'] -%]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/' _ dep) %]
+[% END -%]
+
+tar -C . -xf $rootdir/[% c('input_files_by_name/protobuf') %]/python-protobuf.tar.gz
+
+cd ../
+python3 setup.py sdist --format=gztar
+
+mkdir -p /var/tmp/build/sdist/[% project %]
+tar -C /var/tmp/build/sdist/[% project %] -xvf dist/Electrum-NMC-[% c('version') %].tar.gz
+
+mkdir -p /var/tmp/dist/[% project %]
+cd /var/tmp/dist/[% project %]
+
+cp -a /var/tmp/build/sdist/[% project %]/Electrum-NMC* ./Electrum-NMC-[% c('version') %]
+
 [% c('tar', {
-        tar_src => 'Electrum-NMC-' _ c("version"),
+        tar_src => '.',
         tar_args => '-czf ' _ dest_dir _ '/' _ c('filename'),
         }) %]

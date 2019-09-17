@@ -1,6 +1,6 @@
-version: '0.0.1'
+version: '0.0.2'
 git_url:  https://github.com/namecoin/ncprop279.git
-git_hash: 'd72977987d841fa0b7fa51108a868263e7f4a9a0'
+git_hash: '57e3b1be0960b3b70c99859bacee974aa2392272'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

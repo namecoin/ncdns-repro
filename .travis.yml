@@ -1,0 +1,32 @@
+language: go
+go:
+  - "1.x"
+
+addons:
+  apt:
+    packages:
+      - libyaml-libyaml-perl
+      - libtemplate-perl
+      - libio-handle-util-perl
+      - libio-all-perl
+      - libio-captureoutput-perl
+      - libjson-perl
+      - libpath-tiny-perl
+      - libstring-shellquote-perl
+      - libsort-versions-perl
+      - libdigest-sha-perl
+      - libdata-uuid-perl
+      - libdata-dump-perl
+      - libfile-copy-recursive-perl
+      - git
+      - runc
+      - mercurial
+
+sudo: false
+
+install:
+  - make submodule-update
+script:
+  - ./.travis/check-project-tags
+  - ./.travis/check-tbb-tags
+

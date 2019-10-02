@@ -9,6 +9,7 @@ var:
     use_container: 1
   enable_qt: 1
   enable_kivy: 1
+  enable_plugins: 1
 
 input_files:
   - project: container-image

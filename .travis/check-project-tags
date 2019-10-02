@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -eu -o pipefail
+shopt -s failglob
+
+FAIL=0
+
+for PROJECTPATH in ./projects/*
+do
+    PROJECT=$(basename ${PROJECTPATH})
+
+    # Tor devs are in charge of their dependencies
+    if [[ -e "./tor-browser-build/projects/${PROJECT}" || "${PROJECT}" = goxcrypto* || "${PROJECT}" = goxnet* || "${PROJECT}" = goxsys* ]]
+    then
+        continue
+    fi
+
+    # Electrum devs are in charge of their dependencies
+    PROJECT_IS_ELECTRUM_DEP=1
+    grep "project: ${PROJECT}" ./projects/electrum-nmc/config > /dev/null || PROJECT_IS_ELECTRUM_DEP=0
+    if [ "$PROJECT_IS_ELECTRUM_DEP" = 1 ]
+    then
+        continue
+    fi
+
+    # x509-signature-splice branch depends on Go version, so it won't always be the latest
+    if [ "${PROJECT}" = "gox509signaturesplice" ]
+    then
+        continue
+    fi
+
+    GIT_REV=$(./rbm/rbm showconf ${PROJECT} git_hash)
+
+    GIT_URL=$(./rbm/rbm showconf ${PROJECT} git_url)
+
+    REMOTE_TAGS=$(git ls-remote --tags "${GIT_URL}")
+    if [ "${REMOTE_TAGS}" = "" ]
+    then
+        # There are no tags on the remote Git repo, so pretend HEAD is the latest.
+        LATEST_TAG=HEAD
+    else
+        LATEST_TAG=$(git ls-remote --tags "${GIT_URL}" | grep -v '\^{}' | awk '{print $2}' | awk -F"/" '{print $3}' | sort -V | tail --lines=1)
+    fi
+    LATEST_INFO=$(git ls-remote "${GIT_URL}" HEAD ${LATEST_TAG} ${LATEST_TAG}^{})
+
+    PROJECT_FAIL=0
+    echo "${LATEST_INFO}" | grep ${GIT_REV} > /dev/null || PROJECT_FAIL=1
+    if [ "${PROJECT_FAIL}" = 1 ]
+    then
+        FAIL=1
+        echo "${PROJECT}: rbm uses ${GIT_REV}, latest at remote ${GIT_URL} are:
+${LATEST_INFO}"
+    fi
+done
+
+if [ "${FAIL}" = 1 ]
+then
+    exit 1
+fi
+
+exit 0

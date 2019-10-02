@@ -10,7 +10,7 @@ cd /var/tmp/build/[% project %]/[% project %]-*
 mkdir packages
 cd packages
 
-[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'colorama', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'six', 'typing_extensions', 'yarl'] -%]
+[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'six', 'typing_extensions', 'yarl'] -%]
   tar -C . -xf $rootdir/[% c('input_files_by_name/' _ dep) %]
 [% END -%]
 
@@ -19,6 +19,7 @@ cd packages
 [% END %]
 
 [% IF c("var/enable_qt") || c("var/enable_kivy") %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'colorama') %]
   tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'qrcode') %]
 [% END %]
 

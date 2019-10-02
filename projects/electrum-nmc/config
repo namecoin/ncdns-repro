@@ -52,6 +52,7 @@ input_files:
     enable: '[% c("var/enable_qt") %]'
   - project: qrcode
     name: qrcode
+    enable: '[% c("var/enable_qt") || c("var/enable_kivy") %]'
   - project: six
     name: six
   - project: typing_extensions

@@ -10,12 +10,16 @@ cd /var/tmp/build/[% project %]/[% project %]-*
 mkdir packages
 cd packages
 
-[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'colorama', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'qrcode', 'six', 'typing_extensions', 'yarl'] -%]
+[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'colorama', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'six', 'typing_extensions', 'yarl'] -%]
   tar -C . -xf $rootdir/[% c('input_files_by_name/' _ dep) %]
 [% END -%]
 
 [% IF c("var/enable_qt") %]
   tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'qdarkstyle') %]
+[% END %]
+
+[% IF c("var/enable_qt") || c("var/enable_kivy") %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'qrcode') %]
 [% END %]
 
 tar -C . -xf $rootdir/[% c('input_files_by_name/protobuf') %]/python-protobuf.tar.gz

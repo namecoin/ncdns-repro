@@ -49,6 +49,10 @@ cd ./Electrum-NMC-[% c('version') %]
 [% IF ! c("var/enable_plugins") %]
   rm -r electrum_nmc/electrum/plugins/*/
 [% END %]
+[% IF ! c("var/enable_wallet") %]
+  mv electrum_nmc/electrum/null_impl/null_wallet/*.py electrum_nmc/electrum/
+[% END %]
+rm -r electrum_nmc/electrum/null_impl/
 cd ../
 
 [% c('tar', {

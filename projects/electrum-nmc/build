@@ -27,6 +27,12 @@ cd /var/tmp/dist/[% project %]
 
 cp -a /var/tmp/build/sdist/[% project %]/Electrum-NMC* ./Electrum-NMC-[% c('version') %]
 
+cd ./Electrum-NMC-[% c('version') %]
+[% IF ! c("var/enable_qt") %]
+  rm -r electrum_nmc/electrum/gui/qt/
+[% END %]
+cd ../
+
 [% c('tar', {
         tar_src => '.',
         tar_args => '-czf ' _ dest_dir _ '/' _ c('filename'),

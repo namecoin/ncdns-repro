@@ -23,7 +23,9 @@ cd packages
   tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'qrcode') %]
 [% END %]
 
-tar -C . -xf $rootdir/[% c('input_files_by_name/protobuf') %]/python-protobuf.tar.gz
+[% IF c("var/enable_bip70") %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/protobuf') %]/python-protobuf.tar.gz
+[% END %]
 
 cd ../
 python3 setup.py sdist --format=gztar

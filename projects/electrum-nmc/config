@@ -11,6 +11,7 @@ var:
   enable_kivy: 1
   enable_plugins: 1
   enable_wallet: 1
+  enable_bip70: 1
 
 input_files:
   - project: container-image
@@ -47,6 +48,7 @@ input_files:
     name: multidict
   - project: protobuf
     name: protobuf
+    enable: '[% c("var/enable_bip70") %]'
   - project: pyaes
     name: pyaes
   - project: qdarkstyle

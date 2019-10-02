@@ -13,6 +13,23 @@ var:
   enable_wallet: 1
   enable_bip70: 1
 
+targets:
+  disable_qt:
+    var:
+      enable_qt: 0
+  disable_kivy:
+    var:
+      enable_kivy: 0
+  disable_plugins:
+    var:
+      enable_plugins: 0
+  disable_wallet:
+    var:
+      enable_wallet: 0
+  disable_bip70:
+    var:
+      enable_bip70: 0
+
 input_files:
   - project: container-image
   - project: python

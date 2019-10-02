@@ -5,6 +5,12 @@ var:
   container:
     use_container: 1
   only_top_10_issuers: 0
+
+targets:
+  only_top_10_issuers:
+    var:
+      only_top_10_issuers: 1
+
 input_files:
   - project: container-image
   - project: python

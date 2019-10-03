@@ -2,6 +2,12 @@ language: go
 go:
   - "1.x"
 
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#namecoin-dev"
+    on_success: never
+
 addons:
   apt:
     packages:

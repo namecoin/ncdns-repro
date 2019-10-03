@@ -14,7 +14,20 @@ var:
     - golang.org/x/net/ipv4
     - golang.org/x/net/ipv6
 
+targets:
+  linux:
+    var:
+      go_lib_deps:
+        - goxsysunix
+  osx-x86_64:
+    var:
+      go_lib_deps:
+        - goxsysunix
+
 input_files:
   - project: container-image
   - name: go
     project: go
+  - name: goxsysunix
+    project: goxsysunix
+    enable: '[% c("var/linux") || c("var/osx") %]'

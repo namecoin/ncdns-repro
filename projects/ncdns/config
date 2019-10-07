@@ -21,14 +21,37 @@ var:
     - gobtcjson
     - gopretty
     - godns
-    - gotlsrestrictnss
-    - gox509signaturesplice
     - gomadns
     - goeasyconfig
     - goservice
     - goxnet
+  go_lib_install:
+    - github.com/namecoin/ncdns
+    - github.com/namecoin/ncdns/backend
+    - github.com/namecoin/ncdns/namecoin
+    - github.com/namecoin/ncdns/ncdomain
+    - github.com/namecoin/ncdns/ncdt
+    - github.com/namecoin/ncdns/rrtourl
+    - github.com/namecoin/ncdns/server
+    - github.com/namecoin/ncdns/testutil
+    - github.com/namecoin/ncdns/tlshook
+    - github.com/namecoin/ncdns/util
   go_lib_no_output: 1
   enable_namecoin_tlsa: 1
+  os_go_lib_deps: []
+  optional_go_lib_deps:
+    - gotlsrestrictnss
+    - gox509signaturesplice
+  optional_go_lib_install:
+    - github.com/namecoin/ncdns/certdehydrate
+    - github.com/namecoin/ncdns/certinject
+    - github.com/namecoin/ncdns/generate_nmc_cert
+    - github.com/namecoin/ncdns/ncdumpzone
+    - github.com/namecoin/ncdns/ncdumpzone/ncdumpzone
+    - github.com/namecoin/ncdns/tlsoverridefirefox
+    - github.com/namecoin/ncdns/tlsoverridefirefoxsync
+    - github.com/namecoin/ncdns/tlsrestrictchromium
+    - github.com/namecoin/ncdns/tlsrestrict_chromium_tool
 
 targets:
   linux:
@@ -47,25 +70,14 @@ targets:
       cgo: 0
   windows:
     var:
-      go_lib_deps:
-        - gogroupcache
-        - godegoutils
-        - godexlogconfig
-        - goncbtcjsontypes
-        - gobtcjson
-        - gopretty
-        - godns
-        - gotlsrestrictnss
-        - gox509signaturesplice
-        - gomadns
-        - goeasyconfig
-        - goservice
-        - goxnet
+      os_go_lib_deps:
         - goxsys
       cgo: 0
   disable_namecoin_tlsa:
     var:
       enable_namecoin_tlsa: 0
+      optional_go_lib_deps: []
+      optional_go_lib_install: []
 
 input_files:
   - project: container-image
@@ -95,8 +107,10 @@ input_files:
     project: godns
   - name: gotlsrestrictnss
     project: gotlsrestrictnss
+    enable: '[% c("var/enable_namecoin_tlsa") %]'
   - name: gox509signaturesplice
     project: gox509signaturesplice
+    enable: '[% c("var/enable_namecoin_tlsa") %]'
   - name: gomadns
     project: gomadns
   - name: gopretty

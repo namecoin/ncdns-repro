@@ -1,11 +1,12 @@
 #version: 0.0.9
-# Using latest master branch because we need the stream isolation feature.
-# Once it's in a tagged release, we'll go back to using a version number here.
+# Using latest master branch because we need the stream isolation and
+# disable_namecoin_tlsa features.  Once they're in a tagged release, we'll go
+# back to using a version number here.
 version: '[% c("abbrev") %]'
 git_url: https://github.com/namecoin/ncdns.git
-# Using latest master branch because we need the stream isolation feature.
-# Once it's in a tagged release, we'll go back to using a hash that corresponds
-# to a tag here.
+# Using latest master branch because we need the stream isolation and
+# disable_namecoin_tlsa features.  Once they're in a tagged release, we'll go
+# back to using a hash that corresponds to a tag here.
 git_hash: '1e2eea58c79686eea47de873580bcd907ca67d80'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
@@ -27,6 +28,7 @@ var:
     - goservice
     - goxnet
   go_lib_no_output: 1
+  enable_namecoin_tlsa: 1
 
 targets:
   linux:
@@ -61,6 +63,9 @@ targets:
         - goxnet
         - goxsys
       cgo: 0
+  disable_namecoin_tlsa:
+    var:
+      enable_namecoin_tlsa: 0
 
 input_files:
   - project: container-image

@@ -1,9 +1,12 @@
-version: 0.0.9
+#version: 0.0.9
+# Using latest master branch because we need the stream isolation feature.
+# Once it's in a tagged release, we'll go back to using a version number here.
+version: '[% c("abbrev") %]'
 git_url: https://github.com/namecoin/ncdns.git
-# Using latest master branch because we need the RPC timeout feature.  Once
-# it's in a tagged release, we'll go back to using a version tag here.
-#git_hash: 'v[% c("version") %]'
-git_hash: '006f537e01cf20db01b18e399ed51f57211db91c'
+# Using latest master branch because we need the stream isolation feature.
+# Once it's in a tagged release, we'll go back to using a hash that corresponds
+# to a tag here.
+git_hash: '1e2eea58c79686eea47de873580bcd907ca67d80'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

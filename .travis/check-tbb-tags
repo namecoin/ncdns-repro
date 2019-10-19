@@ -13,7 +13,7 @@ LATEST_TAG=$(git ls-remote --tags "${GIT_URL}" | grep -v '\^{}' | awk '{print $2
 if [ "${GIT_TAG}" != "(${LATEST_TAG})" ]
 then
     FAIL=1
-    echo "${PROJECT}: submodule uses ${GIT_REV}, latest tag is ${LATEST_TAG}"
+    echo "tor-browser-build: submodule uses ${GIT_TAG}, latest tag is ${LATEST_TAG}"
 fi
 
 if [ "${FAIL}" = 1 ]

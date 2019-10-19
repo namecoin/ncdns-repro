@@ -20,6 +20,12 @@ var:
   cgo: 0
   build_go_lib_pre: |
     export CGO_ENABLED=[% c("var/cgo") %] 
+  enable_namecoin_tlsa: 1
+
+targets:
+  disable_namecoin_tlsa:
+    var:
+      enable_namecoin_tlsa: 0
 
 input_files:
   - project: container-image

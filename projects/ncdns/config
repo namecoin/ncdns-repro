@@ -17,8 +17,9 @@ var:
     - gogroupcache
     - godegoutils
     - godexlogconfig
-    - goncbtcjsontypes
-    - gobtcjson
+    - goncbtcjson
+    - goncrpcclient
+    - gobtcd
     - gopretty
     - godns
     - gomadns
@@ -99,10 +100,12 @@ input_files:
     project: goservice
   - name: gogroupcache
     project: gogroupcache
-  - name: goncbtcjsontypes
-    project: goncbtcjsontypes
-  - name: gobtcjson
-    project: gobtcjson
+  - name: goncbtcjson
+    project: goncbtcjson
+  - name: goncrpcclient
+    project: goncrpcclient
+  - name: gobtcd
+    project: gobtcd
   - name: godns
     project: godns
   - name: gotlsrestrictnss

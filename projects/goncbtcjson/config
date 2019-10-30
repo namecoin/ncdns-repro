@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
-git_url:  https://github.com/hlandau/ncbtcjsontypes.git
-git_hash: 02ea7272dd11bb6153a3cd06899a0999ac6a16e0
+git_url:  https://github.com/namecoin/ncbtcjson.git
+git_hash: 2a5988311d060034357542a0e1b053143de1658a
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'
@@ -8,13 +8,13 @@ build: '[% c("projects/go/var/build_go_lib") %]'
 var:
   container:
     use_container: 1
-  go_lib: github.com/hlandau/ncbtcjsontypes
+  go_lib: github.com/namecoin/ncbtcjson
   go_lib_deps:
-    - gobtcjson
+    - gobtcd
 
 input_files:
   - project: container-image
   - name: go
     project: go
-  - name: gobtcjson
-    project: gobtcjson
+  - name: gobtcd
+    project: gobtcd

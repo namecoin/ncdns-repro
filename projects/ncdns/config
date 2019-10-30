@@ -7,7 +7,7 @@ git_url: https://github.com/namecoin/ncdns.git
 # Using latest master branch because we need the stream isolation and
 # disable_namecoin_tlsa features.  Once they're in a tagged release, we'll go
 # back to using a hash that corresponds to a tag here.
-git_hash: '1e2eea58c79686eea47de873580bcd907ca67d80'
+git_hash: '7c39b77cca1e949097759019bcfa4444cbd0ab76'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

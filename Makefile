@@ -59,8 +59,7 @@ release-osx-x86_64: submodule-update
 	$(rbm) build ncprop279 --target release --target ncdns-osx-x86_64
 
 submodule-update:
-	git submodule update --init
-	$(MAKE) -C tor-browser-build submodule-update
+	./setup-submodule-symlinks
 
 fetch: submodule-update
 	$(rbm) fetch

@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/namecoin/ncbtcjson.git
-git_hash: 2a5988311d060034357542a0e1b053143de1658a
+git_hash: 0d2f400334751d149ca21bfd4535c9d2274f7264
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

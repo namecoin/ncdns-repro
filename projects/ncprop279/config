@@ -6,7 +6,7 @@ git_url:  https://github.com/namecoin/ncprop279.git
 # Using latest master branch because we need the stream isolation feature.
 # Once it's in a tagged release, we'll go back to using a hash that corresponds
 # to a tag here.
-git_hash: '6179eb44d9970ac05d2f4f6c409fbb8af2fdd87a'
+git_hash: '7bdd741d70258407f66aab52b24788f1acccc56b'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

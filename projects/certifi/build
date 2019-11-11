@@ -15,6 +15,10 @@ cd /var/tmp/dist/[% project %]
 
 cp -a /var/tmp/build/sdist/[% project %]/[% project %]*/[% project %] ./[% project %]
 
+[% IF c("var/only_top_10_issuers") %]
+  cp $rootdir/roots_of_top_10_issuers.pem ./[% project %]/cacert.pem
+[% END %]
+
 [% c('tar', {
         tar_src => '.',
         tar_args => '-czf ' _ dest_dir _ '/' _ c('filename'),

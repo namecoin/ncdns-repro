@@ -10,11 +10,22 @@ cd /var/tmp/build/[% project %]/[% project %]-*
 mkdir packages
 cd packages
 
-[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'colorama', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'qdarkstyle', 'qrcode', 'six', 'typing_extensions', 'yarl'] -%]
+[% FOREACH dep = ['aiohttp', 'aiohttp_socks', 'aiorpcx', 'async_timeout', 'attr', 'certifi', 'chardet', 'dns', 'ecdsa', 'idna', 'idna_ssl', 'jsonrpclib', 'multidict', 'pyaes', 'six', 'typing_extensions', 'yarl'] -%]
   tar -C . -xf $rootdir/[% c('input_files_by_name/' _ dep) %]
 [% END -%]
 
-tar -C . -xf $rootdir/[% c('input_files_by_name/protobuf') %]/python-protobuf.tar.gz
+[% IF c("var/enable_qt") %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'qdarkstyle') %]
+[% END %]
+
+[% IF c("var/enable_qt") || c("var/enable_kivy") %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'colorama') %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/' _ 'qrcode') %]
+[% END %]
+
+[% IF c("var/enable_bip70") %]
+  tar -C . -xf $rootdir/[% c('input_files_by_name/protobuf') %]/python-protobuf.tar.gz
+[% END %]
 
 cd ../
 python3 setup.py sdist --format=gztar
@@ -26,6 +37,25 @@ mkdir -p /var/tmp/dist/[% project %]
 cd /var/tmp/dist/[% project %]
 
 cp -a /var/tmp/build/sdist/[% project %]/Electrum-NMC* ./Electrum-NMC-[% c('version') %]
+
+cd ./Electrum-NMC-[% c('version') %]
+[% IF ! c("var/enable_qt") %]
+  rm -r electrum_nmc/electrum/gui/qt/
+[% END %]
+[% IF ! c("var/enable_kivy") %]
+  rm -r electrum_nmc/electrum/gui/kivy/
+[% END %]
+[% IF ! c("var/enable_qt") && ! c("var/enable_kivy") %]
+  rm -r electrum_nmc/electrum/gui/
+[% END %]
+[% IF ! c("var/enable_plugins") %]
+  rm -r electrum_nmc/electrum/plugins/*/
+[% END %]
+[% IF ! c("var/enable_wallet") %]
+  mv electrum_nmc/electrum/null_impl/null_wallet/*.py electrum_nmc/electrum/
+[% END %]
+rm -r electrum_nmc/electrum/null_impl/
+cd ../
 
 [% c('tar', {
         tar_src => '.',

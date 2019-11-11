@@ -1,12 +1,34 @@
 # vim: filetype=yaml sw=2
 filename: 'Electrum-NMC-[% c("version") %]-[% c("var/build_id") %].tar.gz'
-version: 3.3.7
+version: 3.3.8
 git_url: https://github.com/namecoin/electrum-nmc.git
-git_hash: 49e6c3a9ef5097a8131a006ffb9900b18aa8f8d3
+git_hash: 6cd135c0061dfa96ef92bbec7dc34b8cd0735ce3
 # TODO: This Git repo uses GPG sigs; we should switch from commit hash to GPG verification.
 var:
   container:
     use_container: 1
+  enable_qt: 1
+  enable_kivy: 1
+  enable_plugins: 1
+  enable_wallet: 1
+  enable_bip70: 1
+
+targets:
+  disable_qt:
+    var:
+      enable_qt: 0
+  disable_kivy:
+    var:
+      enable_kivy: 0
+  disable_plugins:
+    var:
+      enable_plugins: 0
+  disable_wallet:
+    var:
+      enable_wallet: 0
+  disable_bip70:
+    var:
+      enable_bip70: 0
 
 input_files:
   - project: container-image
@@ -28,6 +50,7 @@ input_files:
     name: chardet
   - project: colorama
     name: colorama
+    enable: '[% c("var/enable_qt") || c("var/enable_kivy") %]'
   - project: dns
     name: dns
   - project: ecdsa
@@ -42,12 +65,15 @@ input_files:
     name: multidict
   - project: protobuf
     name: protobuf
+    enable: '[% c("var/enable_bip70") %]'
   - project: pyaes
     name: pyaes
   - project: qdarkstyle
     name: qdarkstyle
+    enable: '[% c("var/enable_qt") %]'
   - project: qrcode
     name: qrcode
+    enable: '[% c("var/enable_qt") || c("var/enable_kivy") %]'
   - project: six
     name: six
   - project: typing_extensions

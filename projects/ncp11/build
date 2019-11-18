@@ -29,7 +29,8 @@ mkdir -p $GOPATH/src/github.com/namecoin
 tar -C $GOPATH/src/github.com/namecoin -xf [% project %]-[% c('version') %].tar.gz
 mv $GOPATH/src/github.com/namecoin/ncp11-[% c('version') %] $GOPATH/src/github.com/namecoin/ncp11
 
-go install -ldflags '-s' -buildmode c-shared github.com/namecoin/ncp11
+# TODO: Remove static build ID after migrating to Go 1.13.3+
+go install -ldflags '-s -buildid=' -buildmode c-shared github.com/namecoin/ncp11
 
 #mkdir -p /var/tmp/build
 #tar -C /var/tmp/build -xf [% project %]-[% c('version') %].tar.gz

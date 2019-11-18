@@ -44,11 +44,13 @@ mv $GOPATH/src/github.com/namecoin/ncdns-[% c('version') %] $GOPATH/src/github.c
 [% END %]
 
 [% FOREACH inst IN c("var/go_lib_install") %]
-  go install $TAGS -ldflags '-s' [% inst %]
+  # TODO: Remove static build ID after migrating to Go 1.13.3+
+  go install $TAGS -ldflags '-s -buildid=' [% inst %]
 [% END %]
 
 [% FOREACH inst IN c("var/optional_go_lib_install") %]
-  go install $TAGS -ldflags '-s' [% inst %]
+  # TODO: Remove static build ID after migrating to Go 1.13.3+
+  go install $TAGS -ldflags '-s -buildid=' [% inst %]
 [% END %]
 
 #mkdir -p /var/tmp/build

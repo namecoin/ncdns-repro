@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: 0.20.1
 git_url:  https://github.com/namecoin/btcd.git
-git_hash: 6cfad711d4ee7367b3ab9dc572097438dbca56eb
+git_hash: a271c34c473209705917e75ea9656972bd32da1a
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

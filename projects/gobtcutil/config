@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/btcsuite/btcutil.git
-git_hash: 9e5f4b9a998d263e3ce9c56664a7816001ac8000
+git_hash: e17c9730c422e7c745002430f2782b948b59c1c2
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

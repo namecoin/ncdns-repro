@@ -1,5 +1,5 @@
 # vim: filetype=yaml sw=2
-version: '[% c("abbrev") %]'
+version: '[% pc("gobtcd", "version") %]'
 git_url: '[% pc("gobtcd", "git_url") %]'
 git_hash: '[% pc("gobtcd", "git_hash") %]'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'

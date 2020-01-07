@@ -2,7 +2,7 @@
 version: '0.0.2'
 git_url:  https://github.com/namecoin/dnssec-hsts.git
 git_hash: '00cf3ed7f81734a9c785906e81e1d3c46fc8cce8'
-filename: '[% project %]-[% c("version") %]-[% c("var/build_id") %].xpi'
+filename: '[% project %]-[% c("version") %]-[% c("var/build_id") %]'
 
 var:
   container:

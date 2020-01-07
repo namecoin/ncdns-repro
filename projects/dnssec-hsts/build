@@ -1,8 +1,19 @@
 #!/bin/bash
 [% c("var/set_default_env") -%]
+
+mkdir -p [% dest_dir _ '/' _ c('filename') %]
+
 tar xvf [% project %]-[% c('version') %].tar.gz
 cd [% project %]-[% c('version') %]
+
 [% c('zip', {
         zip_src => [ '.' ],
-        zip_args => dest_dir _ '/' _ c('filename'),
+        zip_args => dest_dir _ '/' _ c('filename') _ '/' _ c('filename') _ '-firefox.xpi',
+    }) %]
+
+./use-png-icon.sh
+
+[% c('zip', {
+        zip_src => [ '.' ],
+        zip_args => dest_dir _ '/' _ c('filename') _ '/' _ c('filename') _ '-chromium.zip',
     }) %]

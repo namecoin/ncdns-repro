@@ -1,0 +1,15 @@
+version: '[% c("var/ncdns_version") %]'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+
+input_files:
+  - project: container-image
+  - name: ncdns
+    project: ncdns
+  - name: ncp11
+    project: ncp11
+  - name: ncprop279
+    project: ncprop279

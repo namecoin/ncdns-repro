@@ -3,10 +3,9 @@
 set -euxo pipefail
 shopt -s nullglob globstar
 
-(
-for CHANNEL in release; do
-    OS=linux
-    ARCH=x86_64
+print_os_arch () {
+    local OS="$1"
+    local ARCH="$2"
 
     # Pre-download tarballs and Git repos
     echo "${CHANNEL}_${OS}_${ARCH}_download_docker_builder:
@@ -59,9 +58,15 @@ for CHANNEL in release; do
     - \"${CHANNEL}_${OS}_${ARCH}_${PREV_PROJECT}\""
         fi
 
-        PREV_PROJECT="$PROJECT"
+        local PREV_PROJECT="$PROJECT"
         echo ""
     done
+}
+
+(
+for CHANNEL in release; do
+    print_os_arch linux x86_64
+    print_os_arch linux i686
 done
 ) > .cirrus.yml
 

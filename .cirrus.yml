@@ -101,3 +101,106 @@ release_linux_x86_64_ncprop279_docker_builder:
   depends_on:
     - "release_linux_x86_64_ncp11"
 
+release_linux_i686_download_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  build_script:
+    - "./tools/cirrus_build_project.sh ncdns release linux i686 0"
+
+release_linux_i686_goeasyconfig_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  build_script:
+    - "./tools/cirrus_build_project.sh goeasyconfig release linux i686 1"
+  depends_on:
+    - "release_linux_i686_download"
+
+release_linux_i686_ncdns_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  build_script:
+    - "./tools/cirrus_build_project.sh ncdns release linux i686 1"
+  depends_on:
+    - "release_linux_i686_goeasyconfig"
+
+release_linux_i686_ncp11_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  build_script:
+    - "./tools/cirrus_build_project.sh ncp11 release linux i686 1"
+  depends_on:
+    - "release_linux_i686_ncdns"
+
+release_linux_i686_ncprop279_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  build_script:
+    - "./tools/cirrus_build_project.sh ncprop279 release linux i686 1"
+  depends_on:
+    - "release_linux_i686_ncp11"
+

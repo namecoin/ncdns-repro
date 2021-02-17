@@ -67,6 +67,8 @@ print_os_arch () {
 for CHANNEL in release; do
     print_os_arch linux x86_64
     print_os_arch linux i686
+    print_os_arch windows x86_64
+    print_os_arch windows i686
 done
 ) > .cirrus.yml
 

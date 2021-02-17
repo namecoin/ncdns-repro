@@ -30,7 +30,7 @@ for CHANNEL in release; do
     echo ""
 
     # TODO fine-tune this list
-    for PROJECT in ncdns ncp11 ncprop279; do
+    for PROJECT in goeasyconfig ncdns ncp11 ncprop279; do
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT}_docker_builder:
   timeout_in: 120m
   out_${CHANNEL}_${OS}_${ARCH}_cache:
@@ -51,7 +51,7 @@ for CHANNEL in release; do
     - \"./tools/cirrus_build_project.sh ${PROJECT} ${CHANNEL} ${OS} ${ARCH} 1\""
 
         # Depend on previous project
-        if [[ "$PROJECT" == "ncdns" ]]; then
+        if [[ "$PROJECT" == "goeasyconfig" ]]; then
             echo "  depends_on:
     - \"${CHANNEL}_${OS}_${ARCH}_download\""
         else

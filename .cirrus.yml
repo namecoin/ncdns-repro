@@ -1,82 +1,82 @@
-nightly_linux_x86_64_download_docker_builder:
+release_linux_x86_64_download_docker_builder:
   timeout_in: 120m
-  out_nightly_linux_x86_64_cache:
+  out_release_linux_x86_64_cache:
     folder: out
     fingerprint_script:
-      - "echo out_nightly_linux_x86_64"
+      - "echo out_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  git_nightly_linux_x86_64_cache:
+  git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
-      - "echo git_nightly_linux_x86_64"
+      - "echo git_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns nightly linux x86_64 0"
+    - "./tools/cirrus_build_project.sh ncdns release linux x86_64 0"
 
-nightly_linux_x86_64_ncdns_docker_builder:
+release_linux_x86_64_ncdns_docker_builder:
   timeout_in: 120m
-  out_nightly_linux_x86_64_cache:
+  out_release_linux_x86_64_cache:
     folder: out
     fingerprint_script:
-      - "echo out_nightly_linux_x86_64"
+      - "echo out_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  git_nightly_linux_x86_64_cache:
+  git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
-      - "echo git_nightly_linux_x86_64"
+      - "echo git_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns nightly linux x86_64 1"
+    - "./tools/cirrus_build_project.sh ncdns release linux x86_64 1"
   depends_on:
-    - "nightly_linux_x86_64_download"
+    - "release_linux_x86_64_download"
 
-nightly_linux_x86_64_ncp11_docker_builder:
+release_linux_x86_64_ncp11_docker_builder:
   timeout_in: 120m
-  out_nightly_linux_x86_64_cache:
+  out_release_linux_x86_64_cache:
     folder: out
     fingerprint_script:
-      - "echo out_nightly_linux_x86_64"
+      - "echo out_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  git_nightly_linux_x86_64_cache:
+  git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
-      - "echo git_nightly_linux_x86_64"
+      - "echo git_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncp11 nightly linux x86_64 1"
+    - "./tools/cirrus_build_project.sh ncp11 release linux x86_64 1"
   depends_on:
-    - "nightly_linux_x86_64_ncdns"
+    - "release_linux_x86_64_ncdns"
 
-nightly_linux_x86_64_ncprop279_docker_builder:
+release_linux_x86_64_ncprop279_docker_builder:
   timeout_in: 120m
-  out_nightly_linux_x86_64_cache:
+  out_release_linux_x86_64_cache:
     folder: out
     fingerprint_script:
-      - "echo out_nightly_linux_x86_64"
+      - "echo out_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  git_nightly_linux_x86_64_cache:
+  git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
-      - "echo git_nightly_linux_x86_64"
+      - "echo git_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncprop279 nightly linux x86_64 1"
+    - "./tools/cirrus_build_project.sh ncprop279 release linux x86_64 1"
   depends_on:
-    - "nightly_linux_x86_64_ncp11"
+    - "release_linux_x86_64_ncp11"
 

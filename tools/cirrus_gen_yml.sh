@@ -4,8 +4,7 @@ set -euxo pipefail
 shopt -s nullglob globstar
 
 (
-#for CHANNEL in release nightly; do
-for CHANNEL in nightly; do
+for CHANNEL in release; do
     OS=linux
     ARCH=x86_64
 

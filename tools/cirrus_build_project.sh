@@ -22,6 +22,10 @@ apt-get install -y $APT_DEPS || (sleep 15s && apt-get install -y $APT_DEPS)
 echo "Pulling rbm..."
 make submodule-update
 
+echo "Configuring rbm..."
+# Print logs to Cirrus.
+cat rbm.local.conf.example | sed "s/#build_log: '-'/build_log: '-'/g" > rbm.local.conf
+
 echo "Moving caches..."
 if [[ -e "./fonts/.git" ]]; then
     echo "git_clones/fonts was cached, moving it to the right place..."

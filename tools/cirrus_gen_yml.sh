@@ -29,7 +29,7 @@ print_os_arch () {
     echo ""
 
     # TODO fine-tune this list
-    for PROJECT in goeasyconfig ncdns ncp11 ncprop279 plain-binaries; do
+    for PROJECT in goeasyconfig ncdns ncp11 ncprop279 plain-binaries release; do
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT}_docker_builder:
   timeout_in: 120m
   out_${CHANNEL}_${OS}_${ARCH}_cache:

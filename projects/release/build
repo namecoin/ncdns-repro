@@ -1,0 +1,48 @@
+#!/bin/sh
+[% c("var/set_default_env") -%]
+# reset HOME which was changed by var/set_default_env, for gpg
+[% IF ENV.HOME %]export HOME="[% ENV.HOME %]"[% END %]
+destdir="[% dest_dir _ '/' _ c("var/publish_dir") %]"
+mkdir -p "$destdir"
+[% IF c("var/ncdns-android-armv7") -%]
+  mv [% c('input_files_by_name/android-armv7') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-android-x86") -%]
+  mv [% c('input_files_by_name/android-x86') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-android-x86_64") -%]
+  mv [% c('input_files_by_name/android-x86_64') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-android-aarch64") -%]
+  mv [% c('input_files_by_name/android-aarch64') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-windows-i686") -%]
+  mv [% c('input_files_by_name/windows-i686') %]/* "$destdir"/
+  mv [% c('input_files_by_name/windows-expert-bundle') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-windows-x86_64") -%]
+  mv [% c('input_files_by_name/windows-x86_64') %]/* "$destdir"/
+  mv [% c('input_files_by_name/windows64-expert-bundle') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-osx-x86_64") -%]
+  mv [% c('input_files_by_name/osx-x86_64') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-linux-i686") -%]
+  mv [% c('input_files_by_name/linux-i686') %]/* "$destdir"/
+[% END -%]
+[% IF c("var/ncdns-linux-x86_64") -%]
+  mv [% c('input_files_by_name/linux-x86_64') %]/* "$destdir"/
+[% END -%]
+cd "$destdir"
+cat > .htaccess <<EOF
+RewriteEngine On
+RewriteRule ^sha256sums.txt$ sha256sums-unsigned-build.txt
+RewriteRule ^sha256sums.txt.asc$ sha256sums-unsigned-build.txt.asc
+RewriteRule ^sha256sums.incrementals.txt$ sha256sums-unsigned-build.incrementals.txt
+RewriteRule ^sha256sums.incrementals.txt.asc$ sha256sums-unsigned-build.incrementals.txt.asc
+EOF
+sha256sum $(ls -1 *.exe *.tar.xz *.dmg *.mar *.zip *.tar.gz *.apk *.json | grep -v '\.incremental\.mar$' | sort) > sha256sums-unsigned-build.txt
+[% IF c("var/sign_build") -%]
+  gpg -abs [% c("var/sign_build_gpg_opts") %] sha256sums-unsigned-build.txt
+[% END -%]
+cat sha256sums-unsigned-build.txt

@@ -28,6 +28,11 @@ print_os_arch () {
     - \"./tools/cirrus_build_project.sh ncdns ${CHANNEL} ${OS} ${ARCH} 0\""
     echo ""
 
+    # osx from clang onward doesn't work on Cirrus yet
+    if [[ "$OS" == "osx" ]]; then
+        return 0
+    fi
+
     # TODO fine-tune this list
     for PROJECT in goeasyconfig ncdns ncp11 ncprop279 plain-binaries release; do
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT}_docker_builder:
@@ -69,6 +74,7 @@ for CHANNEL in release; do
     print_os_arch linux i686
     print_os_arch windows x86_64
     print_os_arch windows i686
+    print_os_arch osx x86_64
 done
 ) > .cirrus.yml
 

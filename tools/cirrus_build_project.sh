@@ -32,14 +32,18 @@ else
 fi
 ls ./git_clones
 
-echo "Checking if project is cached..."
-OUTDIR="$(./rbm/rbm showconf $PROJECT output_dir --target $CHANNEL --target ncdns-$OS-$ARCH)"
-OUTFILE="$(./rbm/rbm showconf $PROJECT filename --target $CHANNEL --target ncdns-$OS-$ARCH)"
-if [[ -e "$OUTDIR/$OUTFILE" ]]; then
-    echo "Project cache hit, skipping build."
-    SHOULD_BUILD=0
+if [[ "$PROJECT" == "release" ]]; then
+    echo "release project is never cached."
 else
-    echo "Project cache miss, proceeding with build."
+    echo "Checking if project is cached..."
+    OUTDIR="$(./rbm/rbm showconf $PROJECT output_dir --target $CHANNEL --target ncdns-$OS-$ARCH)"
+    OUTFILE="$(./rbm/rbm showconf $PROJECT filename --target $CHANNEL --target ncdns-$OS-$ARCH)"
+    if [[ -e "$OUTDIR/$OUTFILE" ]]; then
+        echo "Project cache hit, skipping build."
+        SHOULD_BUILD=0
+    else
+        echo "Project cache miss, proceeding with build."
+    fi
 fi
 
 # VM has 12 GB of free RAM.  Assuming each of the 4 logical cores takes 1 GB

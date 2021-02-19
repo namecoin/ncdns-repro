@@ -51,6 +51,13 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p git_clones\"
+  interrupted_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - \"echo interrupted_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p tmp/interrupted_dirs\"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh

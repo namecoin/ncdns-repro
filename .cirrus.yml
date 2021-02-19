@@ -33,6 +33,13 @@ release_linux_x86_64_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -57,6 +64,13 @@ release_linux_x86_64_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -81,6 +95,13 @@ release_linux_x86_64_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -105,6 +126,13 @@ release_linux_x86_64_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -129,6 +157,13 @@ release_linux_x86_64_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -153,6 +188,13 @@ release_linux_x86_64_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -196,6 +238,13 @@ release_linux_i686_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -220,6 +269,13 @@ release_linux_i686_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -244,6 +300,13 @@ release_linux_i686_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -268,6 +331,13 @@ release_linux_i686_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -292,6 +362,13 @@ release_linux_i686_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -316,6 +393,13 @@ release_linux_i686_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -359,6 +443,13 @@ release_windows_x86_64_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -383,6 +474,13 @@ release_windows_x86_64_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -407,6 +505,13 @@ release_windows_x86_64_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -431,6 +536,13 @@ release_windows_x86_64_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -455,6 +567,13 @@ release_windows_x86_64_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -479,6 +598,13 @@ release_windows_x86_64_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -522,6 +648,13 @@ release_windows_i686_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -546,6 +679,13 @@ release_windows_i686_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -570,6 +710,13 @@ release_windows_i686_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -594,6 +741,13 @@ release_windows_i686_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -618,6 +772,13 @@ release_windows_i686_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -642,6 +803,13 @@ release_windows_i686_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh

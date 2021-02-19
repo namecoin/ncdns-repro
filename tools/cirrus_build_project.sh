@@ -64,7 +64,8 @@ fi
 
 if [[ "$SHOULD_BUILD" -eq 1 ]]; then
     echo "Building project..."
-    ./rbm/rbm build "$PROJECT" --target "$CHANNEL" --target ncdns-"$OS"-"$ARCH"
+    # If rbm fails, we consider it a success as long as it saved a checkpoint.
+    ./rbm/rbm build "$PROJECT" --target "$CHANNEL" --target ncdns-"$OS"-"$ARCH" || ls ./tmp/interrupted_dirs/*
 else
     #echo "This is a cache-only task, skipping build."
     echo "Skipping build."

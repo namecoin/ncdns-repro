@@ -33,6 +33,9 @@ release_linux_x86_64_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release linux x86_64 1"
   depends_on:
@@ -54,6 +57,9 @@ release_linux_x86_64_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux x86_64 1"
   depends_on:
@@ -75,6 +81,9 @@ release_linux_x86_64_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release linux x86_64 1"
   depends_on:
@@ -96,6 +105,9 @@ release_linux_x86_64_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release linux x86_64 1"
   depends_on:
@@ -117,6 +129,9 @@ release_linux_x86_64_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 1"
   depends_on:
@@ -138,6 +153,9 @@ release_linux_x86_64_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release linux x86_64 1"
   depends_on:
@@ -178,6 +196,9 @@ release_linux_i686_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release linux i686 1"
   depends_on:
@@ -199,6 +220,9 @@ release_linux_i686_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux i686 1"
   depends_on:
@@ -220,6 +244,9 @@ release_linux_i686_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release linux i686 1"
   depends_on:
@@ -241,6 +268,9 @@ release_linux_i686_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release linux i686 1"
   depends_on:
@@ -262,6 +292,9 @@ release_linux_i686_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux i686 1"
   depends_on:
@@ -283,6 +316,9 @@ release_linux_i686_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release linux i686 1"
   depends_on:
@@ -323,6 +359,9 @@ release_windows_x86_64_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release windows x86_64 1"
   depends_on:
@@ -344,6 +383,9 @@ release_windows_x86_64_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows x86_64 1"
   depends_on:
@@ -365,6 +407,9 @@ release_windows_x86_64_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release windows x86_64 1"
   depends_on:
@@ -386,6 +431,9 @@ release_windows_x86_64_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release windows x86_64 1"
   depends_on:
@@ -407,6 +455,9 @@ release_windows_x86_64_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 1"
   depends_on:
@@ -428,6 +479,9 @@ release_windows_x86_64_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release windows x86_64 1"
   depends_on:
@@ -468,6 +522,9 @@ release_windows_i686_goeasyconfig_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release windows i686 1"
   depends_on:
@@ -489,6 +546,9 @@ release_windows_i686_ncdns_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows i686 1"
   depends_on:
@@ -510,6 +570,9 @@ release_windows_i686_ncp11_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release windows i686 1"
   depends_on:
@@ -531,6 +594,9 @@ release_windows_i686_ncprop279_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release windows i686 1"
   depends_on:
@@ -552,6 +618,9 @@ release_windows_i686_plain-binaries_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows i686 1"
   depends_on:
@@ -573,6 +642,9 @@ release_windows_i686_release_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release windows i686 1"
   depends_on:

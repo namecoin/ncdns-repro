@@ -51,6 +51,9 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p git_clones\"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
   build_script:
     - \"./tools/cirrus_build_project.sh ${PROJECT} ${CHANNEL} ${OS} ${ARCH} 1\""
 

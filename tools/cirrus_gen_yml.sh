@@ -28,11 +28,6 @@ print_os_arch () {
     - \"./tools/cirrus_build_project.sh ncdns ${CHANNEL} ${OS} ${ARCH} 0\""
     echo ""
 
-    # osx from clang onward doesn't work on Cirrus yet
-    if [[ "$OS" == "osx" ]]; then
-        return 0
-    fi
-
     # TODO fine-tune this list
     for PROJECT in goeasyconfig.1 goeasyconfig.2 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.1; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)

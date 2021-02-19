@@ -26,6 +26,11 @@ echo "Configuring rbm..."
 # Print logs to Cirrus.
 cat rbm.local.conf.example | sed "s/#build_log: '-'/build_log: '-'/g" > rbm.local.conf
 
+echo "Patching rbm..."
+pushd tor-browser-build
+patch -p1 < ../tools/checkpoints.patch
+popd
+
 echo "Moving caches..."
 if [[ -e "./fonts/.git" ]]; then
     echo "git_clones/fonts was cached, moving it to the right place..."

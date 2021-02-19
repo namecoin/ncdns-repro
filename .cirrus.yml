@@ -17,7 +17,7 @@ release_linux_x86_64_download_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux x86_64 0"
 
-release_linux_x86_64_goeasyconfig_docker_builder:
+release_linux_x86_64_goeasyconfig_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -48,7 +48,38 @@ release_linux_x86_64_goeasyconfig_docker_builder:
   depends_on:
     - "release_linux_x86_64_download"
 
-release_linux_x86_64_ncdns_docker_builder:
+release_linux_x86_64_goeasyconfig_2_docker_builder:
+  timeout_in: 120m
+  out_release_linux_x86_64_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_x86_64_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh goeasyconfig release linux x86_64 1"
+  depends_on:
+    - "release_linux_x86_64_goeasyconfig_1"
+
+release_linux_x86_64_ncdns_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -77,9 +108,9 @@ release_linux_x86_64_ncdns_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux x86_64 1"
   depends_on:
-    - "release_linux_x86_64_goeasyconfig"
+    - "release_linux_x86_64_goeasyconfig_2"
 
-release_linux_x86_64_ncp11_docker_builder:
+release_linux_x86_64_ncp11_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -108,9 +139,9 @@ release_linux_x86_64_ncp11_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release linux x86_64 1"
   depends_on:
-    - "release_linux_x86_64_ncdns"
+    - "release_linux_x86_64_ncdns_1"
 
-release_linux_x86_64_ncprop279_docker_builder:
+release_linux_x86_64_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -139,9 +170,9 @@ release_linux_x86_64_ncprop279_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release linux x86_64 1"
   depends_on:
-    - "release_linux_x86_64_ncp11"
+    - "release_linux_x86_64_ncp11_1"
 
-release_linux_x86_64_plain-binaries_docker_builder:
+release_linux_x86_64_plain-binaries_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -170,9 +201,9 @@ release_linux_x86_64_plain-binaries_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 1"
   depends_on:
-    - "release_linux_x86_64_ncprop279"
+    - "release_linux_x86_64_ncprop279_1"
 
-release_linux_x86_64_release_docker_builder:
+release_linux_x86_64_release_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -201,7 +232,7 @@ release_linux_x86_64_release_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh release release linux x86_64 1"
   depends_on:
-    - "release_linux_x86_64_plain-binaries"
+    - "release_linux_x86_64_plain-binaries_1"
 
 release_linux_i686_download_docker_builder:
   timeout_in: 120m
@@ -222,7 +253,7 @@ release_linux_i686_download_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux i686 0"
 
-release_linux_i686_goeasyconfig_docker_builder:
+release_linux_i686_goeasyconfig_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -253,7 +284,38 @@ release_linux_i686_goeasyconfig_docker_builder:
   depends_on:
     - "release_linux_i686_download"
 
-release_linux_i686_ncdns_docker_builder:
+release_linux_i686_goeasyconfig_2_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh goeasyconfig release linux i686 1"
+  depends_on:
+    - "release_linux_i686_goeasyconfig_1"
+
+release_linux_i686_ncdns_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -282,9 +344,9 @@ release_linux_i686_ncdns_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux i686 1"
   depends_on:
-    - "release_linux_i686_goeasyconfig"
+    - "release_linux_i686_goeasyconfig_2"
 
-release_linux_i686_ncp11_docker_builder:
+release_linux_i686_ncp11_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -313,9 +375,9 @@ release_linux_i686_ncp11_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release linux i686 1"
   depends_on:
-    - "release_linux_i686_ncdns"
+    - "release_linux_i686_ncdns_1"
 
-release_linux_i686_ncprop279_docker_builder:
+release_linux_i686_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -344,9 +406,9 @@ release_linux_i686_ncprop279_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release linux i686 1"
   depends_on:
-    - "release_linux_i686_ncp11"
+    - "release_linux_i686_ncp11_1"
 
-release_linux_i686_plain-binaries_docker_builder:
+release_linux_i686_plain-binaries_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -375,9 +437,9 @@ release_linux_i686_plain-binaries_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux i686 1"
   depends_on:
-    - "release_linux_i686_ncprop279"
+    - "release_linux_i686_ncprop279_1"
 
-release_linux_i686_release_docker_builder:
+release_linux_i686_release_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -406,7 +468,7 @@ release_linux_i686_release_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh release release linux i686 1"
   depends_on:
-    - "release_linux_i686_plain-binaries"
+    - "release_linux_i686_plain-binaries_1"
 
 release_windows_x86_64_download_docker_builder:
   timeout_in: 120m
@@ -427,7 +489,7 @@ release_windows_x86_64_download_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows x86_64 0"
 
-release_windows_x86_64_goeasyconfig_docker_builder:
+release_windows_x86_64_goeasyconfig_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -458,7 +520,38 @@ release_windows_x86_64_goeasyconfig_docker_builder:
   depends_on:
     - "release_windows_x86_64_download"
 
-release_windows_x86_64_ncdns_docker_builder:
+release_windows_x86_64_goeasyconfig_2_docker_builder:
+  timeout_in: 120m
+  out_release_windows_x86_64_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_windows_x86_64_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh goeasyconfig release windows x86_64 1"
+  depends_on:
+    - "release_windows_x86_64_goeasyconfig_1"
+
+release_windows_x86_64_ncdns_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -487,9 +580,9 @@ release_windows_x86_64_ncdns_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows x86_64 1"
   depends_on:
-    - "release_windows_x86_64_goeasyconfig"
+    - "release_windows_x86_64_goeasyconfig_2"
 
-release_windows_x86_64_ncp11_docker_builder:
+release_windows_x86_64_ncp11_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -518,9 +611,9 @@ release_windows_x86_64_ncp11_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release windows x86_64 1"
   depends_on:
-    - "release_windows_x86_64_ncdns"
+    - "release_windows_x86_64_ncdns_1"
 
-release_windows_x86_64_ncprop279_docker_builder:
+release_windows_x86_64_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -549,9 +642,9 @@ release_windows_x86_64_ncprop279_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release windows x86_64 1"
   depends_on:
-    - "release_windows_x86_64_ncp11"
+    - "release_windows_x86_64_ncp11_1"
 
-release_windows_x86_64_plain-binaries_docker_builder:
+release_windows_x86_64_plain-binaries_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -580,9 +673,9 @@ release_windows_x86_64_plain-binaries_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 1"
   depends_on:
-    - "release_windows_x86_64_ncprop279"
+    - "release_windows_x86_64_ncprop279_1"
 
-release_windows_x86_64_release_docker_builder:
+release_windows_x86_64_release_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -611,7 +704,7 @@ release_windows_x86_64_release_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh release release windows x86_64 1"
   depends_on:
-    - "release_windows_x86_64_plain-binaries"
+    - "release_windows_x86_64_plain-binaries_1"
 
 release_windows_i686_download_docker_builder:
   timeout_in: 120m
@@ -632,7 +725,7 @@ release_windows_i686_download_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows i686 0"
 
-release_windows_i686_goeasyconfig_docker_builder:
+release_windows_i686_goeasyconfig_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -663,7 +756,38 @@ release_windows_i686_goeasyconfig_docker_builder:
   depends_on:
     - "release_windows_i686_download"
 
-release_windows_i686_ncdns_docker_builder:
+release_windows_i686_goeasyconfig_2_docker_builder:
+  timeout_in: 120m
+  out_release_windows_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  git_release_windows_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs
+    fingerprint_script:
+      - "echo interrupted_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p tmp/interrupted_dirs"
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh goeasyconfig release windows i686 1"
+  depends_on:
+    - "release_windows_i686_goeasyconfig_1"
+
+release_windows_i686_ncdns_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -692,9 +816,9 @@ release_windows_i686_ncdns_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows i686 1"
   depends_on:
-    - "release_windows_i686_goeasyconfig"
+    - "release_windows_i686_goeasyconfig_2"
 
-release_windows_i686_ncp11_docker_builder:
+release_windows_i686_ncp11_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -723,9 +847,9 @@ release_windows_i686_ncp11_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release windows i686 1"
   depends_on:
-    - "release_windows_i686_ncdns"
+    - "release_windows_i686_ncdns_1"
 
-release_windows_i686_ncprop279_docker_builder:
+release_windows_i686_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -754,9 +878,9 @@ release_windows_i686_ncprop279_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release windows i686 1"
   depends_on:
-    - "release_windows_i686_ncp11"
+    - "release_windows_i686_ncp11_1"
 
-release_windows_i686_plain-binaries_docker_builder:
+release_windows_i686_plain-binaries_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -785,9 +909,9 @@ release_windows_i686_plain-binaries_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows i686 1"
   depends_on:
-    - "release_windows_i686_ncprop279"
+    - "release_windows_i686_ncprop279_1"
 
-release_windows_i686_release_docker_builder:
+release_windows_i686_release_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -816,7 +940,7 @@ release_windows_i686_release_docker_builder:
   build_script:
     - "./tools/cirrus_build_project.sh release release windows i686 1"
   depends_on:
-    - "release_windows_i686_plain-binaries"
+    - "release_windows_i686_plain-binaries_1"
 
 release_osx_x86_64_download_docker_builder:
   timeout_in: 120m

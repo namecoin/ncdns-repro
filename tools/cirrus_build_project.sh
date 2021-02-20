@@ -32,14 +32,8 @@ patch -p1 < ../tools/checkpoints.patch
 popd
 
 echo "Moving caches..."
-if [[ -e "./fonts/.git" ]]; then
-    echo "git_clones/fonts was cached, moving it to the right place..."
-    mv ./fonts ./git_clones/fonts
-else
-    echo "git_clones/fonts was not cached."
-    rm -rf ./fonts ./git_clones/fonts
-fi
-ls ./git_clones
+mv ./out_cache1/* ./out/ || true
+rm -rf ./out_cache1/* || true
 
 echo "Unpacking interrupted cache..."
 ./tools/cirrus_unpack_interrupted.sh || true
@@ -77,21 +71,16 @@ else
     rm -rf ./tmp/interrupted_dirs/* || true
 fi
 
-echo "Moving caches..."
-if [[ -e "git_clones/fonts" ]]; then
-    echo "git_clones/fonts is ready to be cached, moving it to the right place..."
-    mv git_clones/fonts ./
-else
-    echo "git_clones/fonts is not ready to be not cached."
-    mkdir -p ./fonts
-fi
-
 # The cache has a size limit, so we need to clean useless data from it.  The
 # container-images are very large and seem to be fairly harmless to remove.
 # Maybe later if we have more pressure to shrink, we could remove the
 # debootstrap-images too.
 echo "Cleaning cache..."
 rm -rfv out/container-image
+
+echo "Moving caches..."
+mv ./out/macosx-toolchain ./out_cache1/ || true
+rm -rf ./out/macosx-toolchain || true
 
 echo "Packing interrupted cache..."
 ./tools/cirrus_pack_interrupted.sh || true

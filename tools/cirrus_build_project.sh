@@ -72,6 +72,9 @@ if [[ "$SHOULD_BUILD" -eq 1 ]]; then
 else
     #echo "This is a cache-only task, skipping build."
     echo "Skipping build."
+
+    echo "Clearing interrupted cache..."
+    rm -rf ./tmp/interrupted_dirs/* || true
 fi
 
 echo "Moving caches..."

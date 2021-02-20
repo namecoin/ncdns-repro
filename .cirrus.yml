@@ -33,13 +33,21 @@ release_linux_x86_64_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -64,13 +72,21 @@ release_linux_x86_64_goeasyconfig_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -95,13 +111,21 @@ release_linux_x86_64_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -126,13 +150,21 @@ release_linux_x86_64_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -157,13 +189,21 @@ release_linux_x86_64_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -188,13 +228,21 @@ release_linux_x86_64_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -219,13 +267,21 @@ release_linux_x86_64_release_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_x86_64"
+      - "echo interrupted_aa_release_linux_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -269,13 +325,21 @@ release_linux_i686_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -300,13 +364,21 @@ release_linux_i686_goeasyconfig_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -331,13 +403,21 @@ release_linux_i686_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -362,13 +442,21 @@ release_linux_i686_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -393,13 +481,21 @@ release_linux_i686_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -424,13 +520,21 @@ release_linux_i686_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -455,13 +559,21 @@ release_linux_i686_release_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_linux_i686"
+      - "echo interrupted_aa_release_linux_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -505,13 +617,21 @@ release_windows_x86_64_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -536,13 +656,21 @@ release_windows_x86_64_goeasyconfig_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -567,13 +695,21 @@ release_windows_x86_64_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -598,13 +734,21 @@ release_windows_x86_64_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -629,13 +773,21 @@ release_windows_x86_64_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -660,13 +812,21 @@ release_windows_x86_64_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -691,13 +851,21 @@ release_windows_x86_64_release_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_x86_64"
+      - "echo interrupted_aa_release_windows_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -741,13 +909,21 @@ release_windows_i686_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -772,13 +948,21 @@ release_windows_i686_goeasyconfig_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -803,13 +987,21 @@ release_windows_i686_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -834,13 +1026,21 @@ release_windows_i686_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -865,13 +1065,21 @@ release_windows_i686_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -896,13 +1104,21 @@ release_windows_i686_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -927,13 +1143,21 @@ release_windows_i686_release_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_windows_i686"
+      - "echo interrupted_aa_release_windows_i686"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -977,13 +1201,21 @@ release_osx_x86_64_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -1008,13 +1240,21 @@ release_osx_x86_64_goeasyconfig_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -1039,13 +1279,21 @@ release_osx_x86_64_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -1070,13 +1318,21 @@ release_osx_x86_64_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -1101,13 +1357,21 @@ release_osx_x86_64_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -1132,13 +1396,21 @@ release_osx_x86_64_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh
@@ -1163,13 +1435,21 @@ release_osx_x86_64_release_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
-  interrupted_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - "echo interrupted_release_osx_x86_64"
+      - "echo interrupted_aa_release_osx_x86_64"
     reupload_on_changes: true
-    populate_script:
-      - "mkdir -p tmp/interrupted_dirs"
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh

@@ -41,6 +41,9 @@ else
 fi
 ls ./git_clones
 
+echo "Unpacking interrupted cache..."
+./tools/cirrus_unpack_interrupted.sh || true
+
 if [[ "$PROJECT" == "release" ]]; then
     echo "release project is never cached."
 else
@@ -86,3 +89,6 @@ fi
 # debootstrap-images too.
 echo "Cleaning cache..."
 rm -rfv out/container-image
+
+echo "Packing interrupted cache..."
+./tools/cirrus_pack_interrupted.sh || true

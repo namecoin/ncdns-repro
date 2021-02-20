@@ -48,13 +48,21 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p git_clones\"
-  interrupted_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: tmp/interrupted_dirs
+  interrupted_aa_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
-      - \"echo interrupted_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo interrupted_aa_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
-    populate_script:
-      - \"mkdir -p tmp/interrupted_dirs\"
+  interrupted_ab_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - \"echo interrupted_ab_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+  interrupted_ac_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - \"echo interrupted_ac_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
   checkpoint_background_script:
     - sleep 110m
     - ./tools/container-interrupt.sh

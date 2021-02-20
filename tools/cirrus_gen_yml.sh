@@ -44,8 +44,22 @@ print_os_arch () {
     echo ""
 
     # TODO fine-tune this list
-    for PROJECT in goeasyconfig.1 goeasyconfig.2 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.1; do
+    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.1; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
+        if [[ "$PROJECT_BASE" == "compiler" ]]; then
+            if [[ "$OS" == "android" ]]; then
+                PROJECT_BASE=android-toolchain
+            fi
+            if [[ "$OS" == "linux" ]]; then
+                PROJECT_BASE=gcc
+            fi
+            if [[ "$OS" == "windows" ]]; then
+                PROJECT_BASE=mingw-w64
+            fi
+            if [[ "$OS" == "osx" ]]; then
+                PROJECT_BASE=macosx-toolchain
+            fi
+        fi
         PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT_BASE}_${PROJECT_ITER}_docker_builder:
   timeout_in: 120m
@@ -85,7 +99,7 @@ print_os_arch () {
     - \"./tools/cirrus_build_project.sh ${PROJECT_BASE} ${CHANNEL} ${OS} ${ARCH} 1\""
 
         # Depend on previous project
-        if [[ "$PROJECT" == "goeasyconfig.1" ]]; then
+        if [[ "$PROJECT" == "compiler.1" ]]; then
             echo "  depends_on:
     - \"${CHANNEL}_${OS}_${ARCH}_download\""
         else

@@ -14,6 +14,21 @@ release_linux_x86_64_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 0"
 
@@ -306,6 +321,21 @@ release_linux_i686_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux i686 0"
 
@@ -598,6 +628,21 @@ release_windows_x86_64_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 0"
 
@@ -890,6 +935,21 @@ release_windows_i686_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows i686 0"
 
@@ -1182,6 +1242,21 @@ release_osx_x86_64_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p git_clones"
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release osx x86_64 0"
 

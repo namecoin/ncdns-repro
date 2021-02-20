@@ -24,6 +24,21 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p git_clones\"
+  interrupted_aa_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - \"echo interrupted_aa_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+  interrupted_ab_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - \"echo interrupted_ab_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+  interrupted_ac_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - \"echo interrupted_ac_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
   build_script:
     - \"./tools/cirrus_build_project.sh plain-binaries ${CHANNEL} ${OS} ${ARCH} 0\""
     echo ""

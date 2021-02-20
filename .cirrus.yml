@@ -15,7 +15,7 @@ release_linux_x86_64_download_docker_builder:
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns release linux x86_64 0"
+    - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 0"
 
 release_linux_x86_64_goeasyconfig_1_docker_builder:
   timeout_in: 120m
@@ -307,7 +307,7 @@ release_linux_i686_download_docker_builder:
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns release linux i686 0"
+    - "./tools/cirrus_build_project.sh plain-binaries release linux i686 0"
 
 release_linux_i686_goeasyconfig_1_docker_builder:
   timeout_in: 120m
@@ -599,7 +599,7 @@ release_windows_x86_64_download_docker_builder:
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns release windows x86_64 0"
+    - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 0"
 
 release_windows_x86_64_goeasyconfig_1_docker_builder:
   timeout_in: 120m
@@ -891,7 +891,7 @@ release_windows_i686_download_docker_builder:
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns release windows i686 0"
+    - "./tools/cirrus_build_project.sh plain-binaries release windows i686 0"
 
 release_windows_i686_goeasyconfig_1_docker_builder:
   timeout_in: 120m
@@ -1183,7 +1183,7 @@ release_osx_x86_64_download_docker_builder:
     populate_script:
       - "mkdir -p git_clones"
   build_script:
-    - "./tools/cirrus_build_project.sh ncdns release osx x86_64 0"
+    - "./tools/cirrus_build_project.sh plain-binaries release osx x86_64 0"
 
 release_osx_x86_64_goeasyconfig_1_docker_builder:
   timeout_in: 120m

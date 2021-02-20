@@ -25,7 +25,7 @@ print_os_arch () {
     populate_script:
       - \"mkdir -p git_clones\"
   build_script:
-    - \"./tools/cirrus_build_project.sh ncdns ${CHANNEL} ${OS} ${ARCH} 0\""
+    - \"./tools/cirrus_build_project.sh plain-binaries ${CHANNEL} ${OS} ${ARCH} 0\""
     echo ""
 
     # TODO fine-tune this list

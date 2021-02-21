@@ -16,7 +16,7 @@ lscpu
 free -m
 
 echo "Installing rbm deps..."
-APT_DEPS="libyaml-libyaml-perl libtemplate-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git runc"
+APT_DEPS="libyaml-libyaml-perl libtemplate-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git runc rsync"
 apt-get install -y $APT_DEPS || (sleep 15s && apt-get install -y $APT_DEPS)
 
 echo "Pulling rbm..."
@@ -31,9 +31,8 @@ pushd tor-browser-build
 patch -p1 < ../tools/checkpoints.patch
 popd
 
-echo "Moving caches..."
-mv ./out_cache1/* ./out/ || true
-rm -rf ./out_cache1/* || true
+echo "Restoring caches..."
+cp -a ./out_cache1/* ./out/ || true
 
 echo "Unpacking interrupted cache..."
 ./tools/cirrus_unpack_interrupted.sh || true
@@ -78,8 +77,8 @@ fi
 echo "Cleaning cache..."
 rm -rfv out/container-image
 
-echo "Moving caches..."
-mv ./out/macosx-toolchain ./out_cache1/ || true
+echo "Splitting caches..."
+rsync -avu --delete ./out/macosx-toolchain ./out_cache1/
 rm -rf ./out/macosx-toolchain || true
 
 echo "Packing interrupted cache..."

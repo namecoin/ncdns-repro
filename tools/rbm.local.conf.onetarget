@@ -1,0 +1,14 @@
+
+var:
+  ### The clean configuration is used by the cleaning script to find the
+  ### branches and build targets you are using, to compute the list of
+  ### files that should be kept.
+  ###
+  ### If you only do alpha builds for all platforms, you can use the
+  ### following configuration:
+  clean:
+    HEAD:
+      - project: release
+        target:
+          - CHANNEL
+          - ncdns-all

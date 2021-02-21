@@ -25,6 +25,8 @@ make submodule-update
 echo "Configuring rbm..."
 # Print logs to Cirrus.
 cat rbm.local.conf.example | sed "s/#build_log: '-'/build_log: '-'/g" > rbm.local.conf
+# Configure "make clean"
+cat tools/rbm.local.conf.onetarget | sed "s/CHANNEL/$CHANNEL/g" | sed "s/ncdns-all/ncdns-$OS-$ARCH/g" >> rbm.local.conf
 
 echo "Patching rbm..."
 pushd tor-browser-build
@@ -76,6 +78,9 @@ fi
 # debootstrap-images too.
 echo "Cleaning cache..."
 rm -rfv out/container-image
+if [[ "$SHOULD_BUILD" -eq 0 ]]; then
+    ./tools/clean-old --dry-run
+fi
 
 echo "Splitting caches..."
 rsync -avu --delete ./out/macosx-toolchain ./out_cache1/

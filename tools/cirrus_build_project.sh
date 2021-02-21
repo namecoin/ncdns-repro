@@ -83,7 +83,7 @@ if [[ "$SHOULD_BUILD" -eq 0 ]]; then
 fi
 
 echo "Splitting caches..."
-rsync -avu --delete ./out/macosx-toolchain ./out_cache1/
+rsync -avu --delete ./out/macosx-toolchain ./out_cache1/ || true
 rm -rf ./out/macosx-toolchain || true
 
 echo "Packing interrupted cache..."

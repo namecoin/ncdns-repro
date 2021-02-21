@@ -1,0 +1,86 @@
+From 25b581c833679939408fa51ce1d43b55ae481d51 Mon Sep 17 00:00:00 2001
+From: Jeremy Rand <jeremyrand@airmail.cc>
+Date: Fri, 19 Feb 2021 00:23:40 +0000
+Subject: [PATCH 1/2] clang: Support rbm checkpointing
+
+---
+ projects/clang/build | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/projects/clang/build b/projects/clang/build
+index c4c16d9..bb8283b 100644
+--- a/projects/clang/build
++++ b/projects/clang/build
+@@ -2,6 +2,13 @@
+ [% c("var/set_default_env") -%]
+ distdir=/var/tmp/dist/[% project %]
+ mkdir -p /var/tmp/dist
++
++if [[ -e /var/tmp/dist/checkpoint1 ]] ; then
++  set +e
++  source /var/tmp/dist/checkpoint1
++  set -e
++else
++
+ tar -C /var/tmp/dist -xf [% c('input_files_by_name/cmake') %]
+ export PATH="/var/tmp/dist/cmake/bin:$PATH"
+ [% IF c("var/linux") || c("var/android") %]
+@@ -35,6 +42,12 @@ cd build
+             [% IF c("var/rlbox") -%]-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=WebAssembly \[% END -%]
+                                     -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;lld"
+ [% END -%]
++
++set > /var/tmp/dist/checkpoint1
++export -p >> /var/tmp/dist/checkpoint1
++fi
++
++cd /var/tmp/build/clang-source/build
+ make -j[% c("buildconf/num_procs") %]
+ make install
+ cd /var/tmp/dist
+-- 
+2.20.1
+
+
+From ab0c171fe1c82efed5cbaf657b06d7103f209cb9 Mon Sep 17 00:00:00 2001
+From: Jeremy Rand <jeremyrand@airmail.cc>
+Date: Sat, 20 Feb 2021 08:51:15 +0000
+Subject: [PATCH 2/2] macosx-toolchain: Support rbm checkpointing
+
+---
+ projects/macosx-toolchain/build | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/projects/macosx-toolchain/build b/projects/macosx-toolchain/build
+index 5716a9e..94f6df1 100644
+--- a/projects/macosx-toolchain/build
++++ b/projects/macosx-toolchain/build
+@@ -1,5 +1,12 @@
+ #!/bin/bash
+ [% c("var/set_default_env") -%]
++
++if [[ -e /var/tmp/dist/checkpoint1 ]] ; then
++  set +e
++  source /var/tmp/dist/checkpoint1
++  set -e
++else
++
+ builddir=/var/tmp/build
+ mkdir $builddir
+ distdir=/var/tmp/dist/[% project %]
+@@ -65,6 +72,12 @@ cmake -GNinja \
+       -DDARWIN_osx_ARCHS=x86_64 \
+       -DDARWIN_osx_SYSROOT=$sysrootdir \
+       -DLLVM_DEFAULT_TARGET_TRIPLE=x86_64-apple-darwin $builddir/clang-source
++
++set > /var/tmp/dist/checkpoint1
++export -p >> /var/tmp/dist/checkpoint1
++fi
++
++cd $builddir/clang-source/build
+ ninja install -v
+ 
+ # We now have a native macosx64 toolchain.
+-- 
+2.20.1
+

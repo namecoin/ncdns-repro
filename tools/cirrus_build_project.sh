@@ -63,8 +63,8 @@ fi
 if [[ "$SHOULD_BUILD" -eq 1 ]]; then
     if [[ "$SIGN_BUILD" == "1" ]]; then
         echo "Configuring signing key..."
-        sed -i "s/#sign_build: 1/sign_build: 1/g" rbm.local.conf
-        sed -i "s/#sign_build_gpg_opts: '--local-user XXXXXXXX'/sign_build_gpg_opts: '--local-user jeremy@namecoin.org'/g" rbm.local.conf
+        export RBM_SIGN_BUILD=1
+        export RBM_GPG_OPTS="--local-user jeremy@namecoin.org"
         echo "$SIGN_KEY" | gpg --import
     else
         echo "Signing is disabled."

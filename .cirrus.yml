@@ -404,6 +404,8 @@ release_linux_x86_64_release_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release linux x86_64 1"
+  binaries_artifacts:
+    path: "release/**/*"
   depends_on:
     - "release_linux_x86_64_plain-binaries_1"
 
@@ -813,6 +815,8 @@ release_linux_i686_release_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release linux i686 1"
+  binaries_artifacts:
+    path: "release/**/*"
   depends_on:
     - "release_linux_i686_plain-binaries_1"
 
@@ -1222,6 +1226,8 @@ release_windows_x86_64_release_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release windows x86_64 1"
+  binaries_artifacts:
+    path: "release/**/*"
   depends_on:
     - "release_windows_x86_64_plain-binaries_1"
 
@@ -1631,6 +1637,8 @@ release_windows_i686_release_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release windows i686 1"
+  binaries_artifacts:
+    path: "release/**/*"
   depends_on:
     - "release_windows_i686_plain-binaries_1"
 
@@ -2040,6 +2048,8 @@ release_osx_x86_64_release_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh release release osx x86_64 1"
+  binaries_artifacts:
+    path: "release/**/*"
   depends_on:
     - "release_osx_x86_64_plain-binaries_1"
 

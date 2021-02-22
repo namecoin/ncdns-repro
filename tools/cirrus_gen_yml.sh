@@ -112,6 +112,11 @@ print_os_arch () {
   build_script:
     - \"./tools/cirrus_build_project.sh ${PROJECT_BASE} ${CHANNEL} ${OS} ${ARCH} 1\""
 
+        if [[ "$PROJECT" == "release.1" ]]; then
+            echo "  binaries_artifacts:
+    path: \"${CHANNEL}/**/*\""
+        fi
+
         # Depend on previous project
         if [[ "$PROJECT" == "compiler.1" ]]; then
             echo "  depends_on:

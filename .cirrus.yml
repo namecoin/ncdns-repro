@@ -82,6 +82,8 @@ release_linux_x86_64_gcc_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh gcc release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_download"
 
@@ -128,6 +130,8 @@ release_linux_x86_64_gcc_2_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh gcc release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_gcc_1"
 
@@ -174,6 +178,8 @@ release_linux_x86_64_goeasyconfig_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_gcc_2"
 
@@ -220,6 +226,8 @@ release_linux_x86_64_ncdns_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_goeasyconfig_1"
 
@@ -266,6 +274,8 @@ release_linux_x86_64_ncp11_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_ncdns_1"
 
@@ -312,6 +322,8 @@ release_linux_x86_64_ncprop279_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_ncp11_1"
 
@@ -358,10 +370,12 @@ release_linux_x86_64_plain-binaries_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_x86_64_ncprop279_1"
 
-release_linux_x86_64_release_1_docker_builder:
+release_linux_x86_64_release_nosign_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -406,6 +420,61 @@ release_linux_x86_64_release_1_docker_builder:
     - "./tools/cirrus_build_project.sh release release linux x86_64 1"
   binaries_artifacts:
     path: "release/**/*"
+  env:
+    SIGN_BUILD: 0
+  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  depends_on:
+    - "release_linux_x86_64_plain-binaries_1"
+
+release_linux_x86_64_release_sign_docker_builder:
+  timeout_in: 120m
+  out_release_linux_x86_64_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_linux_x86_64_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  git_release_linux_x86_64_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_aa_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ab_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_x86_64"
+    reupload_on_changes: true
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh release release linux x86_64 1"
+  binaries_artifacts:
+    path: "release/**/*"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  env:
+    SIGN_BUILD: 1
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
   depends_on:
     - "release_linux_x86_64_plain-binaries_1"
 
@@ -493,6 +562,8 @@ release_linux_i686_gcc_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh gcc release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_download"
 
@@ -539,6 +610,8 @@ release_linux_i686_gcc_2_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh gcc release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_gcc_1"
 
@@ -585,6 +658,8 @@ release_linux_i686_goeasyconfig_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_gcc_2"
 
@@ -631,6 +706,8 @@ release_linux_i686_ncdns_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_goeasyconfig_1"
 
@@ -677,6 +754,8 @@ release_linux_i686_ncp11_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_ncdns_1"
 
@@ -723,6 +802,8 @@ release_linux_i686_ncprop279_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_ncp11_1"
 
@@ -769,10 +850,12 @@ release_linux_i686_plain-binaries_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_linux_i686_ncprop279_1"
 
-release_linux_i686_release_1_docker_builder:
+release_linux_i686_release_nosign_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -817,6 +900,61 @@ release_linux_i686_release_1_docker_builder:
     - "./tools/cirrus_build_project.sh release release linux i686 1"
   binaries_artifacts:
     path: "release/**/*"
+  env:
+    SIGN_BUILD: 0
+  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  depends_on:
+    - "release_linux_i686_plain-binaries_1"
+
+release_linux_i686_release_sign_docker_builder:
+  timeout_in: 120m
+  out_release_linux_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_linux_i686_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  git_release_linux_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_aa_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ab_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_linux_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_linux_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_linux_i686"
+    reupload_on_changes: true
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh release release linux i686 1"
+  binaries_artifacts:
+    path: "release/**/*"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  env:
+    SIGN_BUILD: 1
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
   depends_on:
     - "release_linux_i686_plain-binaries_1"
 
@@ -904,6 +1042,8 @@ release_windows_x86_64_mingw-w64_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_download"
 
@@ -950,6 +1090,8 @@ release_windows_x86_64_mingw-w64_2_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_mingw-w64_1"
 
@@ -996,6 +1138,8 @@ release_windows_x86_64_goeasyconfig_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_mingw-w64_2"
 
@@ -1042,6 +1186,8 @@ release_windows_x86_64_ncdns_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_goeasyconfig_1"
 
@@ -1088,6 +1234,8 @@ release_windows_x86_64_ncp11_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_ncdns_1"
 
@@ -1134,6 +1282,8 @@ release_windows_x86_64_ncprop279_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_ncp11_1"
 
@@ -1180,10 +1330,12 @@ release_windows_x86_64_plain-binaries_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_x86_64_ncprop279_1"
 
-release_windows_x86_64_release_1_docker_builder:
+release_windows_x86_64_release_nosign_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1228,6 +1380,61 @@ release_windows_x86_64_release_1_docker_builder:
     - "./tools/cirrus_build_project.sh release release windows x86_64 1"
   binaries_artifacts:
     path: "release/**/*"
+  env:
+    SIGN_BUILD: 0
+  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  depends_on:
+    - "release_windows_x86_64_plain-binaries_1"
+
+release_windows_x86_64_release_sign_docker_builder:
+  timeout_in: 120m
+  out_release_windows_x86_64_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_windows_x86_64_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  git_release_windows_x86_64_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_aa_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ab_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_x86_64"
+    reupload_on_changes: true
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh release release windows x86_64 1"
+  binaries_artifacts:
+    path: "release/**/*"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  env:
+    SIGN_BUILD: 1
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
   depends_on:
     - "release_windows_x86_64_plain-binaries_1"
 
@@ -1315,6 +1522,8 @@ release_windows_i686_mingw-w64_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_download"
 
@@ -1361,6 +1570,8 @@ release_windows_i686_mingw-w64_2_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_mingw-w64_1"
 
@@ -1407,6 +1618,8 @@ release_windows_i686_goeasyconfig_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_mingw-w64_2"
 
@@ -1453,6 +1666,8 @@ release_windows_i686_ncdns_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_goeasyconfig_1"
 
@@ -1499,6 +1714,8 @@ release_windows_i686_ncp11_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_ncdns_1"
 
@@ -1545,6 +1762,8 @@ release_windows_i686_ncprop279_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_ncp11_1"
 
@@ -1591,10 +1810,12 @@ release_windows_i686_plain-binaries_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows i686 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_windows_i686_ncprop279_1"
 
-release_windows_i686_release_1_docker_builder:
+release_windows_i686_release_nosign_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -1639,6 +1860,61 @@ release_windows_i686_release_1_docker_builder:
     - "./tools/cirrus_build_project.sh release release windows i686 1"
   binaries_artifacts:
     path: "release/**/*"
+  env:
+    SIGN_BUILD: 0
+  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  depends_on:
+    - "release_windows_i686_plain-binaries_1"
+
+release_windows_i686_release_sign_docker_builder:
+  timeout_in: 120m
+  out_release_windows_i686_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_windows_i686_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  git_release_windows_i686_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_aa_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ab_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_windows_i686"
+    reupload_on_changes: true
+  interrupted_ac_release_windows_i686_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_windows_i686"
+    reupload_on_changes: true
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh release release windows i686 1"
+  binaries_artifacts:
+    path: "release/**/*"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  env:
+    SIGN_BUILD: 1
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
   depends_on:
     - "release_windows_i686_plain-binaries_1"
 
@@ -1726,6 +2002,8 @@ release_osx_x86_64_macosx-toolchain_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh macosx-toolchain release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_download"
 
@@ -1772,6 +2050,8 @@ release_osx_x86_64_macosx-toolchain_2_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh macosx-toolchain release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_macosx-toolchain_1"
 
@@ -1818,6 +2098,8 @@ release_osx_x86_64_goeasyconfig_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh goeasyconfig release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_macosx-toolchain_2"
 
@@ -1864,6 +2146,8 @@ release_osx_x86_64_ncdns_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncdns release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_goeasyconfig_1"
 
@@ -1910,6 +2194,8 @@ release_osx_x86_64_ncp11_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncp11 release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_ncdns_1"
 
@@ -1956,6 +2242,8 @@ release_osx_x86_64_ncprop279_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh ncprop279 release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_ncp11_1"
 
@@ -2002,10 +2290,12 @@ release_osx_x86_64_plain-binaries_1_docker_builder:
     - ./tools/container-interrupt.sh
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release osx x86_64 1"
+  env:
+    SIGN_BUILD: 0
   depends_on:
     - "release_osx_x86_64_ncprop279_1"
 
-release_osx_x86_64_release_1_docker_builder:
+release_osx_x86_64_release_nosign_docker_builder:
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -2050,6 +2340,61 @@ release_osx_x86_64_release_1_docker_builder:
     - "./tools/cirrus_build_project.sh release release osx x86_64 1"
   binaries_artifacts:
     path: "release/**/*"
+  env:
+    SIGN_BUILD: 0
+  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  depends_on:
+    - "release_osx_x86_64_plain-binaries_1"
+
+release_osx_x86_64_release_sign_docker_builder:
+  timeout_in: 120m
+  out_release_osx_x86_64_cache:
+    folder: out
+    fingerprint_script:
+      - "echo out_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_osx_x86_64_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  git_release_osx_x86_64_cache:
+    folder: git_clones
+    fingerprint_script:
+      - "echo git_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p git_clones"
+  interrupted_aa_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
+    fingerprint_script:
+      - "echo interrupted_aa_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ab_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partab.folder
+    fingerprint_script:
+      - "echo interrupted_ab_release_osx_x86_64"
+    reupload_on_changes: true
+  interrupted_ac_release_osx_x86_64_cache:
+    folder: tmp/interrupted_dirs.tar.gz.partac.folder
+    fingerprint_script:
+      - "echo interrupted_ac_release_osx_x86_64"
+    reupload_on_changes: true
+  checkpoint_background_script:
+    - sleep 110m
+    - ./tools/container-interrupt.sh
+  build_script:
+    - "./tools/cirrus_build_project.sh release release osx x86_64 1"
+  binaries_artifacts:
+    path: "release/**/*"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  env:
+    SIGN_BUILD: 1
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
   depends_on:
     - "release_osx_x86_64_plain-binaries_1"
 

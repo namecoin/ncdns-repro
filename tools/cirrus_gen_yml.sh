@@ -51,7 +51,7 @@ print_os_arch () {
     echo ""
 
     # TODO fine-tune this list
-    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.1; do
+    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
         if [[ "$PROJECT_BASE" == "compiler" ]]; then
             if [[ "$OS" == "android" ]]; then
@@ -112,9 +112,22 @@ print_os_arch () {
   build_script:
     - \"./tools/cirrus_build_project.sh ${PROJECT_BASE} ${CHANNEL} ${OS} ${ARCH} 1\""
 
-        if [[ "$PROJECT" == "release.1" ]]; then
+        if [[ "$PROJECT_BASE" == "release" ]]; then
             echo "  binaries_artifacts:
     path: \"${CHANNEL}/**/*\""
+        fi
+
+        if [[ "$PROJECT_ITER" == "sign" ]]; then
+            echo '  only_if: $CIRRUS_REPO_OWNER == "namecoin"'
+            echo "  env:
+    SIGN_BUILD: 1
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]"
+        else
+            echo "  env:
+    SIGN_BUILD: 0"
+        fi
+        if [[ "$PROJECT_ITER" == "nosign" ]]; then
+            echo '  only_if: $CIRRUS_REPO_OWNER != "namecoin"'
         fi
 
         # Depend on previous project
@@ -126,8 +139,10 @@ print_os_arch () {
     - \"${CHANNEL}_${OS}_${ARCH}_${PREV_PROJECT_BASE}_${PREV_PROJECT_ITER}\""
         fi
 
-        local PREV_PROJECT_BASE="$PROJECT_BASE"
-        local PREV_PROJECT_ITER="$PROJECT_ITER"
+        if [[ "$PROJECT_ITER" != "nosign" ]]; then
+            local PREV_PROJECT_BASE="$PROJECT_BASE"
+            local PREV_PROJECT_ITER="$PROJECT_ITER"
+        fi
         echo ""
     done
 }

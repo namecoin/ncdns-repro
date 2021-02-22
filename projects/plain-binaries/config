@@ -1,5 +1,5 @@
 version: '[% c("var/ncdns_version") %]'
-filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.xz'
 
 var:
   container:

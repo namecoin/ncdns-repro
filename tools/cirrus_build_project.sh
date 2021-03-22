@@ -79,7 +79,7 @@ fi
 echo "Cleaning cache..."
 rm -rfv out/container-image
 if [[ "$SHOULD_BUILD" -eq 0 ]]; then
-    ./tools/clean-old --dry-run
+    ./tools/clean-old
 fi
 
 echo "Splitting caches..."

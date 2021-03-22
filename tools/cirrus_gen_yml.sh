@@ -121,7 +121,8 @@ print_os_arch () {
             echo '  only_if: $CIRRUS_REPO_OWNER == "namecoin"'
             echo "  env:
     SIGN_BUILD: 1
-    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]"
+    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+    HOME: /root"
         else
             echo "  env:
     SIGN_BUILD: 0"

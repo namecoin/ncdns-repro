@@ -475,6 +475,7 @@ release_linux_x86_64_release_sign_docker_builder:
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+    HOME: /root
   depends_on:
     - "release_linux_x86_64_plain-binaries_1"
 
@@ -955,6 +956,7 @@ release_linux_i686_release_sign_docker_builder:
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+    HOME: /root
   depends_on:
     - "release_linux_i686_plain-binaries_1"
 
@@ -1435,6 +1437,7 @@ release_windows_x86_64_release_sign_docker_builder:
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+    HOME: /root
   depends_on:
     - "release_windows_x86_64_plain-binaries_1"
 
@@ -1915,6 +1918,7 @@ release_windows_i686_release_sign_docker_builder:
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+    HOME: /root
   depends_on:
     - "release_windows_i686_plain-binaries_1"
 
@@ -2395,6 +2399,7 @@ release_osx_x86_64_release_sign_docker_builder:
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+    HOME: /root
   depends_on:
     - "release_osx_x86_64_plain-binaries_1"
 

@@ -38,6 +38,8 @@ release_linux_x86_64_download_docker_builder:
     reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 0"
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
 
 release_linux_x86_64_gcc_1_docker_builder:
   timeout_in: 120m
@@ -84,6 +86,8 @@ release_linux_x86_64_gcc_1_docker_builder:
     - "./tools/cirrus_build_project.sh gcc release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_download"
 
@@ -132,6 +136,8 @@ release_linux_x86_64_gcc_2_docker_builder:
     - "./tools/cirrus_build_project.sh gcc release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_gcc_1"
 
@@ -180,6 +186,8 @@ release_linux_x86_64_goeasyconfig_1_docker_builder:
     - "./tools/cirrus_build_project.sh goeasyconfig release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_gcc_2"
 
@@ -228,6 +236,8 @@ release_linux_x86_64_ncdns_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncdns release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_goeasyconfig_1"
 
@@ -276,6 +286,8 @@ release_linux_x86_64_ncp11_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncp11 release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_ncdns_1"
 
@@ -324,6 +336,8 @@ release_linux_x86_64_ncprop279_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncprop279 release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_ncp11_1"
 
@@ -372,6 +386,8 @@ release_linux_x86_64_plain-binaries_1_docker_builder:
     - "./tools/cirrus_build_project.sh plain-binaries release linux x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_ncprop279_1"
 
@@ -422,6 +438,8 @@ release_linux_x86_64_release_nosign_docker_builder:
     path: "release/**/*"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   only_if: $CIRRUS_REPO_OWNER != "namecoin"
   depends_on:
     - "release_linux_x86_64_plain-binaries_1"
@@ -476,6 +494,8 @@ release_linux_x86_64_release_sign_docker_builder:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
     HOME: /root
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_x86_64_plain-binaries_1"
 
@@ -519,6 +539,8 @@ release_linux_i686_download_docker_builder:
     reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release linux i686 0"
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
 
 release_linux_i686_gcc_1_docker_builder:
   timeout_in: 120m
@@ -565,6 +587,8 @@ release_linux_i686_gcc_1_docker_builder:
     - "./tools/cirrus_build_project.sh gcc release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_download"
 
@@ -613,6 +637,8 @@ release_linux_i686_gcc_2_docker_builder:
     - "./tools/cirrus_build_project.sh gcc release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_gcc_1"
 
@@ -661,6 +687,8 @@ release_linux_i686_goeasyconfig_1_docker_builder:
     - "./tools/cirrus_build_project.sh goeasyconfig release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_gcc_2"
 
@@ -709,6 +737,8 @@ release_linux_i686_ncdns_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncdns release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_goeasyconfig_1"
 
@@ -757,6 +787,8 @@ release_linux_i686_ncp11_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncp11 release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_ncdns_1"
 
@@ -805,6 +837,8 @@ release_linux_i686_ncprop279_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncprop279 release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_ncp11_1"
 
@@ -853,6 +887,8 @@ release_linux_i686_plain-binaries_1_docker_builder:
     - "./tools/cirrus_build_project.sh plain-binaries release linux i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_ncprop279_1"
 
@@ -903,6 +939,8 @@ release_linux_i686_release_nosign_docker_builder:
     path: "release/**/*"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   only_if: $CIRRUS_REPO_OWNER != "namecoin"
   depends_on:
     - "release_linux_i686_plain-binaries_1"
@@ -957,6 +995,8 @@ release_linux_i686_release_sign_docker_builder:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
     HOME: /root
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_linux_i686_plain-binaries_1"
 
@@ -1000,6 +1040,8 @@ release_windows_x86_64_download_docker_builder:
     reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 0"
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
 
 release_windows_x86_64_mingw-w64_1_docker_builder:
   timeout_in: 120m
@@ -1046,6 +1088,8 @@ release_windows_x86_64_mingw-w64_1_docker_builder:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_download"
 
@@ -1094,6 +1138,8 @@ release_windows_x86_64_mingw-w64_2_docker_builder:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_mingw-w64_1"
 
@@ -1142,6 +1188,8 @@ release_windows_x86_64_goeasyconfig_1_docker_builder:
     - "./tools/cirrus_build_project.sh goeasyconfig release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_mingw-w64_2"
 
@@ -1190,6 +1238,8 @@ release_windows_x86_64_ncdns_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncdns release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_goeasyconfig_1"
 
@@ -1238,6 +1288,8 @@ release_windows_x86_64_ncp11_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncp11 release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_ncdns_1"
 
@@ -1286,6 +1338,8 @@ release_windows_x86_64_ncprop279_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncprop279 release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_ncp11_1"
 
@@ -1334,6 +1388,8 @@ release_windows_x86_64_plain-binaries_1_docker_builder:
     - "./tools/cirrus_build_project.sh plain-binaries release windows x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_ncprop279_1"
 
@@ -1384,6 +1440,8 @@ release_windows_x86_64_release_nosign_docker_builder:
     path: "release/**/*"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   only_if: $CIRRUS_REPO_OWNER != "namecoin"
   depends_on:
     - "release_windows_x86_64_plain-binaries_1"
@@ -1438,6 +1496,8 @@ release_windows_x86_64_release_sign_docker_builder:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
     HOME: /root
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_x86_64_plain-binaries_1"
 
@@ -1481,6 +1541,8 @@ release_windows_i686_download_docker_builder:
     reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release windows i686 0"
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
 
 release_windows_i686_mingw-w64_1_docker_builder:
   timeout_in: 120m
@@ -1527,6 +1589,8 @@ release_windows_i686_mingw-w64_1_docker_builder:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_download"
 
@@ -1575,6 +1639,8 @@ release_windows_i686_mingw-w64_2_docker_builder:
     - "./tools/cirrus_build_project.sh mingw-w64 release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_mingw-w64_1"
 
@@ -1623,6 +1689,8 @@ release_windows_i686_goeasyconfig_1_docker_builder:
     - "./tools/cirrus_build_project.sh goeasyconfig release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_mingw-w64_2"
 
@@ -1671,6 +1739,8 @@ release_windows_i686_ncdns_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncdns release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_goeasyconfig_1"
 
@@ -1719,6 +1789,8 @@ release_windows_i686_ncp11_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncp11 release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_ncdns_1"
 
@@ -1767,6 +1839,8 @@ release_windows_i686_ncprop279_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncprop279 release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_ncp11_1"
 
@@ -1815,6 +1889,8 @@ release_windows_i686_plain-binaries_1_docker_builder:
     - "./tools/cirrus_build_project.sh plain-binaries release windows i686 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_ncprop279_1"
 
@@ -1865,6 +1941,8 @@ release_windows_i686_release_nosign_docker_builder:
     path: "release/**/*"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   only_if: $CIRRUS_REPO_OWNER != "namecoin"
   depends_on:
     - "release_windows_i686_plain-binaries_1"
@@ -1919,6 +1997,8 @@ release_windows_i686_release_sign_docker_builder:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
     HOME: /root
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_windows_i686_plain-binaries_1"
 
@@ -1962,6 +2042,8 @@ release_osx_x86_64_download_docker_builder:
     reupload_on_changes: true
   build_script:
     - "./tools/cirrus_build_project.sh plain-binaries release osx x86_64 0"
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
 
 release_osx_x86_64_macosx-toolchain_1_docker_builder:
   timeout_in: 120m
@@ -2008,6 +2090,8 @@ release_osx_x86_64_macosx-toolchain_1_docker_builder:
     - "./tools/cirrus_build_project.sh macosx-toolchain release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_download"
 
@@ -2056,6 +2140,8 @@ release_osx_x86_64_macosx-toolchain_2_docker_builder:
     - "./tools/cirrus_build_project.sh macosx-toolchain release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_macosx-toolchain_1"
 
@@ -2104,6 +2190,8 @@ release_osx_x86_64_goeasyconfig_1_docker_builder:
     - "./tools/cirrus_build_project.sh goeasyconfig release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_macosx-toolchain_2"
 
@@ -2152,6 +2240,8 @@ release_osx_x86_64_ncdns_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncdns release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_goeasyconfig_1"
 
@@ -2200,6 +2290,8 @@ release_osx_x86_64_ncp11_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncp11 release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_ncdns_1"
 
@@ -2248,6 +2340,8 @@ release_osx_x86_64_ncprop279_1_docker_builder:
     - "./tools/cirrus_build_project.sh ncprop279 release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_ncp11_1"
 
@@ -2296,6 +2390,8 @@ release_osx_x86_64_plain-binaries_1_docker_builder:
     - "./tools/cirrus_build_project.sh plain-binaries release osx x86_64 1"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_ncprop279_1"
 
@@ -2346,6 +2442,8 @@ release_osx_x86_64_release_nosign_docker_builder:
     path: "release/**/*"
   env:
     SIGN_BUILD: 0
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   only_if: $CIRRUS_REPO_OWNER != "namecoin"
   depends_on:
     - "release_osx_x86_64_plain-binaries_1"
@@ -2400,6 +2498,8 @@ release_osx_x86_64_release_sign_docker_builder:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
     HOME: /root
+  env:
+    CIRRUS_LOG_TIMESTAMP: true
   depends_on:
     - "release_osx_x86_64_plain-binaries_1"
 

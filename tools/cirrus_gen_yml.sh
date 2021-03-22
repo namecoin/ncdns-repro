@@ -48,6 +48,8 @@ print_os_arch () {
     reupload_on_changes: true
   build_script:
     - \"./tools/cirrus_build_project.sh plain-binaries ${CHANNEL} ${OS} ${ARCH} 0\""
+    echo "  env:
+    CIRRUS_LOG_TIMESTAMP: true"
     echo ""
 
     # TODO fine-tune this list
@@ -127,6 +129,8 @@ print_os_arch () {
             echo "  env:
     SIGN_BUILD: 0"
         fi
+        echo "  env:
+    CIRRUS_LOG_TIMESTAMP: true"
         if [[ "$PROJECT_ITER" == "nosign" ]]; then
             echo '  only_if: $CIRRUS_REPO_OWNER != "namecoin"'
         fi

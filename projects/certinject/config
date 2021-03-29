@@ -1,0 +1,26 @@
+version: '0.0.1'
+git_url:  https://github.com/namecoin/certinject.git
+git_hash: '8b71285733f8abce7e0f6443e9ca3dc4acf6255b'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - goeasyconfig
+    - goxlog
+    - goxsys
+  cgo: 0
+  build_go_lib_pre: |
+    export CGO_ENABLED=[% c("var/cgo") %] 
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: goeasyconfig
+    project: goeasyconfig
+  - name: goxlog
+    project: goxlog
+  - name: goxsys
+    project: goxsys

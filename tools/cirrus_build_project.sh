@@ -61,6 +61,15 @@ fi
 #df -h
 
 if [[ "$SHOULD_BUILD" -eq 1 ]]; then
+    if [[ "$SIGN_BUILD" == "1" ]]; then
+        echo "Configuring signing key..."
+        export RBM_SIGN_BUILD=1
+        export RBM_GPG_OPTS="--local-user jeremy@namecoin.org"
+        echo "$SIGN_KEY" | gpg --import
+    else
+        echo "Signing is disabled."
+    fi
+
     echo "Building project..."
     # If rbm fails, we consider it a success as long as it saved a checkpoint.
     ./rbm/rbm build "$PROJECT" --target "$CHANNEL" --target ncdns-"$OS"-"$ARCH" || [ ! -z "$(ls -A ./tmp/interrupted_dirs/)" ]

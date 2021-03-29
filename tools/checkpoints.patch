@@ -1,7 +1,7 @@
 From 25b581c833679939408fa51ce1d43b55ae481d51 Mon Sep 17 00:00:00 2001
 From: Jeremy Rand <jeremyrand@airmail.cc>
 Date: Fri, 19 Feb 2021 00:23:40 +0000
-Subject: [PATCH 1/2] clang: Support rbm checkpointing
+Subject: [PATCH 1/3] clang: Support rbm checkpointing
 
 ---
  projects/clang/build | 13 +++++++++++++
@@ -45,7 +45,7 @@ index c4c16d9..bb8283b 100644
 From ab0c171fe1c82efed5cbaf657b06d7103f209cb9 Mon Sep 17 00:00:00 2001
 From: Jeremy Rand <jeremyrand@airmail.cc>
 Date: Sat, 20 Feb 2021 08:51:15 +0000
-Subject: [PATCH 2/2] macosx-toolchain: Support rbm checkpointing
+Subject: [PATCH 2/3] macosx-toolchain: Support rbm checkpointing
 
 ---
  projects/macosx-toolchain/build | 13 +++++++++++++
@@ -81,6 +81,62 @@ index 5716a9e..94f6df1 100644
  ninja install -v
  
  # We now have a native macosx64 toolchain.
+-- 
+2.20.1
+
+
+From 18866ae3512d13c1581a5fedad68565b9cc2e592 Mon Sep 17 00:00:00 2001
+From: Jeremy Rand <jeremyrand@airmail.cc>
+Date: Mon, 22 Mar 2021 17:19:12 +0000
+Subject: [PATCH 3/3] rbm.conf: Support rbm checkpointing
+
+---
+ rbm.conf | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/rbm.conf b/rbm.conf
+index 76ab74b..8014570 100644
+--- a/rbm.conf
++++ b/rbm.conf
+@@ -504,6 +504,18 @@ runc:
+   remote_start: |
+     #!/bin/sh
+     set -e
++
++    # Handle SIGINT case
++    if [ -d '[% c("rbm_tmp_dir") %]'/../interrupted_dirs/'[% sha256(dest_dir _ '/' _ c("filename")) %]' ]
++    then
++        # We previously did this build but it was manually interrupted.
++        # Restore the container's saved state instead of making a new container.
++        mkdir -p '[% c("var/container/dir") %]'
++        rmdir '[% c("var/container/dir") %]'
++        mv '[% c("rbm_tmp_dir") %]'/../interrupted_dirs/'[% sha256(dest_dir _ '/' _ c("filename")) %]' '[% c("var/container/dir") %]'
++        exit
++    fi
++
+     if [ $(ls -1 '[% c("remote_srcdir", { error_if_undef => 1 }) %]/container-image_'* | wc -l) -ne 1 ]
+     then
+       echo "Can't find container image in input files" >&2
+@@ -580,6 +592,19 @@ runc:
+   remote_finish: |
+     #!/bin/sh
+     set -e
++
++    # Handle SIGINT case
++    if [ -e '[% c("rbm_tmp_dir") %]'/../interrupted ]
++    then
++        # This build was manually interrupted via tools/container-interrupt.sh.
++        # Save the container's state instead of deleting, so we can resume
++        # the build later.
++        mkdir -p '[% c("rbm_tmp_dir") %]'/../interrupted_dirs
++        mv '[% c("var/container/dir") %]' '[% c("rbm_tmp_dir") %]'/../interrupted_dirs/'[% sha256(dest_dir _ '/' _ c("filename")) %]'
++        rm '[% c("rbm_tmp_dir") %]'/../interrupted
++        exit
++    fi
++
+     sudo rm -Rf '[% c("var/container/dir", { error_if_undef => 1 }) %]'/rootfs '[% c("var/container/dir", { error_if_undef => 1 }) %]'/config.json
+     rmdir '[% c("var/container/dir") %]'
+ 
 -- 
 2.20.1
 

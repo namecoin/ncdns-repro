@@ -29,9 +29,7 @@ cat rbm.local.conf.example | sed "s/#build_log: '-'/build_log: '-'/g" > rbm.loca
 cat tools/rbm.local.conf.onetarget | sed "s/CHANNEL/$CHANNEL/g" | sed "s/ncdns-all/ncdns-$OS-$ARCH/g" >> rbm.local.conf
 
 echo "Patching rbm..."
-pushd tor-browser-build
-patch -p1 < ../tools/checkpoints.patch
-popd
+./tools/patch-tor-to-namecoin.sh
 
 echo "Restoring caches..."
 cp -a ./out_cache1/* ./out/ || true

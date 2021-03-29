@@ -48,7 +48,7 @@ release-osx-x86_64: submodule-update
 	$(rbm) build release --target release --target ncdns-osx-x86_64
 
 submodule-update:
-	./setup-submodule-symlinks
+	./tools/setup-submodule-symlinks.sh
 
 fetch: submodule-update
 	$(rbm) fetch

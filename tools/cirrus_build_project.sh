@@ -43,6 +43,12 @@ else
     echo "Checking if project is cached..."
     OUTDIR="$(./rbm/rbm showconf $PROJECT output_dir --target $CHANNEL --target ncdns-$OS-$ARCH)"
     OUTFILE="$(./rbm/rbm showconf $PROJECT filename --target $CHANNEL --target ncdns-$OS-$ARCH)"
+
+    if [[ "$SHOULD_BUILD" -eq 0 ]]; then
+        echo "Cleaning old outputs..."
+        ./tools/clean-old
+    fi
+
     if [[ -e "$OUTDIR/$OUTFILE" ]]; then
         echo "Project cache hit, skipping build."
         SHOULD_BUILD=0
@@ -83,11 +89,8 @@ fi
 # container-images are very large and seem to be fairly harmless to remove.
 # Maybe later if we have more pressure to shrink, we could remove the
 # debootstrap-images too.
-echo "Cleaning cache..."
+echo "Cleaning containers..."
 rm -rfv out/container-image
-if [[ "$SHOULD_BUILD" -eq 0 ]]; then
-    ./tools/clean-old
-fi
 
 echo "Splitting caches..."
 rsync -avu --delete ./out/macosx-toolchain ./out_cache1/ || true

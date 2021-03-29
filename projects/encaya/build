@@ -11,10 +11,10 @@ mkdir -p $distdir
 
 mkdir -p $GOPATH/src/github.com/namecoin
 tar -C $GOPATH/src/github.com/namecoin -xf [% project %]-[% c('version') %].tar.gz
-mv $GOPATH/src/github.com/namecoin/certdehydrate-dane-rest-api-[% c('version') %] $GOPATH/src/github.com/namecoin/certdehydrate-dane-rest-api
+mv $GOPATH/src/github.com/namecoin/encaya-[% c('version') %] $GOPATH/src/github.com/namecoin/encaya
 
 # TODO: Remove static build ID after migrating to Go 1.13.3+
-go install -ldflags '-s -buildid=' github.com/namecoin/certdehydrate-dane-rest-api
+go install -ldflags '-s -buildid=' github.com/namecoin/encaya
 
 #mkdir -p /var/tmp/build
 #tar -C /var/tmp/build -xf [% project %]-[% c('version') %].tar.gz
@@ -37,7 +37,7 @@ go install -ldflags '-s -buildid=' github.com/namecoin/certdehydrate-dane-rest-a
 
 ls $GOPATHBIN
 
-cp -a $GOPATHBIN/certdehydrate-dane-rest-api[% IF c("var/windows") %].exe[% END %] $distdir/
+cp -a $GOPATHBIN/encaya[% IF c("var/windows") %].exe[% END %] $distdir/
 
 cd $distdir
 [% c('tar', {

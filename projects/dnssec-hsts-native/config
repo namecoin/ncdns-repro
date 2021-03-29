@@ -8,8 +8,8 @@ var:
     use_container: 1
   go_lib_deps:
     - godns
-    - goqlib
     - goeasyconfig
+    - q
   cgo: 0
   build_go_lib_pre: |
     export CGO_ENABLED=[% c("var/cgo") %] 
@@ -22,5 +22,9 @@ input_files:
     project: goeasyconfig
   - name: godns
     project: godns
-  - name: goqlib
-    project: goqlib
+  - name: q
+    project: q
+    # Build q as a library, not an executable.
+    # TODO: refactor this once our build_go_lib executable patch is merged by upstream Tor
+    var:
+      go_lib_no_output: 0

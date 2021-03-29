@@ -74,7 +74,10 @@ if [[ "$SHOULD_BUILD" -eq 1 ]]; then
         echo "Configuring signing key..."
         export RBM_SIGN_BUILD=1
         export RBM_GPG_OPTS="--local-user jeremy@namecoin.org"
+        # Avoid leaking private key to console
+        set +x
         echo "$SIGN_KEY" | gpg --import
+        set -x
     else
         echo "Signing is disabled."
     fi

@@ -9,22 +9,19 @@ print_os_arch () {
 
     # Pre-download tarballs and Git repos
     echo "${CHANNEL}_${OS}_${ARCH}_download_docker_builder:
-  timeout_in: 120m
-  out_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out
+  timeout_in: 120m"
+    for PROJECT_OUT in ./projects/*
+    do
+      PROJECT_OUT_BASE=$(basename $PROJECT_OUT)
+      echo "  out_${PROJECT_OUT_BASE}_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out/${PROJECT_OUT_BASE}
     fingerprint_script:
-      - \"echo out_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo out_${PROJECT_OUT_BASE}_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
     populate_script:
-      - \"mkdir -p out\"
-  out1_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - \"echo out1_${CHANNEL}_${OS}_${ARCH}\"
-    reupload_on_changes: true
-    populate_script:
-      - \"mkdir -p out_cache1\"
-  git_${CHANNEL}_${OS}_${ARCH}_cache:
+      - \"mkdir -p out/${PROJECT_OUT_BASE}\""
+    done
+    echo "  git_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: git_clones
     fingerprint_script:
       - \"echo git_${CHANNEL}_${OS}_${ARCH}\"
@@ -71,22 +68,19 @@ print_os_arch () {
         fi
         PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT_BASE}_${PROJECT_ITER}_docker_builder:
-  timeout_in: 120m
-  out_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out
+  timeout_in: 120m"
+        for PROJECT_OUT in ./projects/*
+        do
+      PROJECT_OUT_BASE=$(basename $PROJECT_OUT)
+      echo "  out_${PROJECT_OUT_BASE}_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out/${PROJECT_OUT_BASE}
     fingerprint_script:
-      - \"echo out_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo out_${PROJECT_OUT_BASE}_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
     populate_script:
-      - \"mkdir -p out\"
-  out1_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - \"echo out1_${CHANNEL}_${OS}_${ARCH}\"
-    reupload_on_changes: true
-    populate_script:
-      - \"mkdir -p out_cache1\"
-  git_${CHANNEL}_${OS}_${ARCH}_cache:
+      - \"mkdir -p out/${PROJECT_OUT_BASE}\""
+        done
+        echo "  git_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: git_clones
     fingerprint_script:
       - \"echo git_${CHANNEL}_${OS}_${ARCH}\"

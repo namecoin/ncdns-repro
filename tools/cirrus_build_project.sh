@@ -15,10 +15,12 @@ df -h
 lscpu
 free -m
 
-echo "Verifying Cirrus YML determinism..."
-mv .cirrus.yml .cirrus.yml.bak
-./tools/cirrus_gen_yml.sh 2>/dev/null
-diff .cirrus.yml .cirrus.yml.bak
+if [[ "$SHOULD_BUILD" -eq 0 ]]; then
+    echo "Verifying Cirrus YML determinism..."
+    mv .cirrus.yml .cirrus.yml.bak
+    ./tools/cirrus_gen_yml.sh 2>/dev/null
+    diff .cirrus.yml .cirrus.yml.bak
+fi
 
 echo "Installing rbm deps..."
 APT_DEPS="libyaml-libyaml-perl libtemplate-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git runc rsync"

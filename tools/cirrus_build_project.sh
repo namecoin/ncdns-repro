@@ -42,6 +42,9 @@ cp -a ./out_cache1/* ./out/ || true
 echo "Unpacking interrupted cache..."
 ./tools/cirrus_unpack_interrupted.sh || true
 
+echo "Unpacking git cache..."
+./tools/cirrus_unpack_git.sh || true
+
 if [[ "$PROJECT" == "release" ]]; then
     echo "release project is never cached."
 else
@@ -103,6 +106,9 @@ rm -rfv out/container-image
 echo "Splitting caches..."
 rsync -avu --delete ./out/macosx-toolchain ./out_cache1/ || true
 rm -rf ./out/macosx-toolchain || true
+
+echo "Packing git cache..."
+./tools/cirrus_pack_git.sh || true
 
 echo "Packing interrupted cache..."
 ./tools/cirrus_pack_interrupted.sh || true

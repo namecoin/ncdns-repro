@@ -24,6 +24,20 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p out_cache1\"
+  out2_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - \"echo out2_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache2\"
+  out3_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - \"echo out3_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache3\"
   git_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: git_clones
     fingerprint_script:
@@ -93,6 +107,20 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p out_cache1\"
+  out2_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - \"echo out2_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache2\"
+  out3_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - \"echo out3_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache3\"
   git_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: git_clones
     fingerprint_script:

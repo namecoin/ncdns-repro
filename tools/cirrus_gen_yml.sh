@@ -6,7 +6,7 @@ shopt -s nullglob globstar
 print_os_arch () {
     # Pre-download tarballs and Git repos
     echo "${CHANNEL}_download_docker_builder:
-  name: \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH download\"
+  name: \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH download 1\"
   timeout_in: 120m
   out_${CHANNEL}_cache:
     folder: out
@@ -66,15 +66,8 @@ print_os_arch () {
         CI_RBM_ARCH: x86_64"
     echo ""
 
-    # TODO fine-tune this list
-    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
-        PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
-        PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
-        echo "${CHANNEL}_${PROJECT_BASE}_${PROJECT_ITER}_docker_builder:"
-        if [[ "$PROJECT_BASE" == "compiler" ]]; then
-            PROJECT_BASE='$CI_RBM_COMPILER'
-        fi
-        echo "  name: \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH ${PROJECT_BASE} ${PROJECT_ITER}\"
+        echo "${CHANNEL}_docker_builder:"
+        echo "  name: \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH \$CI_RBM_PROJECT_BASE \$CI_RBM_PROJECT_ITER\"
   timeout_in: 120m
   out_${CHANNEL}_cache:
     folder: out
@@ -116,23 +109,8 @@ print_os_arch () {
     - sleep 110m
     - ./tools/container-interrupt.sh
   build_script:
-    - \"./tools/cirrus_build_project.sh ${PROJECT_BASE} ${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH 1\""
+    - \"./tools/cirrus_build_project.sh \$CI_RBM_PROJECT_BASE ${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH 1\""
 
-        if [[ "$PROJECT_BASE" == "release" ]]; then
-            echo "  binaries_artifacts:
-    path: \"${CHANNEL}/**/*\""
-        fi
-
-        if [[ "$PROJECT_ITER" == "sign" ]]; then
-            echo '  only_if: $CIRRUS_REPO_OWNER == "namecoin"'
-            echo "  env:
-    SIGN_BUILD: 1
-    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
-    HOME: /root"
-        else
-            echo "  env:
-    SIGN_BUILD: 0"
-        fi
         echo "  env:
     CIRRUS_LOG_TIMESTAMP: true
   matrix:
@@ -155,26 +133,53 @@ print_os_arch () {
     - env:
         CI_RBM_OS: osx
         CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain"
-        if [[ "$PROJECT_ITER" == "nosign" ]]; then
-            echo '  only_if: $CIRRUS_REPO_OWNER != "namecoin"'
-        fi
+        CI_RBM_COMPILER: macosx-toolchain
+  matrix:"
+        local PREV_PROJECT_BASE=download
+        local PREV_PROJECT_ITER=1
+        # TODO fine-tune this list
+        for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
+            PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
+            PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
+            if [[ "$PROJECT_BASE" == "compiler" ]]; then
+                PROJECT_BASE="\$CI_RBM_COMPILER"
+            fi
+            echo "    - env:
+        CI_RBM_PROJECT_BASE: ${PROJECT_BASE}
+        CI_RBM_PROJECT_ITER: ${PROJECT_ITER}
+        CI_RBM_PREV_PROJECT_BASE: ${PREV_PROJECT_BASE}
+        CI_RBM_PREV_PROJECT_ITER: ${PREV_PROJECT_ITER}"
 
-        # Depend on previous project
-        if [[ "$PROJECT" == "compiler.1" ]]; then
-            echo "  depends_on:
-    - \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH download\""
-        else
-            echo "  depends_on:
-    - \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH ${PREV_PROJECT_BASE} ${PREV_PROJECT_ITER}\""
-        fi
+            if [[ "$PROJECT_ITER" == "nosign" ]]; then
+                echo '      only_if: $CIRRUS_REPO_OWNER != "namecoin"'
+            fi
 
-        if [[ "$PROJECT_ITER" != "nosign" ]]; then
-            local PREV_PROJECT_BASE="$PROJECT_BASE"
-            local PREV_PROJECT_ITER="$PROJECT_ITER"
-        fi
+            if [[ "$PROJECT_BASE" == "release" ]]; then
+                echo "      binaries_artifacts:
+        path: \"${CHANNEL}/**/*\""
+            fi
+
+            if [[ "$PROJECT_ITER" == "sign" ]]; then
+                echo '      only_if: $CIRRUS_REPO_OWNER == "namecoin"'
+                echo "      env:
+        SIGN_BUILD: 1
+        SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+        HOME: /root"
+            else
+                echo "      env:
+        SIGN_BUILD: 0"
+            fi
+
+            if [[ "$PROJECT_ITER" != "nosign" ]]; then
+                local PREV_PROJECT_BASE="$PROJECT_BASE"
+                local PREV_PROJECT_ITER="$PROJECT_ITER"
+            fi
+        done
+
+        echo "  depends_on:
+    - \"${CHANNEL} \$CI_RBM_OS \$CI_RBM_ARCH \$CI_RBM_PREV_PROJECT_BASE \$CI_RBM_PREV_PROJECT_ITER\""
+
         echo ""
-    done
 }
 
 (

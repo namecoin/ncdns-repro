@@ -1,5 +1,5 @@
 release_download_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH download"
+  name: "release $CI_RBM_OS $CI_RBM_ARCH download 1"
   timeout_in: 120m
   out_release_cache:
     folder: out
@@ -58,8 +58,8 @@ release_download_docker_builder:
         CI_RBM_OS: osx
         CI_RBM_ARCH: x86_64
 
-release_compiler_1_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH $CI_RBM_COMPILER 1"
+release_docker_builder:
+  name: "release $CI_RBM_OS $CI_RBM_ARCH $CI_RBM_PROJECT_BASE $CI_RBM_PROJECT_ITER"
   timeout_in: 120m
   out_release_cache:
     folder: out
@@ -101,9 +101,7 @@ release_compiler_1_docker_builder:
     - sleep 110m
     - ./tools/container-interrupt.sh
   build_script:
-    - "./tools/cirrus_build_project.sh $CI_RBM_COMPILER release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
+    - "./tools/cirrus_build_project.sh $CI_RBM_PROJECT_BASE release $CI_RBM_OS $CI_RBM_ARCH 1"
   env:
     CIRRUS_LOG_TIMESTAMP: true
   matrix:
@@ -127,590 +125,78 @@ release_compiler_1_docker_builder:
         CI_RBM_OS: osx
         CI_RBM_ARCH: x86_64
         CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH download"
-
-release_compiler_2_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH $CI_RBM_COMPILER 2"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh $CI_RBM_COMPILER release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
   matrix:
     - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
+        CI_RBM_PROJECT_BASE: $CI_RBM_COMPILER
+        CI_RBM_PROJECT_ITER: 1
+        CI_RBM_PREV_PROJECT_BASE: download
+        CI_RBM_PREV_PROJECT_ITER: 1
+      env:
+        SIGN_BUILD: 0
     - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
+        CI_RBM_PROJECT_BASE: $CI_RBM_COMPILER
+        CI_RBM_PROJECT_ITER: 2
+        CI_RBM_PREV_PROJECT_BASE: $CI_RBM_COMPILER
+        CI_RBM_PREV_PROJECT_ITER: 1
+      env:
+        SIGN_BUILD: 0
     - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
+        CI_RBM_PROJECT_BASE: goeasyconfig
+        CI_RBM_PROJECT_ITER: 1
+        CI_RBM_PREV_PROJECT_BASE: $CI_RBM_COMPILER
+        CI_RBM_PREV_PROJECT_ITER: 2
+      env:
+        SIGN_BUILD: 0
     - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
+        CI_RBM_PROJECT_BASE: ncdns
+        CI_RBM_PROJECT_ITER: 1
+        CI_RBM_PREV_PROJECT_BASE: goeasyconfig
+        CI_RBM_PREV_PROJECT_ITER: 1
+      env:
+        SIGN_BUILD: 0
     - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
+        CI_RBM_PROJECT_BASE: ncp11
+        CI_RBM_PROJECT_ITER: 1
+        CI_RBM_PREV_PROJECT_BASE: ncdns
+        CI_RBM_PREV_PROJECT_ITER: 1
+      env:
+        SIGN_BUILD: 0
+    - env:
+        CI_RBM_PROJECT_BASE: ncprop279
+        CI_RBM_PROJECT_ITER: 1
+        CI_RBM_PREV_PROJECT_BASE: ncp11
+        CI_RBM_PREV_PROJECT_ITER: 1
+      env:
+        SIGN_BUILD: 0
+    - env:
+        CI_RBM_PROJECT_BASE: plain-binaries
+        CI_RBM_PROJECT_ITER: 1
+        CI_RBM_PREV_PROJECT_BASE: ncprop279
+        CI_RBM_PREV_PROJECT_ITER: 1
+      env:
+        SIGN_BUILD: 0
+    - env:
+        CI_RBM_PROJECT_BASE: release
+        CI_RBM_PROJECT_ITER: nosign
+        CI_RBM_PREV_PROJECT_BASE: plain-binaries
+        CI_RBM_PREV_PROJECT_ITER: 1
+      only_if: $CIRRUS_REPO_OWNER != "namecoin"
+      binaries_artifacts:
+        path: "release/**/*"
+      env:
+        SIGN_BUILD: 0
+    - env:
+        CI_RBM_PROJECT_BASE: release
+        CI_RBM_PROJECT_ITER: sign
+        CI_RBM_PREV_PROJECT_BASE: plain-binaries
+        CI_RBM_PREV_PROJECT_ITER: 1
+      binaries_artifacts:
+        path: "release/**/*"
+      only_if: $CIRRUS_REPO_OWNER == "namecoin"
+      env:
+        SIGN_BUILD: 1
+        SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
+        HOME: /root
   depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH $CI_RBM_COMPILER 1"
-
-release_goeasyconfig_1_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH goeasyconfig 1"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh goeasyconfig release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH $CI_RBM_COMPILER 2"
-
-release_ncdns_1_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH ncdns 1"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncdns release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH goeasyconfig 1"
-
-release_ncp11_1_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH ncp11 1"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncp11 release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH ncdns 1"
-
-release_ncprop279_1_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH ncprop279 1"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncprop279 release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH ncp11 1"
-
-release_plain-binaries_1_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH plain-binaries 1"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh plain-binaries release $CI_RBM_OS $CI_RBM_ARCH 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH ncprop279 1"
-
-release_release_nosign_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH release nosign"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh release release $CI_RBM_OS $CI_RBM_ARCH 1"
-  binaries_artifacts:
-    path: "release/**/*"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  only_if: $CIRRUS_REPO_OWNER != "namecoin"
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH plain-binaries 1"
-
-release_release_sign_docker_builder:
-  name: "release $CI_RBM_OS $CI_RBM_ARCH release sign"
-  timeout_in: 120m
-  out_release_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1 release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  git_release_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  interrupted_aa_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ab_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  interrupted_ac_release_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac release $CI_RBM_OS $CI_RBM_ARCH"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    - sleep 110m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh release release $CI_RBM_OS $CI_RBM_ARCH 1"
-  binaries_artifacts:
-    path: "release/**/*"
-  only_if: $CIRRUS_REPO_OWNER == "namecoin"
-  env:
-    SIGN_BUILD: 1
-    SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
-    HOME: /root
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-  matrix:
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: linux
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: gcc
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: windows
-        CI_RBM_ARCH: i686
-        CI_RBM_COMPILER: mingw-w64
-    - env:
-        CI_RBM_OS: osx
-        CI_RBM_ARCH: x86_64
-        CI_RBM_COMPILER: macosx-toolchain
-  depends_on:
-    - "release $CI_RBM_OS $CI_RBM_ARCH plain-binaries 1"
+    - "release $CI_RBM_OS $CI_RBM_ARCH $CI_RBM_PREV_PROJECT_BASE $CI_RBM_PREV_PROJECT_ITER"
 

@@ -50,20 +50,22 @@ echo "Unpacking git cache..."
 if [[ "$PROJECT" == "release" ]]; then
     echo "release project is never cached."
 else
-    echo "Checking if project is cached..."
-    OUTDIR="$(./rbm/rbm showconf $PROJECT output_dir --target $CHANNEL --target ncdns-$OS-$ARCH)"
-    OUTFILE="$(./rbm/rbm showconf $PROJECT filename --target $CHANNEL --target ncdns-$OS-$ARCH)"
+    if [[ "$SHOULD_BUILD" -eq 1 ]]; then
+        echo "Checking if project is cached..."
+        OUTDIR="$(./rbm/rbm showconf $PROJECT output_dir --target $CHANNEL --target ncdns-$OS-$ARCH)"
+        OUTFILE="$(./rbm/rbm showconf $PROJECT filename --target $CHANNEL --target ncdns-$OS-$ARCH)"
 
-    if [[ "$SHOULD_BUILD" -eq 0 ]]; then
-        echo "Cleaning old outputs..."
-        ./tools/clean-old
-    fi
-
-    if [[ -e "$OUTDIR/$OUTFILE" ]]; then
-        echo "Project cache hit, skipping build."
-        SHOULD_BUILD=0
+        if [[ -e "$OUTDIR/$OUTFILE" ]]; then
+            echo "Project cache hit, skipping build."
+            SHOULD_BUILD=0
+        else
+            echo "Project cache miss, proceeding with build."
+        fi
     else
-        echo "Project cache miss, proceeding with build."
+        if [[ "$SHOULD_BUILD" -eq 0 ]]; then
+            echo "Cleaning old outputs..."
+            ./tools/clean-old
+        fi
     fi
 fi
 

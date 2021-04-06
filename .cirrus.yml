@@ -23,6 +23,13 @@ release_linux_x86_64_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -80,6 +87,13 @@ release_linux_x86_64_gcc_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -144,6 +158,13 @@ release_linux_x86_64_gcc_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -208,6 +229,13 @@ release_linux_x86_64_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -272,6 +300,13 @@ release_linux_x86_64_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -336,6 +371,13 @@ release_linux_x86_64_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -400,6 +442,13 @@ release_linux_x86_64_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -464,6 +513,13 @@ release_linux_x86_64_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -528,6 +584,13 @@ release_linux_x86_64_release_nosign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -595,6 +658,13 @@ release_linux_x86_64_release_sign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -664,6 +734,13 @@ release_linux_i686_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -721,6 +798,13 @@ release_linux_i686_gcc_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -785,6 +869,13 @@ release_linux_i686_gcc_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -849,6 +940,13 @@ release_linux_i686_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -913,6 +1011,13 @@ release_linux_i686_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -977,6 +1082,13 @@ release_linux_i686_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -1041,6 +1153,13 @@ release_linux_i686_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -1105,6 +1224,13 @@ release_linux_i686_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -1169,6 +1295,13 @@ release_linux_i686_release_nosign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -1236,6 +1369,13 @@ release_linux_i686_release_sign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_linux_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -1305,6 +1445,13 @@ release_windows_x86_64_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1362,6 +1509,13 @@ release_windows_x86_64_mingw-w64_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1426,6 +1580,13 @@ release_windows_x86_64_mingw-w64_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1490,6 +1651,13 @@ release_windows_x86_64_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1554,6 +1722,13 @@ release_windows_x86_64_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1618,6 +1793,13 @@ release_windows_x86_64_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1682,6 +1864,13 @@ release_windows_x86_64_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1746,6 +1935,13 @@ release_windows_x86_64_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1810,6 +2006,13 @@ release_windows_x86_64_release_nosign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1877,6 +2080,13 @@ release_windows_x86_64_release_sign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1946,6 +2156,13 @@ release_windows_i686_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2003,6 +2220,13 @@ release_windows_i686_mingw-w64_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2067,6 +2291,13 @@ release_windows_i686_mingw-w64_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2131,6 +2362,13 @@ release_windows_i686_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2195,6 +2433,13 @@ release_windows_i686_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2259,6 +2504,13 @@ release_windows_i686_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2323,6 +2575,13 @@ release_windows_i686_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2387,6 +2646,13 @@ release_windows_i686_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2451,6 +2717,13 @@ release_windows_i686_release_nosign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2518,6 +2791,13 @@ release_windows_i686_release_sign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_windows_i686_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2587,6 +2867,13 @@ release_osx_x86_64_download_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2644,6 +2931,13 @@ release_osx_x86_64_macosx-toolchain_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2708,6 +3002,13 @@ release_osx_x86_64_macosx-toolchain_2_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2772,6 +3073,13 @@ release_osx_x86_64_goeasyconfig_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2836,6 +3144,13 @@ release_osx_x86_64_ncdns_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2900,6 +3215,13 @@ release_osx_x86_64_ncp11_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2964,6 +3286,13 @@ release_osx_x86_64_ncprop279_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -3028,6 +3357,13 @@ release_osx_x86_64_plain-binaries_1_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -3092,6 +3428,13 @@ release_osx_x86_64_release_nosign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -3159,6 +3502,13 @@ release_osx_x86_64_release_sign_docker_builder:
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:

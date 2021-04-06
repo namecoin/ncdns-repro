@@ -31,6 +31,13 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p git_clones\"
+  gitindex_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: git_index
+    fingerprint_script:
+      - \"echo gitindex_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p git_index\"
   interrupted_aa_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:
@@ -93,6 +100,13 @@ print_os_arch () {
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p git_clones\"
+  gitindex_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: git_index
+    fingerprint_script:
+      - \"echo gitindex_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p git_index\"
   interrupted_aa_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: tmp/interrupted_dirs.tar.gz.partaa.folder
     fingerprint_script:

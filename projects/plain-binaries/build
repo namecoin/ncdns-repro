@@ -4,6 +4,9 @@
 distdir=/var/tmp/dist/[% project %]
 mkdir -p $distdir
 
+[% IF c("var/windows") %]
+  tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/certinject') %]
+[% END %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncdns') %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncp11') %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncprop279') %]

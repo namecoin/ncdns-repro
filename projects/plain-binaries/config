@@ -7,6 +7,9 @@ var:
 
 input_files:
   - project: container-image
+  - name: certinject
+    project: certinject
+    enable: '[% c("var/windows") %]'
   - name: ncdns
     project: ncdns
   - name: ncp11

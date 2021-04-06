@@ -1,6 +1,6 @@
-version: '0.0.2'
+version: '0.0.3'
 git_url:  https://github.com/namecoin/safetlsa.git
-git_hash: '4954a0bb45dd911bd39a750a5c1aafe1ca8bbb44'
+git_hash: '57e499eb021d17c99d5470c773fab1e12367971a'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'
@@ -11,7 +11,6 @@ var:
   go_lib: github.com/namecoin/safetlsa
   go_lib_deps:
     - godns
-    - gox509signaturesplice
     - ncdns
   build_go_lib_pre: |
     export CGO_ENABLED=0
@@ -22,8 +21,6 @@ input_files:
     project: go
   - name: godns
     project: godns
-  - name: gox509signaturesplice
-    project: gox509signaturesplice
   - name: ncdns
     project: ncdns
     # Build ncdns as a library, not an executable.

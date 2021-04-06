@@ -38,6 +38,7 @@ echo "Patching rbm..."
 
 echo "Restoring caches..."
 cp -a ./out_cache1/* ./out/ || true
+cp -a ./out_cache2/* ./out/ || true
 
 echo "Unpacking interrupted cache..."
 ./tools/cirrus_unpack_interrupted.sh || true
@@ -105,7 +106,9 @@ rm -rfv out/container-image
 
 echo "Splitting caches..."
 rsync -avu --delete ./out/macosx-toolchain ./out_cache1/ || true
+rsync -avu --delete ./out/plain-binaries ./out_cache2/ || true
 rm -rf ./out/macosx-toolchain || true
+rm -rf ./out/plain-binaries || true
 
 echo "Packing git cache..."
 ./tools/cirrus_pack_git.sh || true

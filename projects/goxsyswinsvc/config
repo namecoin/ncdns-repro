@@ -1,6 +1,7 @@
-version: 1.0.0
-git_url:  https://github.com/btcsuite/winsvc.git
-git_hash: f8fb11f83f7e860e3769a08e6811d1b399a43722
+# vim: filetype=yaml sw=2
+version: '[% c("abbrev") %]'
+git_url: '[% pc("goxsys", "git_url") %]'
+git_hash: '[% pc("goxsys", "git_hash") %]'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'
@@ -8,10 +9,10 @@ build: '[% c("projects/go/var/build_go_lib") %]'
 var:
   container:
     use_container: 1
-  go_lib: github.com/btcsuite/winsvc
+  go_lib: golang.org/x/sys
   go_lib_install:
-    - github.com/btcsuite/winsvc/mgr
-    - github.com/btcsuite/winsvc/svc
+    - golang.org/x/sys/windows/svc
+    - golang.org/x/sys/windows/svc/mgr
 
 input_files:
   - project: container-image

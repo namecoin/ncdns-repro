@@ -1,6 +1,6 @@
-version: '[% c("abbrev") %]'
+version: '0.1'
 git_url: https://github.com/namecoin/ncdns.git
-git_hash: 'c947efb679dd55796e1b2ae405f6ce7d6a5d6b6e'
+git_hash: '1fced9acbade9f4afd1908242b1020f762375241'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

@@ -50,7 +50,7 @@ targets:
   windows:
     var:
       go_lib_deps:
-        - gowinsvc
+        - goxsyswinsvc
         - gosvcutils
         - goeasyconfig
       cgo: 0
@@ -65,8 +65,8 @@ input_files:
   - name: binutils
     project: binutils
     enable: '[% c("var/linux") && c("var/cgo") %]'
-  - name: gowinsvc
-    project: gowinsvc
+  - name: goxsyswinsvc
+    project: goxsyswinsvc
     enable: '[% c("var/windows") %]'
   - name: gosvcutils
     project: gosvcutils

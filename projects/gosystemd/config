@@ -1,6 +1,6 @@
-version: 22.0.0
+version: 22.3.1
 git_url:  https://github.com/coreos/go-systemd.git
-git_hash: 2d78030078ef61b3cae27f42ad6d0e46db51b339
+git_hash: 256724e3db397c5ca4287b8f0c78e9e8492fdb01
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

@@ -70,7 +70,8 @@ print_os_arch () {
   build_script:
     - \"./tools/cirrus_build_project.sh plain-binaries ${CHANNEL} ${OS} ${ARCH} 0\""
     echo "  env:
-    CIRRUS_LOG_TIMESTAMP: true"
+    CIRRUS_LOG_TIMESTAMP: true
+    BUMP_DEPS: 0"
     echo ""
 
     # TODO fine-tune this list
@@ -172,7 +173,8 @@ print_os_arch () {
     SIGN_BUILD: 0"
         fi
         echo "  env:
-    CIRRUS_LOG_TIMESTAMP: true"
+    CIRRUS_LOG_TIMESTAMP: true
+    BUMP_DEPS: 0"
         if [[ "$PROJECT_ITER" == "nosign" ]]; then
             echo '  only_if: $CIRRUS_REPO_OWNER != "namecoin"'
         fi
@@ -204,6 +206,14 @@ for CHANNEL in release; do
     print_os_arch windows i686
     print_os_arch osx x86_64
 done
+
+echo 'bump_docker_builder:
+  bump_script:
+    - "./tools/cirrus_build_project.sh null null null null 0"
+  env:
+    BUMP_DEPS: 1
+    DEPLOY_KEY: ENCRYPTED[7969cc42abbc36c75c5673f2227e2eeec92577391c28c678243f95e01edffa17137e52cbddbe3e409cdab78a637edec5]
+  only_if: $CIRRUS_REPO_OWNER == "namecoin"'
 ) > .cirrus.yml
 
 # Timeout issues?

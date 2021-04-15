@@ -36,6 +36,11 @@ cat tools/rbm.local.conf.onetarget | sed "s/CHANNEL/$CHANNEL/g" | sed "s/ncdns-a
 echo "Patching rbm..."
 ./tools/patch-tor-to-namecoin.sh
 
+if [[ "$BUMP_DEPS" -eq 1 ]]; then
+    ./tools/namecoin-bump-versions.sh
+    exit 0
+fi
+
 echo "Restoring caches..."
 cp -a ./out_cache1/* ./out/ || true
 cp -a ./out_cache2/* ./out/ || true

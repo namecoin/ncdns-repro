@@ -197,4 +197,9 @@ then
 
     echo "Pushing branch..."
     git push --force deploy bump-deps
+
+    echo "Requesting pull..."
+    curl -X "POST" -u "NamecoinBot:${PR_TOKEN}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${CIRRUS_REPO_FULL_NAME}/pulls" -d '{"head": "NamecoinBot:bump-deps", "base": "master", "title": "Bump dependencies", "maintainer_can_modify": true}'
+
+    echo "Pull request submitted!"
 fi

@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/golang/groupcache.git
-git_hash: 215e87163ea771ffa998a96c611387313bb5a403
+git_hash: 41bb18bfe9da5321badc438f91158cd790a33aa3
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

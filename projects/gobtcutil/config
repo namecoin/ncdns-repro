@@ -1,6 +1,6 @@
-version: '1.0.1'
+version: '1.0.2'
 git_url:  https://github.com/btcsuite/btcutil.git
-git_hash: 02a4fd9de1d52e877491996349a92d54c653ccbf
+git_hash: b2bf7f89d674a3702182b7e15f52807896051af3
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

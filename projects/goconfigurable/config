@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/hlandau/configurable.git
-git_hash: 34642c4c8cbf56801d0e34f0e82187305983ac26
+git_hash: bf2d3415bde94ee9235e0b8c666476015c84b508
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

@@ -171,7 +171,11 @@ if [ "$UPDATE_NEEDED" = 1 ]
 then
     echo "An update is required."
 
-    (curl -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${CIRRUS_REPO_FULL_NAME}/pulls?state=open&head=NamecoinBot:bump-deps" | grep -i "NamecoinBot:bump-deps") && (echo "A bump PR is already open; exiting."; exit 0)
+    if curl -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${CIRRUS_REPO_FULL_NAME}/pulls?state=open&head=NamecoinBot:bump-deps" | grep -i "NamecoinBot:bump-deps"
+    then
+        echo "A bump PR is already open; exiting."
+        exit 0
+    fi
 
     echo "No bump PR is currently open; proceeding."
 

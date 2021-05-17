@@ -1,6 +1,6 @@
-version: 1.0.10
+version: 1.0.11
 git_url:  https://github.com/hlandau/svcutils.git
-git_hash: c25dac49e50cbbcbef8c81b089f56156f4067729
+git_hash: 6e7e875ab1a2f881e8bc757c1b2c1a779bcd57ee
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

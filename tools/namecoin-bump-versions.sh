@@ -8,6 +8,10 @@ UPDATE_NEEDED=0
 git branch bump-deps
 git checkout bump-deps
 
+echo "Configuring username/email..."
+git config user.name "NamecoinBot"
+git config user.email "ncdns-repro-bump-bot@namecoin.org"
+
 # project Git hashes
 
 for PROJECTPATH in ./projects/*
@@ -80,6 +84,7 @@ ${LATEST_INFO}"
             sed --in-place "s/${VERSION_STRIPPED}/${LATEST_VERSION_STRIPPED}/g" "./projects/${PROJECT}/config"
         fi
         git add "./projects/${PROJECT}/config"
+        git commit --message="Bump ${PROJECT}"
     fi
 done
 
@@ -99,6 +104,7 @@ then
 
     echo sed --in-place "s/${BIND_VERSION}/${LATEST_BIND_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
+    git commit --message="Bump BIND"
 fi
 
 CONSENSUSJ_VERSION=$(./rbm/rbm showconf ncdns-nsis var/consensusj_namecoin_version)
@@ -111,6 +117,7 @@ then
 
     echo sed --in-place "s/${CONSENSUSJ_VERSION}/${LATEST_CONSENSUSJ_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
+    git commit --message="Bump ConsensusJ"
 fi
 
 NAMECOIN_VERSION=$(./rbm/rbm showconf ncdns-nsis var/namecoin_core_version)
@@ -123,6 +130,7 @@ then
 
     sed --in-place "s/${NAMECOIN_VERSION}/${LATEST_NAMECOIN_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
+    git commit --message="Bump Namecoin Core"
 fi
 
 DNSSEC_TRIGGER_VERSION=$(./rbm/rbm showconf ncdns-nsis var/dnssec_trigger_version)
@@ -135,6 +143,7 @@ then
 
     echo sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
+    git commit --message="Bump DNSSEC-Trigger"
 fi
 
 # ncdns-nsis
@@ -165,6 +174,7 @@ then
     popd
 
     git add "tor-browser-build"
+    git commit --message="Bump tor-browser-build"
 fi
 
 if [ "$UPDATE_NEEDED" = 1 ]
@@ -178,13 +188,6 @@ then
     fi
 
     echo "No bump PR is currently open; proceeding."
-
-    echo "Configuring username/email..."
-    git config user.name "NamecoinBot"
-    git config user.email "ncdns-repro-bump-bot@namecoin.org"
-
-    echo "Committing changes..."
-    git commit --message="Bump dependencies"
 
     set +x
     echo "Adding deploy key..."

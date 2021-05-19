@@ -1,0 +1,21 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/namecoin/x509-compressed.git
+git_hash: '11c148e3a82a374dc8cc7800729ae31d1de3514b'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/namecoin/x509-compressed
+  go_lib_install:
+    - github.com/namecoin/x509-compressed/x509
+  build_go_lib_pre: |
+    export CGO_ENABLED=0
+    go generate github.com/namecoin/x509-compressed/x509
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go

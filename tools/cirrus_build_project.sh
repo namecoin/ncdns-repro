@@ -36,6 +36,9 @@ cat tools/rbm.local.conf.onetarget | sed "s/CHANNEL/$CHANNEL/g" | sed "s/ncdns-a
 echo "Patching rbm..."
 ./tools/patch-tor-to-namecoin.sh
 
+echo "Mapping subid's..."
+./tools/add-root-subids.py
+
 if [[ "$BUMP_DEPS" -eq 1 ]]; then
     ./tools/namecoin-bump-versions.sh
     exit 0

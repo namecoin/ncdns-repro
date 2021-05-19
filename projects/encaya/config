@@ -1,6 +1,6 @@
-version: '0.0.1'
+version: '0.1'
 git_url:  https://github.com/namecoin/encaya.git
-git_hash: '2eeb272f4bb7dffc13e39a609b308656a5a121ea'
+git_hash: 'fe553b2a8664654f54fd8b3673bbdc362ca27108'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:
@@ -12,6 +12,9 @@ var:
     - gosafetlsa
     - goeasyconfig
     - q
+  go_lib_install:
+    - github.com/namecoin/encaya
+    - github.com/namecoin/encaya/encayagen
   cgo: 0
   build_go_lib_pre: |
     export CGO_ENABLED=[% c("var/cgo") %] 

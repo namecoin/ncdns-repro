@@ -11,7 +11,7 @@ mkdir -p $distdir
 
 mkdir -p $GOPATH/src/github.com/namecoin
 tar -C $GOPATH/src/github.com/namecoin -xf [% project %]-[% c('version') %].tar.gz
-mv $GOPATH/src/github.com/namecoin/encaya-[% c('version') %] $GOPATH/src/github.com/namecoin/encaya
+mv $GOPATH/src/github.com/namecoin/[% project %]-[% c('version') %] $GOPATH/src/github.com/namecoin/[% project %]
 
 [% FOREACH inst IN c("var/go_lib_install") %]
   # TODO: Remove static build ID after migrating to Go 1.13.3+
@@ -26,7 +26,7 @@ mv $GOPATH/src/github.com/namecoin/encaya-[% c('version') %] $GOPATH/src/github.
 
 ls $GOPATHBIN
 
-for x in encaya encayagen; do
+for x in [% project %]; do
   cp -a $GOPATHBIN/"$x"[% IF c("var/windows") %].exe[% END %] $distdir/
 done
 

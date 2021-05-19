@@ -1,0 +1,31 @@
+version: '1.14'
+git_url:  https://github.com/namecoin/generate_nmc_cert.git
+git_hash: 'v[% c("version") %]'
+tag_gpg_id: 1
+gpg_keyring: namecoin.gpg
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - gox509compressed
+    - ncdns
+  go_lib_install:
+    - github.com/namecoin/generate_nmc_cert
+  cgo: 0
+  build_go_lib_pre: |
+    export CGO_ENABLED=[% c("var/cgo") %]
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: gox509compressed
+    project: gox509compressed
+  - name: ncdns
+    project: ncdns
+    # Build ncdns as a library, not an executable.
+    # TODO: refactor this once our build_go_lib executable patch is merged by upstream Tor
+    var:
+      go_lib_no_output: 0

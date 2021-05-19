@@ -12,6 +12,8 @@ input_files:
     enable: '[% c("var/windows") %]'
   - name: encaya
     project: encaya
+  - name: generate_nmc_cert
+    project: generate_nmc_cert
   - name: ncdns
     project: ncdns
   - name: ncp11

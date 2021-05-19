@@ -88,7 +88,7 @@ cd /var/tmp/dist
   done
 
   [% IF c("var/enable_namecoin_tlsa") %]
-    for x in ncdumpzone generate_nmc_cert tlsrestrict_chromium_tool; do
+    for x in ncdumpzone tlsrestrict_chromium_tool; do
       cp -a $GOPATHBIN/"$x"[% IF c("var/windows") %].exe[% END %] $distdir/
     done
   [% END %]

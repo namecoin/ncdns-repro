@@ -8,6 +8,7 @@ mkdir -p $distdir
   tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/certinject') %]
 [% END %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/encaya') %]
+tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/generate_nmc_cert') %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncdns') %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncp11') %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncprop279') %]

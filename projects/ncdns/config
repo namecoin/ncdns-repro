@@ -40,7 +40,6 @@ var:
   optional_go_lib_install:
     - github.com/namecoin/ncdns/certdehydrate
     - github.com/namecoin/ncdns/certinject
-    - github.com/namecoin/ncdns/generate_nmc_cert
     - github.com/namecoin/ncdns/ncdumpzone
     - github.com/namecoin/ncdns/ncdumpzone/ncdumpzone
     - github.com/namecoin/ncdns/tlsoverridefirefox

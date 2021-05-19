@@ -36,6 +36,7 @@ var:
   optional_go_lib_deps:
     - gosplicesign
     - gotlsrestrictnss
+    - gox509compressed
   optional_go_lib_install:
     - github.com/namecoin/ncdns/certdehydrate
     - github.com/namecoin/ncdns/certinject
@@ -113,6 +114,9 @@ input_files:
     project: gopretty
   - name: godegoutils
     project: godegoutils
+  - name: gox509compressed
+    project: gox509compressed
+    enable: '[% c("var/enable_namecoin_tlsa") %]'
   - name: goxnet
     project: goxnet
   - name: goxsys

@@ -15,6 +15,10 @@ targets:
     var:
       go_lib_deps:
         - goxsysunix
+  osx-x86_64:
+    var:
+      go_lib_deps:
+        - goxsysunix
 
 input_files:
   - project: container-image
@@ -22,4 +26,4 @@ input_files:
     project: go
   - name: goxsysunix
     project: goxsysunix
-    enable: '[% c("var/linux") %]'
+    enable: '[% c("var/linux") || c("var/osx") %]'

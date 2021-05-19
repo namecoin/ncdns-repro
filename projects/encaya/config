@@ -12,6 +12,9 @@ var:
     - gosafetlsa
     - goeasyconfig
     - q
+  go_lib_install:
+    - github.com/namecoin/encaya
+    - github.com/namecoin/encaya/encayagen
   cgo: 0
   build_go_lib_pre: |
     export CGO_ENABLED=[% c("var/cgo") %] 

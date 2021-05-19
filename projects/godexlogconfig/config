@@ -31,6 +31,7 @@ targets:
         - gobuildinfo
         - goeasyconfig
         - goxlog
+        - goxsyswinsvc
 
 input_files:
   - project: container-image
@@ -42,12 +43,15 @@ input_files:
   - name: binutils
     project: binutils
     enable: '[% c("var/linux") %]'
-  - name: goxlog
-    project: goxlog
+  - name: gobuildinfo
+    project: gobuildinfo
   - name: goeasyconfig
     project: goeasyconfig
   - name: gosystemd
     project: gosystemd
     enable: '[% ! c("var/windows") %]'
-  - name: gobuildinfo
-    project: gobuildinfo
+  - name: goxlog
+    project: goxlog
+  - name: goxsyswinsvc
+    project: goxsyswinsvc
+    enable: '[% c("var/windows") %]'

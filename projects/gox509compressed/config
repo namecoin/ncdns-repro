@@ -9,6 +9,8 @@ var:
   container:
     use_container: 1
   go_lib: github.com/namecoin/x509-compressed
+  go_lib_deps:
+    - goxcrypto
   go_lib_install:
     - github.com/namecoin/x509-compressed/x509
   build_go_lib_pre: |
@@ -19,3 +21,5 @@ input_files:
   - project: container-image
   - name: go
     project: go
+  - name: goxcrypto
+    project: goxcrypto

@@ -152,7 +152,9 @@ print_os_arch () {
       - \"echo interrupted_ac_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
   checkpoint_background_script:
-    - sleep 110m
+    # 110m caused the 2hr task timeout to be hit while the cache was uploading
+    # for macosx-toolchain, which broke subsequent builds.
+    - sleep 105m
     - ./tools/container-interrupt.sh
   build_script:
     - \"./tools/cirrus_build_project.sh ${PROJECT_BASE} ${CHANNEL} ${OS} ${ARCH} 1\""

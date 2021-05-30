@@ -21,7 +21,7 @@ mv .cirrus.yml .cirrus.yml.bak
 diff .cirrus.yml .cirrus.yml.bak
 
 echo "Installing rbm deps..."
-APT_DEPS="libyaml-libyaml-perl libtemplate-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git runc rsync"
+APT_DEPS="libyaml-libyaml-perl libtemplate-perl libdatetime-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git uidmap rsync"
 apt-get install -y $APT_DEPS || (sleep 15s && apt-get install -y $APT_DEPS)
 
 echo "Pulling rbm..."
@@ -35,6 +35,9 @@ cat tools/rbm.local.conf.onetarget | sed "s/CHANNEL/$CHANNEL/g" | sed "s/ncdns-a
 
 echo "Patching rbm..."
 ./tools/patch-tor-to-namecoin.sh
+
+echo "Mapping subid's..."
+./tools/add-root-subids.py
 
 if [[ "$BUMP_DEPS" -eq 1 ]]; then
     ./tools/namecoin-bump-versions.sh

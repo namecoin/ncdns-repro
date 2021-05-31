@@ -93,7 +93,7 @@ done
 BIND_VERSION=$(./rbm/rbm showconf ncdns-nsis var/bind_version)
 LATEST_BIND_VERSION=$(curl https://ftp.isc.org/isc/bind/ | grep --only-matching '"[0-9]*\.[0-9]*\.[0-9]*/"' | tail --lines=1 | grep --only-matching '[0-9]*\.[0-9]*\.[0-9]*')
 
-if [ "${BIND_VERSION}" != "(${LATEST_BIND_VERSION})" ]
+if [ "${BIND_VERSION}" != "${LATEST_BIND_VERSION}" ]
 then
     UPDATE_NEEDED=1
     echo "BIND: ncdns-nsis uses ${BIND_VERSION}, latest tag is ${LATEST_BIND_VERSION}"
@@ -106,7 +106,7 @@ fi
 CONSENSUSJ_VERSION=$(./rbm/rbm showconf ncdns-nsis var/consensusj_namecoin_version)
 LATEST_CONSENSUSJ_VERSION=$(curl https://www.namecoin.org/download/betas/ | grep --only-matching 'consensusj-namecoin-[0-9\.]*' | tail --lines=1 | grep --only-matching '[0-9\.]*')
 
-if [ "${CONSENSUSJ_VERSION}" != "(${LATEST_CONSENSUSJ_VERSION})" ]
+if [ "${CONSENSUSJ_VERSION}" != "${LATEST_CONSENSUSJ_VERSION}" ]
 then
     UPDATE_NEEDED=1
     echo "ConsensusJ: ncdns-nsis uses ${CONSENSUSJ_VERSION}, latest tag is ${LATEST_CONSENSUSJ_VERSION}"
@@ -119,7 +119,7 @@ fi
 NAMECOIN_VERSION=$(./rbm/rbm showconf ncdns-nsis var/namecoin_core_version)
 LATEST_NAMECOIN_VERSION=$(curl https://www.namecoin.org/download/ | grep --only-matching -E 'namecoin-core-[0-9\.]+' | head --lines=1 | grep --only-matching -E '[0-9\.]+')
 
-if [ "${NAMECOIN_VERSION}" != "(${LATEST_NAMECOIN_VERSION})" ]
+if [ "${NAMECOIN_VERSION}" != "${LATEST_NAMECOIN_VERSION}" ]
 then
     UPDATE_NEEDED=1
     echo "Namecoin Core: ncdns-nsis uses ${NAMECOIN_VERSION}, latest tag is ${LATEST_NAMECOIN_VERSION}"
@@ -132,7 +132,7 @@ fi
 DNSSEC_TRIGGER_VERSION=$(./rbm/rbm showconf ncdns-nsis var/dnssec_trigger_version)
 LATEST_DNSSEC_TRIGGER_VERSION=$(curl https://www.nlnetlabs.nl/downloads/dnssec-trigger/ | grep --only-matching -E 'dnssec_trigger_setup_[0-9\.]+.exe' | tail --lines=1 | grep --only-matching -E '[0-9\.]+[0-9]')
 
-if [ "${DNSSEC_TRIGGER_VERSION}" != "(${LATEST_DNSSEC_TRIGGER_VERSION})" ]
+if [ "${DNSSEC_TRIGGER_VERSION}" != "${LATEST_DNSSEC_TRIGGER_VERSION}" ]
 then
     UPDATE_NEEDED=1
     echo "DNSSEC-Trigger: ncdns-nsis uses ${DNSSEC_TRIGGER_VERSION}, latest tag is ${DNSSEC_TRIGGER_VERSION}"

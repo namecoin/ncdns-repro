@@ -98,7 +98,7 @@ then
     UPDATE_NEEDED=1
     echo "BIND: ncdns-nsis uses ${BIND_VERSION}, latest tag is ${LATEST_BIND_VERSION}"
 
-    echo sed --in-place "s/${BIND_VERSION}/${LATEST_BIND_VERSION}/g" "./projects/ncdns-nsis/config"
+    sed --in-place "s/${BIND_VERSION}/${LATEST_BIND_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump BIND"
 fi
@@ -111,7 +111,7 @@ then
     UPDATE_NEEDED=1
     echo "ConsensusJ: ncdns-nsis uses ${CONSENSUSJ_VERSION}, latest tag is ${LATEST_CONSENSUSJ_VERSION}"
 
-    echo sed --in-place "s/${CONSENSUSJ_VERSION}/${LATEST_CONSENSUSJ_VERSION}/g" "./projects/ncdns-nsis/config"
+    sed --in-place "s/${CONSENSUSJ_VERSION}/${LATEST_CONSENSUSJ_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump ConsensusJ"
 fi
@@ -137,7 +137,7 @@ then
     UPDATE_NEEDED=1
     echo "DNSSEC-Trigger: ncdns-nsis uses ${DNSSEC_TRIGGER_VERSION}, latest tag is ${DNSSEC_TRIGGER_VERSION}"
 
-    echo sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
+    sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump DNSSEC-Trigger"
 fi

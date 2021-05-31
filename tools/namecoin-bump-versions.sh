@@ -90,10 +90,6 @@ done
 
 # ncdns-nsis dependencies
 
-# ncdns-nsis isn't merged yet.
-if false
-then
-
 BIND_VERSION=$(./rbm/rbm showconf ncdns-nsis var/bind_version)
 LATEST_BIND_VERSION=$(curl https://ftp.isc.org/isc/bind/ | grep --only-matching '"[0-9]*\.[0-9]*\.[0-9]*/"' | tail --lines=1 | grep --only-matching '[0-9]*\.[0-9]*\.[0-9]*')
 
@@ -144,9 +140,6 @@ then
     echo sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump DNSSEC-Trigger"
-fi
-
-# ncdns-nsis
 fi
 
 # tor-browser-build submodule

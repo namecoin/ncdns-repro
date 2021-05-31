@@ -1,7 +1,7 @@
 # vim: filetype=yaml sw=2
 version: '[% pc("ncdns", "version") %]'
 git_url: https://github.com/namecoin/ncdns-nsis.git
-git_hash: 'f3f7c7a7a13897044e4499cd89d61bf9c2b1d07e'
+git_hash: 'a59abfd635ff0f3027ef3b62d9248864eb8b0dab'
 filename: 'ncdns-[% c("version") %]-[% c("arch") %]-install-[% c("var/build_id") %].exe'
 
 var:

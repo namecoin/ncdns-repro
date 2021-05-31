@@ -656,7 +656,7 @@ release_linux_x86_64_release_nosign_docker_builder:
   env:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
-  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  only_if: $CIRRUS_REPO_OWNER != "namecoin" || "$CIRRUS_PR" != ""
   depends_on:
     - "release_linux_x86_64_plain-binaries_1"
 
@@ -728,7 +728,7 @@ release_linux_x86_64_release_sign_docker_builder:
     - "./tools/cirrus_build_project.sh release release linux x86_64 1"
   binaries_artifacts:
     path: "release/**/*"
-  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin" && "$CIRRUS_PR" == ""
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
@@ -1395,7 +1395,7 @@ release_linux_i686_release_nosign_docker_builder:
   env:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
-  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  only_if: $CIRRUS_REPO_OWNER != "namecoin" || "$CIRRUS_PR" != ""
   depends_on:
     - "release_linux_i686_plain-binaries_1"
 
@@ -1467,7 +1467,7 @@ release_linux_i686_release_sign_docker_builder:
     - "./tools/cirrus_build_project.sh release release linux i686 1"
   binaries_artifacts:
     path: "release/**/*"
-  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin" && "$CIRRUS_PR" == ""
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
@@ -2134,7 +2134,7 @@ release_windows_x86_64_release_nosign_docker_builder:
   env:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
-  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  only_if: $CIRRUS_REPO_OWNER != "namecoin" || "$CIRRUS_PR" != ""
   depends_on:
     - "release_windows_x86_64_plain-binaries_1"
 
@@ -2206,7 +2206,7 @@ release_windows_x86_64_release_sign_docker_builder:
     - "./tools/cirrus_build_project.sh release release windows x86_64 1"
   binaries_artifacts:
     path: "release/**/*"
-  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin" && "$CIRRUS_PR" == ""
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
@@ -2873,7 +2873,7 @@ release_windows_i686_release_nosign_docker_builder:
   env:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
-  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  only_if: $CIRRUS_REPO_OWNER != "namecoin" || "$CIRRUS_PR" != ""
   depends_on:
     - "release_windows_i686_plain-binaries_1"
 
@@ -2945,7 +2945,7 @@ release_windows_i686_release_sign_docker_builder:
     - "./tools/cirrus_build_project.sh release release windows i686 1"
   binaries_artifacts:
     path: "release/**/*"
-  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin" && "$CIRRUS_PR" == ""
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]
@@ -3612,7 +3612,7 @@ release_osx_x86_64_release_nosign_docker_builder:
   env:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
-  only_if: $CIRRUS_REPO_OWNER != "namecoin"
+  only_if: $CIRRUS_REPO_OWNER != "namecoin" || "$CIRRUS_PR" != ""
   depends_on:
     - "release_osx_x86_64_plain-binaries_1"
 
@@ -3684,7 +3684,7 @@ release_osx_x86_64_release_sign_docker_builder:
     - "./tools/cirrus_build_project.sh release release osx x86_64 1"
   binaries_artifacts:
     path: "release/**/*"
-  only_if: $CIRRUS_REPO_OWNER == "namecoin"
+  only_if: $CIRRUS_REPO_OWNER == "namecoin" && "$CIRRUS_PR" == ""
   env:
     SIGN_BUILD: 1
     SIGN_KEY: ENCRYPTED[33d4594d76774e6447dfd9fabee90f6214b34e209fa1c1c2ce93ed1a40447a235b013b78afe85db52d5561651a821be1]

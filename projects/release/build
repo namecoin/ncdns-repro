@@ -18,9 +18,12 @@ mkdir -p "$destdir"
 [% END -%]
 [% IF c("var/ncdns-windows-i686") -%]
   mv [% c('input_files_by_name/windows-i686') %] "$destdir"/
+  # NSIS disabled for i686 due to unavailability of BIND binaries.
+  #mv [% c('input_files_by_name/windows-i686-nsis') %] "$destdir"/
 [% END -%]
 [% IF c("var/ncdns-windows-x86_64") -%]
   mv [% c('input_files_by_name/windows-x86_64') %] "$destdir"/
+  mv [% c('input_files_by_name/windows-x86_64-nsis') %] "$destdir"/
 [% END -%]
 [% IF c("var/ncdns-osx-x86_64") -%]
   mv [% c('input_files_by_name/osx-x86_64') %] "$destdir"/

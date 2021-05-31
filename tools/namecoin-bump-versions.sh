@@ -104,7 +104,7 @@ then
 fi
 
 CONSENSUSJ_VERSION=$(./rbm/rbm showconf ncdns-nsis var/consensusj_namecoin_version)
-LATEST_CONSENSUSJ_VERSION=$(curl https://www.namecoin.org/download/betas/ | grep --only-matching 'ConsensusJ-Namecoin/[0-9\.]*' | tail --lines=1 | grep --only-matching '[0-9\.]*')
+LATEST_CONSENSUSJ_VERSION=$(curl https://www.namecoin.org/download/betas/ | grep --only-matching 'consensusj-namecoin-[0-9\.]*' | tail --lines=1 | grep --only-matching '[0-9\.]*')
 
 if [ "${CONSENSUSJ_VERSION}" != "(${LATEST_CONSENSUSJ_VERSION})" ]
 then

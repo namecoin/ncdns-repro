@@ -1,6 +1,8 @@
 version: '0.2'
 git_url: https://github.com/namecoin/ncdns.git
-git_hash: 'f8e40887fb21c64294cfa177189f0df4f1740d9c'
+git_hash: 'v[% c("version") %]'
+tag_gpg_id: 1
+gpg_keyring: namecoin.gpg
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

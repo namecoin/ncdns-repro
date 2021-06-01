@@ -1,7 +1,7 @@
 # vim: filetype=yaml sw=2
 version: '[% pc("ncdns", "version") %]'
 git_url: https://github.com/namecoin/ncdns-nsis.git
-git_hash: 'f3f7c7a7a13897044e4499cd89d61bf9c2b1d07e'
+git_hash: 'cdbd0532b184614a0f32eac1a1e908955f1bc44d'
 filename: 'ncdns-[% c("version") %]-[% c("arch") %]-install-[% c("var/build_id") %].exe'
 
 var:
@@ -53,4 +53,4 @@ input_files:
   - filename: pe_checksum_fix.py
   - name: python-pefile
     URL: https://files.pythonhosted.org/packages/7e/9b/f99171190f04cd23768547dd34533b4016bd582842f53cd9fe9585a74c74/pefile-2017.11.5.tar.gz
-    sha256sum: 675c35ee0e1677db9e80d2f48d8a7ff2cf38e6207e8cd5e2a2c6d126db025854
+    sha256sum: 675c35ee0e1677db9e80.2f48d8a7ff2cf38e6207e8cd5e2a2c6d126db025854

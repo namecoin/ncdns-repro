@@ -1,6 +1,8 @@
-version: 0.0.2
+version: "0.0.3"
 git_url:  https://github.com/namecoin/ncbtcjson.git
-git_hash: b33c0786db7d88d1308399289a17e9b7b21ac2f0
+git_hash: 'v[% c("version") %]'
+tag_gpg_id: 1
+gpg_keyring: namecoin.gpg
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

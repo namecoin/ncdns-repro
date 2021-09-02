@@ -10,11 +10,14 @@ var:
     use_container: 1
   go_lib: github.com/kr/pretty
   go_lib_deps:
+    - gointernal
     - gotext
 
 input_files:
   - project: container-image
   - name: go
     project: go
+  - name: gointernal
+    project: gointernal
   - name: gotext
     project: gotext

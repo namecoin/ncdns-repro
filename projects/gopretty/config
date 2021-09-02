@@ -1,6 +1,6 @@
-version: 0.2.1
+version: 0.3.0
 git_url:  https://github.com/kr/pretty.git
-git_hash: ead452280cd055b2ae8a7f0db5eb37a878d902f7
+git_hash: a883a8422cd235c67c6c4fdcb7bbb022143e10b1
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

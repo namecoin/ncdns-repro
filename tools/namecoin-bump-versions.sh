@@ -91,7 +91,9 @@ done
 # ncdns-nsis dependencies
 
 BIND_VERSION=$(./rbm/rbm showconf ncdns-nsis var/bind_version)
-LATEST_BIND_VERSION=$(curl https://ftp.isc.org/isc/bind/ | grep --only-matching '"[0-9]*\.[0-9]*\.[0-9]*/"' | tail --lines=1 | grep --only-matching '[0-9]*\.[0-9]*\.[0-9]*')
+# As per https://www.isc.org/download/#BIND , "9.16.x is the last branch of
+# BIND with native Windows support."
+LATEST_BIND_VERSION=$(curl https://ftp.isc.org/isc/bind/ | grep --only-matching '"[0-9]*\.[0-9]*\.[0-9]*/"' | grep '9\.16' | tail --lines=1 | grep --only-matching '[0-9]*\.[0-9]*\.[0-9]*')
 
 if [ "${BIND_VERSION}" != "${LATEST_BIND_VERSION}" ]
 then

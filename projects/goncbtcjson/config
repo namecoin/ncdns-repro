@@ -1,6 +1,6 @@
-version: 0.0.2
+version: 0.0.3
 git_url:  https://github.com/namecoin/ncbtcjson.git
-git_hash: b33c0786db7d88d1308399289a17e9b7b21ac2f0
+git_hash: f9f5aaa8f21ea30ee938e2ed702767789cb96c3c
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

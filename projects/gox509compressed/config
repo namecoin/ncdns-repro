@@ -1,6 +1,8 @@
-version: '[% c("abbrev") %]'
+version: '0.0.1'
 git_url:  https://github.com/namecoin/x509-compressed.git
-git_hash: '11c148e3a82a374dc8cc7800729ae31d1de3514b'
+git_hash: 'v[% c("version") %]'
+tag_gpg_id: 1
+gpg_keyring: namecoin.gpg
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

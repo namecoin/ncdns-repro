@@ -1,6 +1,6 @@
-version: 0.21.0
+version: 0.22.0
 git_url:  https://github.com/namecoin/btcd.git
-git_hash: ac482bd97741fdc736c7e1290bc8ea5282e1b08b
+git_hash: 33f692d1dd8093c24aad662eb88952224f0308af
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

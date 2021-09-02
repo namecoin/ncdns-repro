@@ -1,0 +1,18 @@
+version: '1.8.0'
+git_url:  https://github.com/rogpeppe/go-internal.git
+git_hash: '8ef127344c684f0eb23e5eea40f303b74de097b2'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+build: '[% c("projects/go/var/build_go_lib") %]'
+
+var:
+  container:
+    use_container: 1
+  go_lib: github.com/rogpeppe/go-internal
+  go_lib_install:
+    - github.com/rogpeppe/go-internal/fmtsort
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go

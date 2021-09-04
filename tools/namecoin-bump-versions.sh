@@ -18,9 +18,12 @@ for PROJECTPATH in ./projects/*
 do
     PROJECT=$(basename ${PROJECTPATH})
 
+    echo "Checking project $PROJECT..."
+
     # Tor devs are in charge of their dependencies that we load via symlink
     if [[ -L "${PROJECTPATH}" || "${PROJECT}" = goxcrypto* || "${PROJECT}" = goxnet* || "${PROJECT}" = goxsys* ]]
     then
+        echo "$PROJECT: project inherited from TBB; skipping"
         continue
     fi
 
@@ -29,12 +32,14 @@ do
     grep "project: ${PROJECT}" ./projects/electrum-nmc/config > /dev/null || PROJECT_IS_ELECTRUM_DEP=0
     if [ "$PROJECT_IS_ELECTRUM_DEP" = 1 ]
     then
+        echo "$PROJECT: project inherited from Electrum; skipping"
         continue
     fi
 
     # x509-signature-splice branch depends on Go version, so it won't always be the latest
     if [ "${PROJECT}" = "gox509signaturesplice" ]
     then
+        echo "$PROJECT: project depends on Go version; skipping"
         continue
     fi
 
@@ -85,6 +90,8 @@ ${LATEST_INFO}"
         fi
         git add "./projects/${PROJECT}/config"
         git commit --message="Bump ${PROJECT}"
+    else
+        echo "$PROJECT: up to date"
     fi
 done
 
@@ -103,6 +110,8 @@ then
     sed --in-place "s/${BIND_VERSION}/${LATEST_BIND_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump BIND"
+else
+    echo "BIND: up to date"
 fi
 
 CONSENSUSJ_VERSION=$(./rbm/rbm showconf ncdns-nsis var/consensusj_namecoin_version)
@@ -116,6 +125,8 @@ then
     sed --in-place "s/${CONSENSUSJ_VERSION}/${LATEST_CONSENSUSJ_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump ConsensusJ"
+else
+    echo "ConsensusJ: up to date"
 fi
 
 NAMECOIN_VERSION=$(./rbm/rbm showconf ncdns-nsis var/namecoin_core_version)
@@ -129,6 +140,8 @@ then
     sed --in-place "s/${NAMECOIN_VERSION}/${LATEST_NAMECOIN_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump Namecoin Core"
+else
+    echo "Namecoin Core: up to date"
 fi
 
 DNSSEC_TRIGGER_VERSION=$(./rbm/rbm showconf ncdns-nsis var/dnssec_trigger_version)
@@ -142,6 +155,8 @@ then
     sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump DNSSEC-Trigger"
+else
+    echo "DNSSEC-Trigger: up to date"
 fi
 
 # tor-browser-build submodule
@@ -170,6 +185,8 @@ then
 
     git add "tor-browser-build"
     git commit --message="Bump tor-browser-build"
+else
+    echo "tor-browser-build: up to date"
 fi
 
 if [ "$UPDATE_NEEDED" = 1 ]

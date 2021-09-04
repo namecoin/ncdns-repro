@@ -74,7 +74,11 @@ do
     LATEST_INFO=$(git ls-remote "${GIT_URL}" HEAD ${LATEST_TAG} ${LATEST_TAG}^{})
 
     PROJECT_UPDATE_NEEDED=0
-    echo "${LATEST_INFO}" | grep ${GIT_REV} > /dev/null || PROJECT_UPDATE_NEEDED=1
+    # Search for the Git rev, either as a tag between a slash and the end of a
+    # line, a tag between a slash and ^{}, or a hash between the start of a
+    # line and whitespace.  Prevent substring matches e.g. matching v0.2.2 when
+    # searching for v0.2.
+    echo "${LATEST_INFO}" | grep -E '(^|\/)'${GIT_REV}'((\^\{\})?$|\s)' > /dev/null || PROJECT_UPDATE_NEEDED=1
     if [ "${PROJECT_UPDATE_NEEDED}" = 1 ]
     then
         UPDATE_NEEDED=1

@@ -11,6 +11,7 @@ var:
   consensusj_namecoin_version: '0.3.2.1'
   dnssec_trigger_version: '0.17'
   namecoin_core_version: '0.21.0.1'
+  electrum_nmc_version: '3.3.10'
   container:
     use_container: 1
   deps:
@@ -44,6 +45,9 @@ input_files:
     URL: 'https://www.namecoin.org/files/namecoin-core/namecoin-core-[% c("var/namecoin_core_version") %]/namecoin-nc[% c("var/namecoin_core_version") %]-win64-setup-unsigned.exe'
     sha256sum: f82c070daa086c2243d641bb07a31d6dc272e191a7792860974d0cd1f0b97873
     enable: '[% c("var/windows-x86_64") %]'
+  - name: electrum-nmc
+    URL: 'https://www.namecoin.org/files/electrum-nmc/electrum-nmc-[% c("var/electrum_nmc_version") %]/electrum-nmc-nc[% c("var/electrum_nmc_version") %]-setup.exe'
+    sha256sum: e7cdd9ed966a2fc8058c14b5ff26431a13899159fe519136bf98c2b0769bfa7d
   - name: consensusj-namecoin
     URL: 'https://www.namecoin.org/files/ConsensusJ-Namecoin/[% c("var/consensusj_namecoin_version") %]/namecoinj-daemon-0.3.2-SNAPSHOT.jar'
     sha256sum: 6b35d5a31eb74b4870c8a6c37dd53563aa63b64810fdedb5192f2a77396e190f

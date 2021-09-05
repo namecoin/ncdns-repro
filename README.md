@@ -12,7 +12,3 @@ First, initialize the stuff that's derived from upstream Tor:
 ~~~
 
 Then follow the Tor documentation to build via the Makefile.
-
-## License
-
-MIT License.

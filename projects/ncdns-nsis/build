@@ -43,9 +43,21 @@ cp $rootdir/[% c('input_files_by_name/dnssec-trigger') %] ${ARTIFACTS}
 [% END %]
 
 cp $rootdir/[% c('input_files_by_name/consensusj-namecoin') %] ${ARTIFACTS}/bitcoinj-daemon.jar
+cp $rootdir/[% c('input_files_by_name/electrum-nmc') %] ${ARTIFACTS}
+
+# Windows PE metadata requires that the version be a dot-delimited 4-tuple of
+# numbers (no leading v)
+NCDNS_NSIS_VERSION=[% c('version') %]
+# Remove leading v
+NCDNS_NSIS_VERSION=$(echo "${NCDNS_NSIS_VERSION}" | sed 's/^v//')
+# Append ".0" until the version is a 4-tuple
+while ! echo "${NCDNS_NSIS_VERSION}" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'
+do
+  NCDNS_NSIS_VERSION=$(echo "${NCDNS_NSIS_VERSION}" | sed 's/$/.0/')
+done
 
 mkdir -p build/bin
-makensis ${NSISFLAGS} -DPOSIX_BUILD=1 -DNCDNS_PRODVER=[% c('var/ncdns_nsis_version') %] [% c('var/arch_nsis_args') %] "-DARTIFACTS=$ARTIFACTS" "-DNEUTRAL_ARTIFACTS=$NEUTRAL_ARTIFACTS" "-DDNSSEC_TRIGGER_FN=[% c('input_files_by_name/dnssec-trigger') %]" "-DNAMECOIN_FN=[% c('input_files_by_name/namecoin-core') %]" "-DOUTFN=${OUTFN}" ncdns.nsi
+makensis ${NSISFLAGS} -DPOSIX_BUILD=1 -DNCDNS_PRODVER=${NCDNS_NSIS_VERSION} [% c('var/arch_nsis_args') %] "-DARTIFACTS=$ARTIFACTS" "-DNEUTRAL_ARTIFACTS=$NEUTRAL_ARTIFACTS" "-DDNSSEC_TRIGGER_FN=[% c('input_files_by_name/dnssec-trigger') %]" "-DNAMECOIN_FN=[% c('input_files_by_name/namecoin-core') %]" "-DELECTRUM_NMC_FN=[% c('input_files_by_name/electrum-nmc') %]" "-DOUTFN=${OUTFN}" ncdns.nsi
 
 # Working around NSIS braindamage
 mv "${OUTFN}" torbrowser-install-tmp.exe

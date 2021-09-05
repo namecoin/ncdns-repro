@@ -11,9 +11,6 @@ var:
   consensusj_namecoin_version: '0.3.2.1'
   dnssec_trigger_version: '0.17'
   namecoin_core_version: '0.21.0.1'
-  # Used for PE metadata.
-  # Must be a 4-tuple without leading 'v' for NSIS to be happy.
-  ncdns_nsis_version: '0.1.2.0'
   container:
     use_container: 1
   deps:

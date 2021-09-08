@@ -75,7 +75,7 @@ print_os_arch () {
     echo ""
 
     # TODO fine-tune this list
-    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncp11.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
+    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
         if [[ "$PROJECT_BASE" == "compiler" ]]; then
             if [[ "$OS" == "android" ]]; then

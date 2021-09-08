@@ -361,80 +361,6 @@ release_linux_x86_64_ncdns_1_docker_builder:
   depends_on:
     - "release_linux_x86_64_goeasyconfig_1"
 
-release_linux_x86_64_ncp11_1_docker_builder:
-  timeout_in: 120m
-  out_release_linux_x86_64_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out_release_linux_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1_release_linux_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
-    folder: out_cache2
-    fingerprint_script:
-      - "echo out2_release_linux_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
-    folder: out_cache3
-    fingerprint_script:
-      - "echo out3_release_linux_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache3"
-  git_release_linux_x86_64_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git_release_linux_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  gitindex_release_linux_x86_64_cache:
-    folder: git_index
-    fingerprint_script:
-      - "echo gitindex_release_linux_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_index"
-  interrupted_aa_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa_release_linux_x86_64"
-    reupload_on_changes: true
-  interrupted_ab_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab_release_linux_x86_64"
-    reupload_on_changes: true
-  interrupted_ac_release_linux_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac_release_linux_x86_64"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    # 110m caused the 2hr task timeout to be hit while the cache was uploading
-    # for macosx-toolchain, which broke subsequent builds.
-    - sleep 105m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncp11 release linux x86_64 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0
-  depends_on:
-    - "release_linux_x86_64_ncdns_1"
-
 release_linux_x86_64_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_linux_x86_64_cache:
@@ -507,7 +433,7 @@ release_linux_x86_64_ncprop279_1_docker_builder:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
   depends_on:
-    - "release_linux_x86_64_ncp11_1"
+    - "release_linux_x86_64_ncdns_1"
 
 release_linux_x86_64_plain-binaries_1_docker_builder:
   timeout_in: 120m
@@ -1100,80 +1026,6 @@ release_linux_i686_ncdns_1_docker_builder:
   depends_on:
     - "release_linux_i686_goeasyconfig_1"
 
-release_linux_i686_ncp11_1_docker_builder:
-  timeout_in: 120m
-  out_release_linux_i686_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out_release_linux_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_linux_i686_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1_release_linux_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
-    folder: out_cache2
-    fingerprint_script:
-      - "echo out2_release_linux_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
-    folder: out_cache3
-    fingerprint_script:
-      - "echo out3_release_linux_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache3"
-  git_release_linux_i686_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git_release_linux_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  gitindex_release_linux_i686_cache:
-    folder: git_index
-    fingerprint_script:
-      - "echo gitindex_release_linux_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_index"
-  interrupted_aa_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa_release_linux_i686"
-    reupload_on_changes: true
-  interrupted_ab_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab_release_linux_i686"
-    reupload_on_changes: true
-  interrupted_ac_release_linux_i686_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac_release_linux_i686"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    # 110m caused the 2hr task timeout to be hit while the cache was uploading
-    # for macosx-toolchain, which broke subsequent builds.
-    - sleep 105m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncp11 release linux i686 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0
-  depends_on:
-    - "release_linux_i686_ncdns_1"
-
 release_linux_i686_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_linux_i686_cache:
@@ -1246,7 +1098,7 @@ release_linux_i686_ncprop279_1_docker_builder:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
   depends_on:
-    - "release_linux_i686_ncp11_1"
+    - "release_linux_i686_ncdns_1"
 
 release_linux_i686_plain-binaries_1_docker_builder:
   timeout_in: 120m
@@ -1839,80 +1691,6 @@ release_windows_x86_64_ncdns_1_docker_builder:
   depends_on:
     - "release_windows_x86_64_goeasyconfig_1"
 
-release_windows_x86_64_ncp11_1_docker_builder:
-  timeout_in: 120m
-  out_release_windows_x86_64_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out_release_windows_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1_release_windows_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
-    folder: out_cache2
-    fingerprint_script:
-      - "echo out2_release_windows_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
-    folder: out_cache3
-    fingerprint_script:
-      - "echo out3_release_windows_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache3"
-  git_release_windows_x86_64_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git_release_windows_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  gitindex_release_windows_x86_64_cache:
-    folder: git_index
-    fingerprint_script:
-      - "echo gitindex_release_windows_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_index"
-  interrupted_aa_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa_release_windows_x86_64"
-    reupload_on_changes: true
-  interrupted_ab_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab_release_windows_x86_64"
-    reupload_on_changes: true
-  interrupted_ac_release_windows_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac_release_windows_x86_64"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    # 110m caused the 2hr task timeout to be hit while the cache was uploading
-    # for macosx-toolchain, which broke subsequent builds.
-    - sleep 105m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncp11 release windows x86_64 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0
-  depends_on:
-    - "release_windows_x86_64_ncdns_1"
-
 release_windows_x86_64_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_windows_x86_64_cache:
@@ -1985,7 +1763,7 @@ release_windows_x86_64_ncprop279_1_docker_builder:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
   depends_on:
-    - "release_windows_x86_64_ncp11_1"
+    - "release_windows_x86_64_ncdns_1"
 
 release_windows_x86_64_plain-binaries_1_docker_builder:
   timeout_in: 120m
@@ -2578,80 +2356,6 @@ release_windows_i686_ncdns_1_docker_builder:
   depends_on:
     - "release_windows_i686_goeasyconfig_1"
 
-release_windows_i686_ncp11_1_docker_builder:
-  timeout_in: 120m
-  out_release_windows_i686_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out_release_windows_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_windows_i686_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1_release_windows_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
-    folder: out_cache2
-    fingerprint_script:
-      - "echo out2_release_windows_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
-    folder: out_cache3
-    fingerprint_script:
-      - "echo out3_release_windows_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache3"
-  git_release_windows_i686_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git_release_windows_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  gitindex_release_windows_i686_cache:
-    folder: git_index
-    fingerprint_script:
-      - "echo gitindex_release_windows_i686"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_index"
-  interrupted_aa_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa_release_windows_i686"
-    reupload_on_changes: true
-  interrupted_ab_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab_release_windows_i686"
-    reupload_on_changes: true
-  interrupted_ac_release_windows_i686_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac_release_windows_i686"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    # 110m caused the 2hr task timeout to be hit while the cache was uploading
-    # for macosx-toolchain, which broke subsequent builds.
-    - sleep 105m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncp11 release windows i686 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0
-  depends_on:
-    - "release_windows_i686_ncdns_1"
-
 release_windows_i686_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_windows_i686_cache:
@@ -2724,7 +2428,7 @@ release_windows_i686_ncprop279_1_docker_builder:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
   depends_on:
-    - "release_windows_i686_ncp11_1"
+    - "release_windows_i686_ncdns_1"
 
 release_windows_i686_plain-binaries_1_docker_builder:
   timeout_in: 120m
@@ -3317,80 +3021,6 @@ release_osx_x86_64_ncdns_1_docker_builder:
   depends_on:
     - "release_osx_x86_64_goeasyconfig_1"
 
-release_osx_x86_64_ncp11_1_docker_builder:
-  timeout_in: 120m
-  out_release_osx_x86_64_cache:
-    folder: out
-    fingerprint_script:
-      - "echo out_release_osx_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
-    folder: out_cache1
-    fingerprint_script:
-      - "echo out1_release_osx_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
-    folder: out_cache2
-    fingerprint_script:
-      - "echo out2_release_osx_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
-    folder: out_cache3
-    fingerprint_script:
-      - "echo out3_release_osx_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p out_cache3"
-  git_release_osx_x86_64_cache:
-    folder: git_clones
-    fingerprint_script:
-      - "echo git_release_osx_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_clones"
-  gitindex_release_osx_x86_64_cache:
-    folder: git_index
-    fingerprint_script:
-      - "echo gitindex_release_osx_x86_64"
-    reupload_on_changes: true
-    populate_script:
-      - "mkdir -p git_index"
-  interrupted_aa_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partaa.folder
-    fingerprint_script:
-      - "echo interrupted_aa_release_osx_x86_64"
-    reupload_on_changes: true
-  interrupted_ab_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partab.folder
-    fingerprint_script:
-      - "echo interrupted_ab_release_osx_x86_64"
-    reupload_on_changes: true
-  interrupted_ac_release_osx_x86_64_cache:
-    folder: tmp/interrupted_dirs.tar.gz.partac.folder
-    fingerprint_script:
-      - "echo interrupted_ac_release_osx_x86_64"
-    reupload_on_changes: true
-  checkpoint_background_script:
-    # 110m caused the 2hr task timeout to be hit while the cache was uploading
-    # for macosx-toolchain, which broke subsequent builds.
-    - sleep 105m
-    - ./tools/container-interrupt.sh
-  build_script:
-    - "./tools/cirrus_build_project.sh ncp11 release osx x86_64 1"
-  env:
-    SIGN_BUILD: 0
-  env:
-    CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0
-  depends_on:
-    - "release_osx_x86_64_ncdns_1"
-
 release_osx_x86_64_ncprop279_1_docker_builder:
   timeout_in: 120m
   out_release_osx_x86_64_cache:
@@ -3463,7 +3093,7 @@ release_osx_x86_64_ncprop279_1_docker_builder:
     CIRRUS_LOG_TIMESTAMP: true
     BUMP_DEPS: 0
   depends_on:
-    - "release_osx_x86_64_ncp11_1"
+    - "release_osx_x86_64_ncdns_1"
 
 release_osx_x86_64_plain-binaries_1_docker_builder:
   timeout_in: 120m

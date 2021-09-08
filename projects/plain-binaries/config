@@ -18,6 +18,7 @@ input_files:
     project: ncdns
   - name: ncp11
     project: ncp11
+    enable: '[% ! c("var/osx") %]'
   - name: ncprop279
     project: ncprop279
   - name: q

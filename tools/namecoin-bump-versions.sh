@@ -154,13 +154,28 @@ LATEST_DNSSEC_TRIGGER_VERSION=$(curl https://www.nlnetlabs.nl/downloads/dnssec-t
 if [ "${DNSSEC_TRIGGER_VERSION}" != "${LATEST_DNSSEC_TRIGGER_VERSION}" ]
 then
     UPDATE_NEEDED=1
-    echo "DNSSEC-Trigger: ncdns-nsis uses ${DNSSEC_TRIGGER_VERSION}, latest tag is ${DNSSEC_TRIGGER_VERSION}"
+    echo "DNSSEC-Trigger: ncdns-nsis uses ${DNSSEC_TRIGGER_VERSION}, latest tag is ${LATEST_DNSSEC_TRIGGER_VERSION}"
 
     sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
     git commit --message="Bump DNSSEC-Trigger"
 else
     echo "DNSSEC-Trigger: up to date"
+fi
+
+ELECTRUM_NMC_VERSION=$(./rbm/rbm showconf ncdns-nsis var/electrum_nmc_version)
+LATEST_ELECTRUM_NMC_VERSION=$(curl https://www.namecoin.org/download/electrum-nmc/version | jq --raw-output .version)
+
+if [ "${ELECTRUM_NMC_VERSION}" != "${LATEST_ELECTRUM_NMC_VERSION}" ]
+then
+    UPDATE_NEEDED=1
+    echo "Electrum-NMC: ncdns-nsis uses ${ELECTRUM_NMC_VERSION}, latest tag is ${LATEST_ELECTRUM_NMC_VERSION}"
+
+    sed --in-place "s/${ELECTRUM_NMC_VERSION}/${LATEST_ELECTRUM_NMC_VERSION}/g" "./projects/ncdns-nsis/config"
+    git add "./projects/ncdns-nsis/config"
+    git commit --message="Bump Electrum-NMC"
+else
+    echo "Electrum-NMC: up to date"
 fi
 
 # tor-browser-build submodule

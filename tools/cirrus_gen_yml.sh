@@ -8,7 +8,13 @@ print_os_arch () {
     local ARCH="$2"
 
     # Pre-download tarballs and Git repos
-    echo "${CHANNEL}_${OS}_${ARCH}_download_docker_builder:
+    echo "${CHANNEL}_${OS}_${ARCH}_download_task:
+  compute_engine_instance:
+    image_project: cirrus-images
+    image: family/docker-builder
+    platform: linux
+    cpu: 1
+    memory: 16G
   timeout_in: 120m
   out_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: out
@@ -71,11 +77,13 @@ print_os_arch () {
     - \"./tools/cirrus_build_project.sh plain-binaries ${CHANNEL} ${OS} ${ARCH} 0\""
     echo "  env:
     CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0"
+    BUMP_DEPS: 0
+    RBM_NUM_PROCS: 1"
     echo ""
 
     # TODO fine-tune this list
-    for PROJECT in compiler.1 compiler.2 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
+    # Use "para" prefix to run with 8 threads; otherwise will use 1 thread.
+    for PROJECT in compiler.para1 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
         if [[ "$PROJECT_BASE" == "compiler" ]]; then
             if [[ "$OS" == "android" ]]; then
@@ -92,7 +100,17 @@ print_os_arch () {
             fi
         fi
         PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
-        echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT_BASE}_${PROJECT_ITER}_docker_builder:
+        PARA_THREADS=1
+        if echo $PROJECT_ITER | grep -q para ; then
+            PARA_THREADS=8
+        fi
+        echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT_BASE}_${PROJECT_ITER}_task:
+  compute_engine_instance:
+    image_project: cirrus-images
+    image: family/docker-builder
+    platform: linux
+    cpu: ${PARA_THREADS}
+    memory: 16G
   timeout_in: 120m
   out_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: out
@@ -176,13 +194,14 @@ print_os_arch () {
         fi
         echo "  env:
     CIRRUS_LOG_TIMESTAMP: true
-    BUMP_DEPS: 0"
+    BUMP_DEPS: 0
+    RBM_NUM_PROCS: $PARA_THREADS"
         if [[ "$PROJECT_ITER" == "nosign" ]]; then
             echo '  only_if: $CIRRUS_REPO_OWNER != "namecoin" || "$CIRRUS_PR" != ""'
         fi
 
         # Depend on previous project
-        if [[ "$PROJECT" == "compiler.1" ]]; then
+        if [[ "$PROJECT" == "compiler.para1" ]]; then
             echo "  depends_on:
     - \"${CHANNEL}_${OS}_${ARCH}_download\""
         else
@@ -209,11 +228,18 @@ for CHANNEL in release; do
     print_os_arch osx x86_64
 done
 
-echo 'bump_docker_builder:
+echo 'bump_task:
+  compute_engine_instance:
+    image_project: cirrus-images
+    image: family/docker-builder
+    platform: linux
+    cpu: 1
+    memory: 16G
   bump_script:
     - "./tools/cirrus_build_project.sh null null null null 0"
   env:
     BUMP_DEPS: 1
+    RBM_NUM_PROCS: 1
     DEPLOY_KEY: ENCRYPTED[7969cc42abbc36c75c5673f2227e2eeec92577391c28c678243f95e01edffa17137e52cbddbe3e409cdab78a637edec5]
     PR_TOKEN: ENCRYPTED[91c45714bbbcf5b1fbb124475368332fcec4020258c5c4316ea9d07e3933982c6d179b925d6f7488978528ca99a737f3]
   only_if: $CIRRUS_REPO_OWNER == "namecoin" && $CIRRUS_PR == ""'
@@ -223,4 +249,4 @@ echo 'bump_docker_builder:
 # Might want to increase the timeout -- but we're already using the 2 hour max.
 # Might want to bump the CPU count -- but that's blocked by cirrus-ci-docs issue #741.
 # Might want to split into smaller project sets.
-# What is the CPU count limit?  "Linux Containers" docs say 8.0 CPU and 24 GB RAM; "FAQ" says 16.0 CPU.  docker_builder VM's are really 4.0 CPU and 15 GB RAM (12 GB of which is unused by the OS).
+# What is the CPU count limit?  "Linux Containers" docs say 8.0 CPU and 24 GB RAM; "FAQ" says 8 CPU for a single task.  docker_builder VM's are really 4.0 CPU and 15 GB RAM (12 GB of which is unused by the OS).

@@ -163,6 +163,21 @@ else
     echo "DNSSEC-Trigger: up to date"
 fi
 
+ELECTRUM_NMC_VERSION=$(./rbm/rbm showconf ncdns-nsis var/electrum_nmc_version)
+LATEST_ELECTRUM_NMC_VERSION=$(curl https://www.namecoin.org/download/electrum-nmc/version | jq --raw-output .version)
+
+if [ "${ELECTRUM_NMC_VERSION}" != "${LATEST_ELECTRUM_NMC_VERSION}" ]
+then
+    UPDATE_NEEDED=1
+    echo "Electrum-NMC: ncdns-nsis uses ${ELECTRUM_NMC_VERSION}, latest tag is ${LATEST_ELECTRUM_NMC_VERSION}"
+
+    sed --in-place "s/${ELECTRUM_NMC_VERSION}/${LATEST_ELECTRUM_NMC_VERSION}/g" "./projects/ncdns-nsis/config"
+    git add "./projects/ncdns-nsis/config"
+    git commit --message="Bump Electrum-NMC"
+else
+    echo "Electrum-NMC: up to date"
+fi
+
 # tor-browser-build submodule
 # We do this step last so that if upstream tor-browser-build breaks things,
 # we're already done invoking rbm.

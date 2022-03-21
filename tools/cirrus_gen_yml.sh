@@ -8,7 +8,7 @@ print_os_arch () {
     local ARCH="$2"
 
     # Pre-download tarballs and Git repos
-    echo "${CHANNEL}_${OS}_${ARCH}_download_task:
+    echo "${CHANNEL}_${OS}_${ARCH}_download_1_task:
   compute_engine_instance:
     image_project: cirrus-images
     image: family/docker-builder
@@ -81,9 +81,13 @@ print_os_arch () {
     RBM_NUM_PROCS: 1"
     echo ""
 
+    local PREV_PROJECT_BASE="download"
+    local PREV_PROJECT_ITER="1"
+
     # TODO fine-tune this list
     # Use "para" prefix to run with 8 threads; otherwise will use 1 thread.
-    for PROJECT in clang.para1 compiler.para1 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
+    # Use "osx" prefix to run exclusively for that OS; otherwise will run for all OS's.
+    for PROJECT in clang.osx-para1 compiler.para1 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
         if [[ "$PROJECT_BASE" == "compiler" ]]; then
             if [[ "$OS" == "android" ]]; then
@@ -99,13 +103,22 @@ print_os_arch () {
                 PROJECT_BASE=macosx-toolchain
             fi
         fi
+
         PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
+
+        # Skip inapplicable OS-specific projects
+        if echo $PROJECT_ITER | grep -q osx && [[ "$OS" != "osx" ]] ; then
+            continue
+        fi
+
+        # Run heavy projects with maximum thread count
         PARA_THREADS=1
         PARA_RAM=3
         if echo $PROJECT_ITER | grep -q para ; then
             PARA_THREADS=8
             PARA_RAM=16
         fi
+
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT_BASE}_${PROJECT_ITER}_task:
   compute_engine_instance:
     image_project: cirrus-images
@@ -203,13 +216,8 @@ print_os_arch () {
         fi
 
         # Depend on previous project
-        if [[ "$PROJECT" == "clang.para1" ]]; then
-            echo "  depends_on:
-    - \"${CHANNEL}_${OS}_${ARCH}_download\""
-        else
-            echo "  depends_on:
+        echo "  depends_on:
     - \"${CHANNEL}_${OS}_${ARCH}_${PREV_PROJECT_BASE}_${PREV_PROJECT_ITER}\""
-        fi
 
         if [[ "$PROJECT_ITER" != "nosign" ]]; then
             local PREV_PROJECT_BASE="$PROJECT_BASE"

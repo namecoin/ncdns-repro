@@ -83,7 +83,7 @@ print_os_arch () {
 
     # TODO fine-tune this list
     # Use "para" prefix to run with 8 threads; otherwise will use 1 thread.
-    for PROJECT in compiler.para1 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
+    for PROJECT in clang.para1 compiler.para1 goeasyconfig.1 ncdns.1 ncprop279.1 plain-binaries.1 release.nosign release.sign; do
         PROJECT_BASE=$(echo $PROJECT | cut -d . -f 1)
         if [[ "$PROJECT_BASE" == "compiler" ]]; then
             if [[ "$OS" == "android" ]]; then
@@ -203,7 +203,7 @@ print_os_arch () {
         fi
 
         # Depend on previous project
-        if [[ "$PROJECT" == "compiler.para1" ]]; then
+        if [[ "$PROJECT" == "clang.para1" ]]; then
             echo "  depends_on:
     - \"${CHANNEL}_${OS}_${ARCH}_download\""
         else

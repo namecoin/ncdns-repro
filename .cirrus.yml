@@ -6,7 +6,7 @@ release_linux_x86_64_download_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -159,7 +159,7 @@ release_linux_x86_64_goeasyconfig_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -240,7 +240,7 @@ release_linux_x86_64_ncdns_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -321,7 +321,7 @@ release_linux_x86_64_ncprop279_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -402,7 +402,7 @@ release_linux_x86_64_plain-binaries_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -483,7 +483,7 @@ release_linux_x86_64_release_nosign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -567,7 +567,7 @@ release_linux_x86_64_release_sign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_x86_64_cache:
     folder: out
@@ -653,7 +653,7 @@ release_linux_i686_download_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -806,7 +806,7 @@ release_linux_i686_goeasyconfig_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -887,7 +887,7 @@ release_linux_i686_ncdns_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -968,7 +968,7 @@ release_linux_i686_ncprop279_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -1049,7 +1049,7 @@ release_linux_i686_plain-binaries_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -1130,7 +1130,7 @@ release_linux_i686_release_nosign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -1214,7 +1214,7 @@ release_linux_i686_release_sign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_linux_i686_cache:
     folder: out
@@ -1300,7 +1300,7 @@ release_windows_x86_64_download_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1453,7 +1453,7 @@ release_windows_x86_64_goeasyconfig_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1534,7 +1534,7 @@ release_windows_x86_64_ncdns_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1615,7 +1615,7 @@ release_windows_x86_64_ncprop279_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1696,7 +1696,7 @@ release_windows_x86_64_plain-binaries_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1777,7 +1777,7 @@ release_windows_x86_64_release_nosign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1861,7 +1861,7 @@ release_windows_x86_64_release_sign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_x86_64_cache:
     folder: out
@@ -1947,7 +1947,7 @@ release_windows_i686_download_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2100,7 +2100,7 @@ release_windows_i686_goeasyconfig_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2181,7 +2181,7 @@ release_windows_i686_ncdns_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2262,7 +2262,7 @@ release_windows_i686_ncprop279_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2343,7 +2343,7 @@ release_windows_i686_plain-binaries_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2424,7 +2424,7 @@ release_windows_i686_release_nosign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2508,7 +2508,7 @@ release_windows_i686_release_sign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_windows_i686_cache:
     folder: out
@@ -2594,7 +2594,7 @@ release_osx_x86_64_download_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -2747,7 +2747,7 @@ release_osx_x86_64_goeasyconfig_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -2828,7 +2828,7 @@ release_osx_x86_64_ncdns_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -2909,7 +2909,7 @@ release_osx_x86_64_ncprop279_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -2990,7 +2990,7 @@ release_osx_x86_64_plain-binaries_1_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -3071,7 +3071,7 @@ release_osx_x86_64_release_nosign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -3155,7 +3155,7 @@ release_osx_x86_64_release_sign_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_release_osx_x86_64_cache:
     folder: out
@@ -3241,7 +3241,7 @@ bump_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   bump_script:
     - "./tools/cirrus_build_project.sh null null null null 0"
   env:

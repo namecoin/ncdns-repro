@@ -14,7 +14,7 @@ print_os_arch () {
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   timeout_in: 120m
   out_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: out
@@ -101,8 +101,10 @@ print_os_arch () {
         fi
         PROJECT_ITER=$(echo $PROJECT | cut -d . -f 2)
         PARA_THREADS=1
+        PARA_RAM=3
         if echo $PROJECT_ITER | grep -q para ; then
             PARA_THREADS=8
+            PARA_RAM=16
         fi
         echo "${CHANNEL}_${OS}_${ARCH}_${PROJECT_BASE}_${PROJECT_ITER}_task:
   compute_engine_instance:
@@ -110,7 +112,7 @@ print_os_arch () {
     image: family/docker-builder
     platform: linux
     cpu: ${PARA_THREADS}
-    memory: 16G
+    memory: ${PARA_RAM}G
   timeout_in: 120m
   out_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: out
@@ -234,7 +236,7 @@ echo 'bump_task:
     image: family/docker-builder
     platform: linux
     cpu: 1
-    memory: 16G
+    memory: 3G
   bump_script:
     - "./tools/cirrus_build_project.sh null null null null 0"
   env:

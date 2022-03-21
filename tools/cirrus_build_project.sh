@@ -21,7 +21,8 @@ mv .cirrus.yml .cirrus.yml.bak
 diff .cirrus.yml .cirrus.yml.bak
 
 echo "Installing rbm deps..."
-APT_DEPS="libyaml-libyaml-perl libtemplate-perl libdatetime-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git uidmap rsync"
+# jq is used by bump script, everything else is used by rbm
+APT_DEPS="libyaml-libyaml-perl libtemplate-perl libdatetime-perl libio-handle-util-perl libio-all-perl libio-captureoutput-perl libjson-perl libpath-tiny-perl libstring-shellquote-perl libsort-versions-perl libdigest-sha-perl libdata-uuid-perl libdata-dump-perl libfile-copy-recursive-perl libfile-slurp-perl git uidmap rsync jq"
 apt-get install -y $APT_DEPS || (sleep 15s && apt-get install -y $APT_DEPS)
 
 echo "Pulling rbm..."

@@ -36,6 +36,13 @@ do
         continue
     fi
 
+    # electrum-nmc v4.x doesn't work with rbm yet
+    if [ "${PROJECT}" = "electrum-nmc" ]
+    then
+        echo "$PROJECT: project doesn't work with rbm yet; skipping"
+        continue
+    fi
+
     # x509-signature-splice branch depends on Go version, so it won't always be the latest
     if [ "${PROJECT}" = "gox509signaturesplice" ]
     then

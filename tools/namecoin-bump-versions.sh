@@ -100,7 +100,12 @@ ${LATEST_INFO}"
             sed --in-place "s/${VERSION_STRIPPED}/${LATEST_VERSION_STRIPPED}/g" "./projects/${PROJECT}/config"
         fi
         git add "./projects/${PROJECT}/config"
-        git commit --message="Bump ${PROJECT}"
+        if [ "${VERSION_IS_NUMBER}" = 1 ]
+        then
+            git commit --message="Bump ${PROJECT} to ${LATEST_TAG}"
+        else
+            git commit --message="Bump ${PROJECT}"
+        fi
     else
         echo "$PROJECT: up to date"
     fi
@@ -120,7 +125,7 @@ then
 
     sed --in-place "s/${BIND_VERSION}/${LATEST_BIND_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
-    git commit --message="Bump BIND"
+    git commit --message="Bump BIND to ${LATEST_BIND_VERSION}"
 else
     echo "BIND: up to date"
 fi
@@ -135,7 +140,7 @@ then
 
     sed --in-place "s/${CONSENSUSJ_VERSION}/${LATEST_CONSENSUSJ_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
-    git commit --message="Bump ConsensusJ"
+    git commit --message="Bump ConsensusJ to ${LATEST_CONSENSUSJ_VERSION}"
 else
     echo "ConsensusJ: up to date"
 fi
@@ -150,7 +155,7 @@ then
 
     sed --in-place "s/${NAMECOIN_VERSION}/${LATEST_NAMECOIN_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
-    git commit --message="Bump Namecoin Core"
+    git commit --message="Bump Namecoin Core to ${LATEST_NAMECOIN_VERSION}"
 else
     echo "Namecoin Core: up to date"
 fi
@@ -165,7 +170,7 @@ then
 
     sed --in-place "s/${DNSSEC_TRIGGER_VERSION}/${LATEST_DNSSEC_TRIGGER_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
-    git commit --message="Bump DNSSEC-Trigger"
+    git commit --message="Bump DNSSEC-Trigger to ${LATEST_DNSSEC_TRIGGER_VERSION}"
 else
     echo "DNSSEC-Trigger: up to date"
 fi
@@ -180,7 +185,7 @@ then
 
     sed --in-place "s/${ELECTRUM_NMC_VERSION}/${LATEST_ELECTRUM_NMC_VERSION}/g" "./projects/ncdns-nsis/config"
     git add "./projects/ncdns-nsis/config"
-    git commit --message="Bump Electrum-NMC"
+    git commit --message="Bump Electrum-NMC to ${LATEST_ELECTRUM_NMC_VERSION}"
 else
     echo "Electrum-NMC: up to date"
 fi
@@ -210,7 +215,7 @@ then
     popd
 
     git add "tor-browser-build"
-    git commit --message="Bump tor-browser-build"
+    git commit --message="Bump tor-browser-build to ${LATEST_TAG}"
 else
     echo "tor-browser-build: up to date"
 fi

@@ -7,7 +7,11 @@ pushd tor-browser-build
 # Undo any of Namecoin's patches that might have been done previously.
 git reset --hard HEAD
 git clean -dfx
-patch -p1 < ../tools/checkpoints.patch
+
+# The checkpoint patch is disabled while we evaluate whether the move to 8x
+# CPU's per VM is sufficient to build within a single task time limit.
+#patch -p1 < ../tools/checkpoints.patch
+
 popd
 
 # Rename torbrowser to ncdns

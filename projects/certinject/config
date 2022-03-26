@@ -1,6 +1,6 @@
-version: '0.0.1'
+version: '0.1.0'
 git_url:  https://github.com/namecoin/certinject.git
-git_hash: '8b71285733f8abce7e0f6443e9ca3dc4acf6255b'
+git_hash: 'f0f6f91f9454a0462a823b939e565b61b6ded106'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 var:

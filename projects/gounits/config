@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/alecthomas/units.git
-git_hash: ff826a37aa15cdf16e29024a782c790f19aab6c2
+git_hash: b94a6e3cc13755c0a75fffecbb089eb346fc4289
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

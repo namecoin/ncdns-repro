@@ -1,6 +1,6 @@
-version: 1.0.17
+version: 1.0.18
 git_url:  https://github.com/hlandau/easyconfig.git
-git_hash: c31249162931b4963bbe6e501cccb60d23271a3f
+git_hash: 30db2856f1fc2e9494aae5f96b57ad1a22029a03
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

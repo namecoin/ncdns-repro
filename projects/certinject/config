@@ -9,6 +9,7 @@ var:
   container:
     use_container: 1
   go_lib_deps:
+    - godexlogconfig
     - goeasyconfig
     - goxlog
     - goxsys
@@ -20,6 +21,8 @@ input_files:
   - project: container-image
   - name: go
     project: go
+  - name: godexlogconfig
+    project: godexlogconfig
   - name: goeasyconfig
     project: goeasyconfig
   - name: goxlog

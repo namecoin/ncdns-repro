@@ -23,3 +23,7 @@ input_files:
     project: ncprop279
   - name: q
     project: q
+  - name: winsvcwrap
+    project: winsvcwrap
+    enable: '[% c("var/windows") %]'
+

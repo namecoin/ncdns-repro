@@ -1,6 +1,8 @@
 version: '0.0.4.2'
 git_url:  https://github.com/namecoin/tlsrestrictnss.git
-git_hash: '945a9f3d995fcb175fd0b19549e21a3e87ba8c13'
+git_hash: 'v[% c("version") %]'
+tag_gpg_id: 1
+gpg_keyring: namecoin.gpg
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

@@ -12,6 +12,7 @@ var:
   dnssec_trigger_version: '0.17'
   namecoin_core_version: '0.21.0.1'
   electrum_nmc_version: '3.3.10'
+  stem_version: '1.8.0'
   container:
     use_container: 1
   deps:
@@ -55,6 +56,10 @@ input_files:
     name: nsis
   - project: python-windows
     name: python-windows
+  - name: stem
+    URL: 'https://files.pythonhosted.org/packages/source/s/stem/stem-[% c("var/stem_version") %].tar.gz'
+    sha256sum: a0b48ea6224e95f22aa34c0bc3415f0eb4667ddeae3dfb5e32a6920c185568c2
+    # TODO: This sha256sum was grabbed from PyPI and hasn't been verified.  We should probably switch to using an OpenPGP sig.
   - filename: pe_checksum_fix.py
   - name: python-pefile
     URL: https://files.pythonhosted.org/packages/7e/9b/f99171190f04cd23768547dd34533b4016bd582842f53cd9fe9585a74c74/pefile-2017.11.5.tar.gz

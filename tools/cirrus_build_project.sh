@@ -45,6 +45,14 @@ if [[ "$BUMP_DEPS" -eq 1 ]]; then
     exit 0
 fi
 
+if [[ "$SHOULD_BUILD" -eq 0 ]]; then
+  echo "Localizing caches..."
+  cp -a ./out_global/* ./out/ || true
+  cp -a ./out_cache1_global/* ./out/ || true
+  cp -a ./out_cache2_global/* ./out/ || true
+  cp -a ./out_cache3_global/* ./out/ || true
+fi
+
 echo "Restoring caches..."
 cp -a ./out_cache1/* ./out/ || true
 cp -a ./out_cache2/* ./out/ || true
@@ -129,6 +137,17 @@ rsync -avu --delete ./out/plain-binaries ./out_cache3/ || true
 rm -rf ./out/encaya ./out/gocrosssign ./out/gosafetlsa ./out/q || true
 rm -rf ./out/macosx-toolchain || true
 rm -rf ./out/plain-binaries || true
+
+if [[ "$PROJECT" == "release" ]]; then
+  echo "Globalizing caches..."
+  rm -rf ./out_global ./out_cache1_global ./out_cache2_global ./out_cache3_global
+  mv ./out ./out_global
+  mv ./out_cache1 ./out_cache1_global
+  mv ./out_cache2 ./out_cache2_global
+  mv ./out_cache3 ./out_cache3_global
+  mkdir ./out ./out_cache1 ./out_cache2 ./out_cache3
+  touch ./out/.dummy ./out_cache1/.dummy ./out_cache2/.dummy ./out_cache3/.dummy
+fi
 
 echo "Packing git cache..."
 ./tools/cirrus_pack_git.sh || true

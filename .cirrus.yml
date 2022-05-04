@@ -8,34 +8,62 @@ release_linux_x86_64_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
+    fingerprint_script:
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_linux_x86_64_local_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  out2_release_linux_x86_64_local_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2"
+  out3_release_linux_x86_64_local_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
+  out_release_linux_x86_64_cache:
+    folder: out_global
     fingerprint_script:
       - "echo out_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out"
+      - "mkdir -p out_global"
   out1_release_linux_x86_64_cache:
-    folder: out_cache1
+    folder: out_cache1_global
     fingerprint_script:
       - "echo out1_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache1"
+      - "mkdir -p out_cache1_global"
   out2_release_linux_x86_64_cache:
-    folder: out_cache2
+    folder: out_cache2_global
     fingerprint_script:
       - "echo out2_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache2"
+      - "mkdir -p out_cache2_global"
   out3_release_linux_x86_64_cache:
-    folder: out_cache3
+    folder: out_cache3_global
     fingerprint_script:
       - "echo out3_release_linux_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache3"
+      - "mkdir -p out_cache3_global"
   git_release_linux_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -80,31 +108,31 @@ release_linux_x86_64_gcc_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -161,31 +189,31 @@ release_linux_x86_64_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -242,31 +270,31 @@ release_linux_x86_64_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -323,31 +351,31 @@ release_linux_x86_64_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -404,31 +432,31 @@ release_linux_x86_64_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -485,31 +513,31 @@ release_linux_x86_64_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -542,6 +570,34 @@ release_linux_x86_64_release_nosign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_linux_x86_64"
     reupload_on_changes: true
+  out_release_linux_x86_64_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_linux_x86_64_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_linux_x86_64_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -569,31 +625,31 @@ release_linux_x86_64_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_x86_64_cache:
+  out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_x86_64"
+      - "echo out_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_x86_64_cache:
+  out1_release_linux_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_x86_64"
+      - "echo out1_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_x86_64_cache:
+  out2_release_linux_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_x86_64"
+      - "echo out2_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_x86_64_cache:
+  out3_release_linux_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_x86_64"
+      - "echo out3_release_linux_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -626,6 +682,34 @@ release_linux_x86_64_release_sign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_linux_x86_64"
     reupload_on_changes: true
+  out_release_linux_x86_64_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_linux_x86_64_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_linux_x86_64_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_linux_x86_64_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_linux_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -655,34 +739,62 @@ release_linux_i686_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
+    fingerprint_script:
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_linux_i686_local_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  out2_release_linux_i686_local_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2"
+  out3_release_linux_i686_local_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
+  out_release_linux_i686_cache:
+    folder: out_global
     fingerprint_script:
       - "echo out_release_linux_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out"
+      - "mkdir -p out_global"
   out1_release_linux_i686_cache:
-    folder: out_cache1
+    folder: out_cache1_global
     fingerprint_script:
       - "echo out1_release_linux_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache1"
+      - "mkdir -p out_cache1_global"
   out2_release_linux_i686_cache:
-    folder: out_cache2
+    folder: out_cache2_global
     fingerprint_script:
       - "echo out2_release_linux_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache2"
+      - "mkdir -p out_cache2_global"
   out3_release_linux_i686_cache:
-    folder: out_cache3
+    folder: out_cache3_global
     fingerprint_script:
       - "echo out3_release_linux_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache3"
+      - "mkdir -p out_cache3_global"
   git_release_linux_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -727,31 +839,31 @@ release_linux_i686_gcc_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -808,31 +920,31 @@ release_linux_i686_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -889,31 +1001,31 @@ release_linux_i686_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -970,31 +1082,31 @@ release_linux_i686_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1051,31 +1163,31 @@ release_linux_i686_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1132,31 +1244,31 @@ release_linux_i686_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1189,6 +1301,34 @@ release_linux_i686_release_nosign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_linux_i686"
     reupload_on_changes: true
+  out_release_linux_i686_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_linux_i686_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_linux_i686_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_linux_i686_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -1216,31 +1356,31 @@ release_linux_i686_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_linux_i686_cache:
+  out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_linux_i686"
+      - "echo out_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_linux_i686_cache:
+  out1_release_linux_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_linux_i686"
+      - "echo out1_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_linux_i686_cache:
+  out2_release_linux_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_linux_i686"
+      - "echo out2_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_linux_i686_cache:
+  out3_release_linux_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_linux_i686"
+      - "echo out3_release_linux_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1273,6 +1413,34 @@ release_linux_i686_release_sign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_linux_i686"
     reupload_on_changes: true
+  out_release_linux_i686_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_linux_i686_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_linux_i686_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_linux_i686_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_linux_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -1302,34 +1470,62 @@ release_windows_x86_64_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
+    fingerprint_script:
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_windows_x86_64_local_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  out2_release_windows_x86_64_local_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2"
+  out3_release_windows_x86_64_local_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
+  out_release_windows_x86_64_cache:
+    folder: out_global
     fingerprint_script:
       - "echo out_release_windows_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out"
+      - "mkdir -p out_global"
   out1_release_windows_x86_64_cache:
-    folder: out_cache1
+    folder: out_cache1_global
     fingerprint_script:
       - "echo out1_release_windows_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache1"
+      - "mkdir -p out_cache1_global"
   out2_release_windows_x86_64_cache:
-    folder: out_cache2
+    folder: out_cache2_global
     fingerprint_script:
       - "echo out2_release_windows_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache2"
+      - "mkdir -p out_cache2_global"
   out3_release_windows_x86_64_cache:
-    folder: out_cache3
+    folder: out_cache3_global
     fingerprint_script:
       - "echo out3_release_windows_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache3"
+      - "mkdir -p out_cache3_global"
   git_release_windows_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -1374,31 +1570,31 @@ release_windows_x86_64_mingw-w64_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1455,31 +1651,31 @@ release_windows_x86_64_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1536,31 +1732,31 @@ release_windows_x86_64_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1617,31 +1813,31 @@ release_windows_x86_64_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1698,31 +1894,31 @@ release_windows_x86_64_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1779,31 +1975,31 @@ release_windows_x86_64_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1836,6 +2032,34 @@ release_windows_x86_64_release_nosign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_windows_x86_64"
     reupload_on_changes: true
+  out_release_windows_x86_64_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_windows_x86_64_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_windows_x86_64_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -1863,31 +2087,31 @@ release_windows_x86_64_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_x86_64_cache:
+  out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_x86_64"
+      - "echo out_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_x86_64_cache:
+  out1_release_windows_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_x86_64"
+      - "echo out1_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_x86_64_cache:
+  out2_release_windows_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_x86_64"
+      - "echo out2_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_x86_64_cache:
+  out3_release_windows_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_x86_64"
+      - "echo out3_release_windows_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -1920,6 +2144,34 @@ release_windows_x86_64_release_sign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_windows_x86_64"
     reupload_on_changes: true
+  out_release_windows_x86_64_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_windows_x86_64_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_windows_x86_64_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_windows_x86_64_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_windows_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -1949,34 +2201,62 @@ release_windows_i686_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
+    fingerprint_script:
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_windows_i686_local_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  out2_release_windows_i686_local_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2"
+  out3_release_windows_i686_local_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
+  out_release_windows_i686_cache:
+    folder: out_global
     fingerprint_script:
       - "echo out_release_windows_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out"
+      - "mkdir -p out_global"
   out1_release_windows_i686_cache:
-    folder: out_cache1
+    folder: out_cache1_global
     fingerprint_script:
       - "echo out1_release_windows_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache1"
+      - "mkdir -p out_cache1_global"
   out2_release_windows_i686_cache:
-    folder: out_cache2
+    folder: out_cache2_global
     fingerprint_script:
       - "echo out2_release_windows_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache2"
+      - "mkdir -p out_cache2_global"
   out3_release_windows_i686_cache:
-    folder: out_cache3
+    folder: out_cache3_global
     fingerprint_script:
       - "echo out3_release_windows_i686"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache3"
+      - "mkdir -p out_cache3_global"
   git_release_windows_i686_cache:
     folder: git_clones
     fingerprint_script:
@@ -2021,31 +2301,31 @@ release_windows_i686_mingw-w64_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2102,31 +2382,31 @@ release_windows_i686_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2183,31 +2463,31 @@ release_windows_i686_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2264,31 +2544,31 @@ release_windows_i686_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2345,31 +2625,31 @@ release_windows_i686_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2426,31 +2706,31 @@ release_windows_i686_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2483,6 +2763,34 @@ release_windows_i686_release_nosign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_windows_i686"
     reupload_on_changes: true
+  out_release_windows_i686_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_windows_i686_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_windows_i686_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_windows_i686_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -2510,31 +2818,31 @@ release_windows_i686_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_windows_i686_cache:
+  out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_windows_i686"
+      - "echo out_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_windows_i686_cache:
+  out1_release_windows_i686_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_windows_i686"
+      - "echo out1_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_windows_i686_cache:
+  out2_release_windows_i686_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_windows_i686"
+      - "echo out2_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_windows_i686_cache:
+  out3_release_windows_i686_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_windows_i686"
+      - "echo out3_release_windows_i686_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2567,6 +2875,34 @@ release_windows_i686_release_sign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_windows_i686"
     reupload_on_changes: true
+  out_release_windows_i686_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_windows_i686_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_windows_i686_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_windows_i686_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_windows_i686"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -2596,34 +2932,62 @@ release_osx_x86_64_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
+    fingerprint_script:
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out"
+  out1_release_osx_x86_64_local_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1"
+  out2_release_osx_x86_64_local_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2"
+  out3_release_osx_x86_64_local_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3"
+  out_release_osx_x86_64_cache:
+    folder: out_global
     fingerprint_script:
       - "echo out_release_osx_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out"
+      - "mkdir -p out_global"
   out1_release_osx_x86_64_cache:
-    folder: out_cache1
+    folder: out_cache1_global
     fingerprint_script:
       - "echo out1_release_osx_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache1"
+      - "mkdir -p out_cache1_global"
   out2_release_osx_x86_64_cache:
-    folder: out_cache2
+    folder: out_cache2_global
     fingerprint_script:
       - "echo out2_release_osx_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache2"
+      - "mkdir -p out_cache2_global"
   out3_release_osx_x86_64_cache:
-    folder: out_cache3
+    folder: out_cache3_global
     fingerprint_script:
       - "echo out3_release_osx_x86_64"
     reupload_on_changes: true
     populate_script:
-      - "mkdir -p out_cache3"
+      - "mkdir -p out_cache3_global"
   git_release_osx_x86_64_cache:
     folder: git_clones
     fingerprint_script:
@@ -2668,31 +3032,31 @@ release_osx_x86_64_clang_osx-para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2749,31 +3113,31 @@ release_osx_x86_64_macosx-toolchain_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2830,31 +3194,31 @@ release_osx_x86_64_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2911,31 +3275,31 @@ release_osx_x86_64_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -2992,31 +3356,31 @@ release_osx_x86_64_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -3073,31 +3437,31 @@ release_osx_x86_64_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -3154,31 +3518,31 @@ release_osx_x86_64_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -3211,6 +3575,34 @@ release_osx_x86_64_release_nosign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_osx_x86_64"
     reupload_on_changes: true
+  out_release_osx_x86_64_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_osx_x86_64_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_osx_x86_64_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
@@ -3238,31 +3630,31 @@ release_osx_x86_64_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_release_osx_x86_64_cache:
+  out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
-      - "echo out_release_osx_x86_64"
+      - "echo out_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out"
-  out1_release_osx_x86_64_cache:
+  out1_release_osx_x86_64_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - "echo out1_release_osx_x86_64"
+      - "echo out1_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache1"
-  out2_release_osx_x86_64_cache:
+  out2_release_osx_x86_64_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - "echo out2_release_osx_x86_64"
+      - "echo out2_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache2"
-  out3_release_osx_x86_64_cache:
+  out3_release_osx_x86_64_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - "echo out3_release_osx_x86_64"
+      - "echo out3_release_osx_x86_64_${CIRRUS_PR}"
     reupload_on_changes: true
     populate_script:
       - "mkdir -p out_cache3"
@@ -3295,6 +3687,34 @@ release_osx_x86_64_release_sign_task:
     fingerprint_script:
       - "echo interrupted_ac_release_osx_x86_64"
     reupload_on_changes: true
+  out_release_osx_x86_64_cache:
+    folder: out_global
+    fingerprint_script:
+      - "echo out_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_global"
+  out1_release_osx_x86_64_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - "echo out1_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache1_global"
+  out2_release_osx_x86_64_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - "echo out2_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache2_global"
+  out3_release_osx_x86_64_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - "echo out3_release_osx_x86_64"
+    reupload_on_changes: true
+    populate_script:
+      - "mkdir -p out_cache3_global"
   checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.

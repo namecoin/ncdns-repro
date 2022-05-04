@@ -16,34 +16,62 @@ print_os_arch () {
     cpu: 1
     memory: 3G
   timeout_in: 120m
-  out_${CHANNEL}_${OS}_${ARCH}_cache:
+  out_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out
+    fingerprint_script:
+      - \"echo out_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out\"
+  out1_${CHANNEL}_${OS}_${ARCH}_local_cache:
+    folder: out_cache1
+    fingerprint_script:
+      - \"echo out1_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache1\"
+  out2_${CHANNEL}_${OS}_${ARCH}_local_cache:
+    folder: out_cache2
+    fingerprint_script:
+      - \"echo out2_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache2\"
+  out3_${CHANNEL}_${OS}_${ARCH}_local_cache:
+    folder: out_cache3
+    fingerprint_script:
+      - \"echo out3_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache3\"
+  out_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_global
     fingerprint_script:
       - \"echo out_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
     populate_script:
-      - \"mkdir -p out\"
+      - \"mkdir -p out_global\"
   out1_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out_cache1
+    folder: out_cache1_global
     fingerprint_script:
       - \"echo out1_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
     populate_script:
-      - \"mkdir -p out_cache1\"
+      - \"mkdir -p out_cache1_global\"
   out2_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out_cache2
+    folder: out_cache2_global
     fingerprint_script:
       - \"echo out2_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
     populate_script:
-      - \"mkdir -p out_cache2\"
+      - \"mkdir -p out_cache2_global\"
   out3_${CHANNEL}_${OS}_${ARCH}_cache:
-    folder: out_cache3
+    folder: out_cache3_global
     fingerprint_script:
       - \"echo out3_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
     populate_script:
-      - \"mkdir -p out_cache3\"
+      - \"mkdir -p out_cache3_global\"
   git_${CHANNEL}_${OS}_${ARCH}_cache:
     folder: git_clones
     fingerprint_script:
@@ -127,31 +155,31 @@ print_os_arch () {
     cpu: ${PARA_THREADS}
     memory: ${PARA_RAM}G
   timeout_in: 120m
-  out_${CHANNEL}_${OS}_${ARCH}_cache:
+  out_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out
     fingerprint_script:
-      - \"echo out_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo out_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p out\"
-  out1_${CHANNEL}_${OS}_${ARCH}_cache:
+  out1_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out_cache1
     fingerprint_script:
-      - \"echo out1_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo out1_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p out_cache1\"
-  out2_${CHANNEL}_${OS}_${ARCH}_cache:
+  out2_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out_cache2
     fingerprint_script:
-      - \"echo out2_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo out2_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p out_cache2\"
-  out3_${CHANNEL}_${OS}_${ARCH}_cache:
+  out3_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out_cache3
     fingerprint_script:
-      - \"echo out3_${CHANNEL}_${OS}_${ARCH}\"
+      - \"echo out3_${CHANNEL}_${OS}_${ARCH}_\${CIRRUS_PR}\"
     reupload_on_changes: true
     populate_script:
       - \"mkdir -p out_cache3\"
@@ -183,8 +211,40 @@ print_os_arch () {
     folder: tmp/interrupted_dirs.tar.gz.partac.folder
     fingerprint_script:
       - \"echo interrupted_ac_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true"
+
+        if [[ "$PROJECT_BASE" == "release" ]]; then
+            echo "  out_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_global
+    fingerprint_script:
+      - \"echo out_${CHANNEL}_${OS}_${ARCH}\"
     reupload_on_changes: true
-  checkpoint_background_script:
+    populate_script:
+      - \"mkdir -p out_global\"
+  out1_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache1_global
+    fingerprint_script:
+      - \"echo out1_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache1_global\"
+  out2_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache2_global
+    fingerprint_script:
+      - \"echo out2_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache2_global\"
+  out3_${CHANNEL}_${OS}_${ARCH}_cache:
+    folder: out_cache3_global
+    fingerprint_script:
+      - \"echo out3_${CHANNEL}_${OS}_${ARCH}\"
+    reupload_on_changes: true
+    populate_script:
+      - \"mkdir -p out_cache3_global\""
+        fi
+
+        echo "  checkpoint_background_script:
     # 110m caused the 2hr task timeout to be hit while the cache was uploading
     # for macosx-toolchain, which broke subsequent builds.
     - sleep 105m

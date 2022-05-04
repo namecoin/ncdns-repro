@@ -45,6 +45,9 @@ cp $rootdir/[% c('input_files_by_name/dnssec-trigger') %] ${ARTIFACTS}
 cp $rootdir/[% c('input_files_by_name/consensusj-namecoin') %] ${ARTIFACTS}/bitcoinj-daemon.jar
 cp $rootdir/[% c('input_files_by_name/electrum-nmc') %] ${ARTIFACTS}
 
+tar -C /var/tmp/dist/ -xf $rootdir/[% c('input_files_by_name/python-windows') %]
+cp -a /var/tmp/dist/python-windows/bin "${ARTIFACTS}/python"
+
 # Windows PE metadata requires that the version be a dot-delimited 4-tuple of
 # numbers (no leading v)
 NCDNS_NSIS_VERSION=[% c('version') %]

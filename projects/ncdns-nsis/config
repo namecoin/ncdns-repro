@@ -53,6 +53,8 @@ input_files:
     sha256sum: 6b35d5a31eb74b4870c8a6c37dd53563aa63b64810fdedb5192f2a77396e190f
   - project: nsis
     name: nsis
+  - project: python-windows
+    name: python-windows
   - filename: pe_checksum_fix.py
   - name: python-pefile
     URL: https://files.pythonhosted.org/packages/7e/9b/f99171190f04cd23768547dd34533b4016bd582842f53cd9fe9585a74c74/pefile-2017.11.5.tar.gz

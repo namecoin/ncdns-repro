@@ -1,6 +1,6 @@
 version: '[% c("abbrev") %]'
 git_url:  https://github.com/hlandau/dexlogconfig.git
-git_hash: 709dfd27e98611cd00a106ccfd6819d9ed2821a0
+git_hash: 86a3fc314fe7a8d9d58005220de8e2a85dd5744f
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

@@ -36,12 +36,12 @@ var:
   enable_namecoin_tlsa: 1
   os_go_lib_deps: []
   optional_go_lib_deps:
+    - certinject
     - gosplicesign
     - gotlsrestrictnss
     - gox509compressed
   optional_go_lib_install:
     - github.com/namecoin/ncdns/certdehydrate
-    - github.com/namecoin/ncdns/certinject
     - github.com/namecoin/ncdns/ncdumpzone
     - github.com/namecoin/ncdns/ncdumpzone/ncdumpzone
     - github.com/namecoin/ncdns/tlsoverridefirefox
@@ -83,6 +83,13 @@ input_files:
   - name: binutils
     project: binutils
     enable: '[% c("var/linux") && c("var/cgo") %]'
+  - name: certinject
+    project: certinject
+    # Build certinject as a library, not an executable.
+    # TODO: refactor this once our build_go_lib executable patch is merged by upstream Tor
+    var:
+      go_lib_no_output: 0
+    enable: '[% c("var/enable_namecoin_tlsa") %]'
   - name: goxlog
     project: goxlog
   - name: godexlogconfig

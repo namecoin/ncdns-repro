@@ -1,0 +1,8 @@
+8c8
+< #ifdef __DATE__
+---
+> #if defined(__DATE__) && defined(EMIT_BUILD_TIMESTAMP)
+16c16
+< #ifdef __TIME__
+---
+> #if defined(__TIME__) && defined(EMIT_BUILD_TIMESTAMP)

@@ -1,0 +1,26 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/hlandau/winsvcwrap.git
+git_hash: 'c0800f931ae97f9662297b22f8c069a488209d05'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - godexlogconfig
+    - goservice
+  go_lib_install:
+    - github.com/hlandau/winsvcwrap
+  cgo: 0
+  build_go_lib_pre: |
+    export CGO_ENABLED=[% c("var/cgo") %]
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: godexlogconfig
+    project: godexlogconfig
+  - name: goservice
+    project: goservice
+

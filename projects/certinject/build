@@ -23,10 +23,22 @@ go install -ldflags '-s -buildid=' github.com/namecoin/certinject/cmd/certinject
   GOPATHBIN="${GOPATH}/bin/${GOOS}_${GOARCH}"
 [% END -%]
 
-cp -a $GOPATHBIN/certinject[% IF c("var/windows") %].exe[% END %] $distdir/
+cd /var/tmp/dist
+[% IF !c("var/go_lib_no_output") -%]
+  # Build as library
+  [% c('tar', {
+    tar_src => [ 'gopath' ],
+    tar_args => '-czf ' _ dest_dir _ '/' _ c('filename'),
+  }) %]
+[% ELSE %]
+  # Build as executable
+  ls $GOPATHBIN
 
-cd $distdir
-[% c('tar', {
+  cp -a $GOPATHBIN/certinject[% IF c("var/windows") %].exe[% END %] $distdir/
+
+  cd $distdir
+  [% c('tar', {
      tar_src   => [ '.' ],
      tar_args  => '-czf ' _ dest_dir _ '/' _ c('filename'),
    }) %]
+[% END %]

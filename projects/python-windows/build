@@ -26,18 +26,19 @@ cp ./[% c("arch") %]-w64-mingw32/include/*.h /var/tmp/dist/mingw-w64/[% c("arch"
 cp ./[% c("arch") %]-w64-mingw32/.libs/* /var/tmp/dist/mingw-w64/[% c("arch") %]-w64-mingw32/lib/
 popd
 
+# Unpack dependencies
 mkdir -p /var/tmp/build
 tar -C /var/tmp/build -xf [% c('input_files_by_name/python') %]
 tar -C /var/tmp/build -xf [% c('input_files_by_name/meson') %]
 tar -C /var/tmp/build -xf [% c('input_files_by_name/ninja') %]
 tar -C /var/tmp/build -xf [% c('input_files_by_name/python-buildscript') %]
-# Unpack dependencies
+# Add dependencies to PATH
 PATH=/var/tmp/build/meson-[% c("meson_version") %]:"$PATH"
 PATH=/var/tmp/build/ninja:"$PATH"
-# Add dependencies to PATH
 
-patch /var/tmp/build/Python-[% c("version") %]/Modules/getbuildinfo.c < $rootdir/omit-build-timestamp.patch
 # Python includes build timestamp by default
+patch /var/tmp/build/Python-[% c("version") %]/Modules/getbuildinfo.c < $rootdir/omit-build-timestamp.patch
+# Patch build script to statically link pthread
 patch /var/tmp/build/cross-python-[% c("cp_githash") %]/meson.build << 'EOF'
 113c113
 <     add_project_link_arguments('-municode', '-mconsole', '-static-libgcc', language:'c')
@@ -51,35 +52,32 @@ patch /var/tmp/build/cross-python-[% c("cp_githash") %]/meson.build << 'EOF'
 < 
 < libpython = python_libraries.get_shared_lib()
 EOF
-# Patch build script to statically link pthread
-ranlib /var/tmp/dist/mingw-w64/[% c("arch") %]-w64-mingw32/lib/libwinpthread.a
 # Prepare libwinpthread for static linking
-
 # This is a hack. (TODO: refactor)
 # We need to link this statically, because we aren't shipping the mingw runtime.
 # https://stackoverflow.com/questions/14665691/static-linking-with-libwinpthread
+ranlib /var/tmp/dist/mingw-w64/[% c("arch") %]-w64-mingw32/lib/libwinpthread.a
 
-
+# Project pulls in sqlite, zlib, and build files.
+# Download them outside, in rbm, to avoid container network access.
 mkdir -p /var/tmp/build/cross-python-[% c("cp_githash") %]/subprojects/packagecache
 cp [% c('input_files_by_name/sqlite-src') %] /var/tmp/build/cross-python-[% c("cp_githash") %]/subprojects/packagecache/sqlite-amalgamation-3250100.zip
 cp [% c('input_files_by_name/sqlite-patch') %] /var/tmp/build/cross-python-[% c("cp_githash") %]/subprojects/packagecache/sqlite-3250100-1-wrap.zip
 cp [% c('input_files_by_name/zlib-src') %] /var/tmp/build/cross-python-[% c("cp_githash") %]/subprojects/packagecache/zlib-1.2.11.tar.gz
 cp [% c('input_files_by_name/zlib-patch') %] /var/tmp/build/cross-python-[% c("cp_githash") %]/subprojects/packagecache/zlib-1.2.11-4-wrap.zip
-# Project pulls in sqlite, zlib, and build files.
-# Download them outside, in rbm, to avoid container network access.
 
-cd /var/tmp/build/cross-python-[% c("cp_githash") %]
 # Enter the build directory
+cd /var/tmp/build/cross-python-[% c("cp_githash") %]
 
-LDFLAGS="-Wl,--no-insert-timestamp" meson.py -Dsource=../Python-[% c("version") %] --cross-file cross-files/[% c("arch") %]-w64-mingw32.txt --prefix=$distdir builddir
 # cf. ./configure
-ninja -C builddir
+LDFLAGS="-Wl,--no-insert-timestamp" meson.py -Dsource=../Python-[% c("version") %] --cross-file cross-files/[% c("arch") %]-w64-mingw32.txt --prefix=$distdir builddir
 # cf. make
-ninja -C builddir install
+ninja -C builddir
 # cf. make install
+ninja -C builddir install
 
-find $distdir -name '*.a' -exec rm '{}' +
 # These files don't reproduce, and are useless
+find $distdir -name '*.a' -exec rm '{}' +
 
 # Required for "import ssl" and "import ctypes"
 cp $openssldir/bin/*.dll /var/tmp/dist/*libffi*/[% c("arch") %]-w64-mingw32/.libs/*.dll $gcclibs/*.dll $distdir/bin/

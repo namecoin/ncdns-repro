@@ -13,6 +13,7 @@ var:
     - goeasyconfig
     - goxlog
     - goxsys
+  go_lib_no_output: 1
   cgo: 0
   build_go_lib_pre: |
     export CGO_ENABLED=[% c("var/cgo") %] 

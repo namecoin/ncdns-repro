@@ -15,6 +15,9 @@ tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncdns') %]
 [% END %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/ncprop279') %]
 tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/q') %]
+[% IF c("var/windows") %]
+  tar -C /var/tmp/dist/[% project %] -xf [% c('input_files_by_name/winsvcwrap') %]
+[% END %]
 
 cd $distdir
 [% c('tar', {

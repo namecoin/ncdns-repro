@@ -14,6 +14,10 @@ var:
     - zip
     - git # maybe possible to omit these
   compiler: mingw-w64
+  post_pkginst: |
+    mkdir -p /usr/i686-w64-mingw32/sys-root/mingw/lib/libffi-3.1/
+    # Yes, Meson uses "i686" in the sysroot name even for 64-bit.  v0v
+    ln -s -T /var/tmp/dist/cpython-source-deps-libffi-3.4.2/[% c("arch") %]-w64-mingw32/include /usr/i686-w64-mingw32/sys-root/mingw/lib/libffi-3.1/include
 
 input_files:
   - project: container-image
@@ -53,4 +57,7 @@ input_files:
   - filename: omit-build-timestamp.patch
   - name: openssl
     project: openssl
+  - name: libffi-src
+    URL: https://github.com/python/cpython-source-deps/archive/refs/tags/libffi-3.4.2.tar.gz
+    sha256sum: 9f9edfbb59a142a8624cec574eeac0caf98c2e51a15e6c9f099b83aaf0942c22
 

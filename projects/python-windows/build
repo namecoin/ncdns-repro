@@ -69,7 +69,7 @@ cp [% c('input_files_by_name/zlib-patch') %] /var/tmp/build/cross-python-[% c("c
 cd /var/tmp/build/cross-python-[% c("cp_githash") %]
 # Enter the build directory
 
-LDFLAGS="-Wl,--no-insert-timestamp" meson.py -Dsource=../Python-[% c("version") %] --cross-file cross-files/x86_64-w64-mingw32.txt --prefix=$distdir builddir
+LDFLAGS="-Wl,--no-insert-timestamp" meson.py -Dsource=../Python-[% c("version") %] --cross-file cross-files/[% c("arch") %]-w64-mingw32.txt --prefix=$distdir builddir
 # cf. ./configure
 ninja -C builddir
 # cf. make

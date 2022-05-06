@@ -18,6 +18,7 @@ var:
   deps:
     - python3-pefile
     - unzip
+    - xz-utils
 
 targets:
   windows-x86_64:

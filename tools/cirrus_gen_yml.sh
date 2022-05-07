@@ -16,6 +16,7 @@ print_os_arch () {
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out
     fingerprint_script:
@@ -155,6 +156,7 @@ print_os_arch () {
     cpu: ${PARA_THREADS}
     memory: ${PARA_RAM}G
   timeout_in: 120m
+  stateful: false
   out_${CHANNEL}_${OS}_${ARCH}_local_cache:
     folder: out
     fingerprint_script:

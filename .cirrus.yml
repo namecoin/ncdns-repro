@@ -8,6 +8,7 @@ release_linux_x86_64_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -108,6 +109,7 @@ release_linux_x86_64_gcc_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -189,6 +191,7 @@ release_linux_x86_64_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -270,6 +273,7 @@ release_linux_x86_64_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -351,6 +355,7 @@ release_linux_x86_64_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -432,6 +437,7 @@ release_linux_x86_64_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -513,6 +519,7 @@ release_linux_x86_64_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -625,6 +632,7 @@ release_linux_x86_64_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -739,6 +747,7 @@ release_linux_i686_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -839,6 +848,7 @@ release_linux_i686_gcc_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -920,6 +930,7 @@ release_linux_i686_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -1001,6 +1012,7 @@ release_linux_i686_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -1082,6 +1094,7 @@ release_linux_i686_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -1163,6 +1176,7 @@ release_linux_i686_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -1244,6 +1258,7 @@ release_linux_i686_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -1356,6 +1371,7 @@ release_linux_i686_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_linux_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -1470,6 +1486,7 @@ release_windows_x86_64_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -1570,6 +1587,7 @@ release_windows_x86_64_mingw-w64_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -1651,6 +1669,7 @@ release_windows_x86_64_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -1732,6 +1751,7 @@ release_windows_x86_64_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -1813,6 +1833,7 @@ release_windows_x86_64_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -1894,6 +1915,7 @@ release_windows_x86_64_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -1975,6 +1997,7 @@ release_windows_x86_64_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -2087,6 +2110,7 @@ release_windows_x86_64_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -2201,6 +2225,7 @@ release_windows_i686_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2301,6 +2326,7 @@ release_windows_i686_mingw-w64_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2382,6 +2408,7 @@ release_windows_i686_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2463,6 +2490,7 @@ release_windows_i686_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2544,6 +2572,7 @@ release_windows_i686_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2625,6 +2654,7 @@ release_windows_i686_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2706,6 +2736,7 @@ release_windows_i686_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2818,6 +2849,7 @@ release_windows_i686_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_windows_i686_local_cache:
     folder: out
     fingerprint_script:
@@ -2932,6 +2964,7 @@ release_osx_x86_64_download_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3032,6 +3065,7 @@ release_osx_x86_64_clang_osx-para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3113,6 +3147,7 @@ release_osx_x86_64_macosx-toolchain_para1_task:
     cpu: 8
     memory: 16G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3194,6 +3229,7 @@ release_osx_x86_64_goeasyconfig_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3275,6 +3311,7 @@ release_osx_x86_64_ncdns_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3356,6 +3393,7 @@ release_osx_x86_64_ncprop279_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3437,6 +3475,7 @@ release_osx_x86_64_plain-binaries_1_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3518,6 +3557,7 @@ release_osx_x86_64_release_nosign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:
@@ -3630,6 +3670,7 @@ release_osx_x86_64_release_sign_task:
     cpu: 1
     memory: 3G
   timeout_in: 120m
+  stateful: false
   out_release_osx_x86_64_local_cache:
     folder: out
     fingerprint_script:

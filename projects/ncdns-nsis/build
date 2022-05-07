@@ -4,14 +4,6 @@
 distdir=/var/tmp/dist/[% project %]
 mkdir -p "$distdir"
 
-# We need to install a recent version of python-pefile so that it works
-# in a x86_64 container:
-# https://github.com/TheTorProject/tor-messenger-build/pull/10
-tar xf $rootdir/[% c('input_files_by_name/python-pefile') %]
-cd $(echo [% c('input_files_by_name/python-pefile') %] | sed s/\.tar\.gz$//)
-python setup.py install --user
-cd ..
-
 tar -C /var/tmp/dist -xf $rootdir/[% c('input_files_by_name/nsis') %]
 export PATH="/var/tmp/dist/nsis/bin:$PATH"
 
@@ -70,5 +62,5 @@ makensis ${NSISFLAGS} -DPOSIX_BUILD=1 -DNCDNS_PRODVER=${NCDNS_NSIS_VERSION} [% c
 
 # Working around NSIS braindamage
 mv "${OUTFN}" torbrowser-install-tmp.exe
-python $rootdir/pe_checksum_fix.py
+python3 $rootdir/pe_checksum_fix.py
 mv torbrowser-install-tmp2.exe [% dest_dir _ '/' _ c('filename') %]

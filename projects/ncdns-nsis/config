@@ -16,9 +16,9 @@ var:
   container:
     use_container: 1
   deps:
-    - python
-    - python-future
+    - python3-pefile
     - unzip
+    - xz-utils
 
 targets:
   windows-x86_64:
@@ -63,6 +63,3 @@ input_files:
   - project: stemns
     name: stemns
   - filename: pe_checksum_fix.py
-  - name: python-pefile
-    URL: https://files.pythonhosted.org/packages/7e/9b/f99171190f04cd23768547dd34533b4016bd582842f53cd9fe9585a74c74/pefile-2017.11.5.tar.gz
-    sha256sum: 675c35ee0e1677db9e80d2f48d8a7ff2cf38e6207e8cd5e2a2c6d126db025854

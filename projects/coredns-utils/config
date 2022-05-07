@@ -20,3 +20,5 @@ input_files:
     project: go
   - name: godns
     project: godns
+  - filename: ZSK.patch
+    # From https://github.com/coredns/coredns-utils/pull/4

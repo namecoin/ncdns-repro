@@ -3,6 +3,9 @@
 set -euxo pipefail
 shopt -s failglob
 
+echo "Initial git cache usage:"
+du -h -d1 ./git_clones/
+
 for PROJECT in ./git_index/*
 do
     PROJECT_BASE="$(basename $PROJECT)"

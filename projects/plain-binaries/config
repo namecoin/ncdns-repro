@@ -10,6 +10,8 @@ input_files:
   - name: certinject
     project: certinject
     enable: '[% c("var/windows") %]'
+  - name: coredns-utils
+    project: coredns-utils
   - name: encaya
     project: encaya
   - name: generate_nmc_cert

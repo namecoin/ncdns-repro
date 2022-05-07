@@ -1,0 +1,22 @@
+version: '[% c("abbrev") %]'
+git_url:  https://github.com/coredns/coredns-utils.git
+git_hash: 'c07df082698203e12b1b31dea9c6183cc676833e'
+filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
+
+var:
+  container:
+    use_container: 1
+  go_lib_deps:
+    - godns
+  go_lib_install:
+    - github.com/coredns/coredns-utils/coredns-keygen
+  cgo: 0
+  build_go_lib_pre: |
+    export CGO_ENABLED=[% c("var/cgo") %] 
+
+input_files:
+  - project: container-image
+  - name: go
+    project: go
+  - name: godns
+    project: godns

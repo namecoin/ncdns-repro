@@ -1,6 +1,6 @@
-version: 0.4.1
+version: 1.1.0
 git_url:  https://github.com/BurntSushi/toml.git
-git_hash: 641c3cf2148ad11ca058c000eab0453dd5d67954
+git_hash: 891d2617ddbdfa265c4095b53103c010c98e6591
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

@@ -59,7 +59,7 @@ cp -a ./out_cache2/* ./out/ || true
 cp -a ./out_cache3/* ./out/ || true
 
 echo "Initial output cache contents:"
-find ./out/ -printf "%p %k KiB\n"
+find ./out/ -printf "%p %k KiB\n" || true
 
 echo "Unpacking interrupted cache..."
 ./tools/cirrus_unpack_interrupted.sh || true
@@ -128,7 +128,7 @@ echo "Cleaning containers..."
 rm -rfv out/container-image
 
 echo "Final output cache contents:"
-find ./out/ -printf "%p %k KiB\n"
+find ./out/ -printf "%p %k KiB\n" || true
 
 echo "Splitting caches..."
 rsync -avu --delete ./out/encaya ./out/gocrosssign ./out/gosafetlsa ./out/q ./out_cache1/ || true

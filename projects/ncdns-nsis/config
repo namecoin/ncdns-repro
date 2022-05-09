@@ -11,7 +11,7 @@ var:
   consensusj_namecoin_version: '0.3.2.1'
   dnssec_trigger_version: '0.17'
   namecoin_core_version: '0.21.0.1'
-  electrum_nmc_version: '3.3.10'
+  electrum_nmc_version: '4.0.0b0'
   stem_version: '1.8.0'
   container:
     use_container: 1
@@ -48,7 +48,9 @@ input_files:
     enable: '[% c("var/windows-x86_64") %]'
   - name: electrum-nmc
     URL: 'https://www.namecoin.org/files/electrum-nmc/electrum-nmc-[% c("var/electrum_nmc_version") %]/electrum-nmc-nc[% c("var/electrum_nmc_version") %]-setup.exe'
-    sha256sum: e7cdd9ed966a2fc8058c14b5ff26431a13899159fe519136bf98c2b0769bfa7d
+    # TODO: RBM doesn't support clearsigned SHA256SUMS files.  We should
+    # convert this to Signify or something later.
+    sha256sum: eeb8eb5759382e488bb3c63e94f5455ada1bc7b8ddcba143cdadeb9290d9d859
   - name: consensusj-namecoin
     URL: 'https://www.namecoin.org/files/ConsensusJ-Namecoin/[% c("var/consensusj_namecoin_version") %]/namecoinj-daemon-0.3.2-SNAPSHOT.jar'
     sha256sum: 6b35d5a31eb74b4870c8a6c37dd53563aa63b64810fdedb5192f2a77396e190f

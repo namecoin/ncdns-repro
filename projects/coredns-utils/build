@@ -13,6 +13,9 @@ mkdir -p $GOPATH/src/github.com/coredns
 tar -C $GOPATH/src/github.com/coredns -xf [% project %]-[% c('version') %].tar.gz
 mv $GOPATH/src/github.com/coredns/coredns-utils-[% c('version') %] $GOPATH/src/github.com/coredns/coredns-utils
 
+cd $GOPATH/src/github.com/coredns/coredns-utils
+patch -p1 < $rootdir/ZSK.patch
+
 # TODO: Remove static build ID after migrating to Go 1.13.3+
 go install $TAGS -ldflags '-s -buildid=' github.com/coredns/coredns-utils/coredns-keygen
 

@@ -1,6 +1,6 @@
-version: '1.8.0'
+version: '1.8.1'
 git_url:  https://github.com/rogpeppe/go-internal.git
-git_hash: '8ef127344c684f0eb23e5eea40f303b74de097b2'
+git_hash: '115ce09fd6b421993aafa8cdae0171429e9bd2c4'
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

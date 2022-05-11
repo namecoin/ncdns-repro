@@ -1,6 +1,6 @@
-version: 1.1.48
+version: 1.1.49
 git_url:  https://github.com/miekg/dns.git
-git_hash: 49c1b2e20f3b9ad32de00ff8ccb009644eefddb2
+git_hash: 55216486109ae476af60b09a456281903fa2888e
 filename: '[% project %]-[% c("version") %]-[% c("var/osname") %]-[% c("var/build_id") %].tar.gz'
 
 build: '[% c("projects/go/var/build_go_lib") %]'

@@ -6,7 +6,6 @@ mkdir /var/tmp/dist
 
 # Extract StemNS
 tar -C /var/tmp/build -xf [% project %]-[% c('version') %].tar.gz
-rm /var/tmp/build/[% project %]-[% c('version') %]/settings_*.py
 
 cp -a /var/tmp/build/[% project %]-[% c('version') %] ${distdir}
 

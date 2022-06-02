@@ -24,10 +24,6 @@ mkdir -p /var/tmp/dist/plain-binaries
 tar -C /var/tmp/dist/plain-binaries -xf $rootdir/[% c('input_files_by_name/plain-binaries') %]
 cp /var/tmp/dist/plain-binaries/*.exe /var/tmp/dist/plain-binaries/*.dll  ${ARTIFACTS}
 
-mkdir /var/tmp/dist/bind
-unzip -d /var/tmp/dist/bind $rootdir/[% c('input_files_by_name/bind') %]
-cp /var/tmp/dist/bind/*.exe /var/tmp/dist/bind/*.dll ${ARTIFACTS}
-
 cp $rootdir/[% c('input_files_by_name/dnssec-trigger') %] ${ARTIFACTS}
 
 [% IF c("var/windows-x86_64") %]
@@ -44,7 +40,7 @@ tar -C /var/tmp/dist/ -xf $rootdir/[% c('input_files_by_name/stem') %]
 cp -a /var/tmp/dist/stem-*/stem "${NEUTRAL_ARTIFACTS}/stem"
 
 tar -C /var/tmp/dist/ -xf $rootdir/[% c('input_files_by_name/stemns') %]
-cp /var/tmp/dist/StemNS/stemns.py "${NEUTRAL_ARTIFACTS}/stemns/"
+cp -a /var/tmp/dist/StemNS/stemns.py /var/tmp/dist/StemNS/config "${NEUTRAL_ARTIFACTS}/stemns/"
 
 # Windows PE metadata requires that the version be a dot-delimited 4-tuple of
 # numbers (no leading v)

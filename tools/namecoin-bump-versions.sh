@@ -50,6 +50,13 @@ do
         continue
     fi
 
+    # generate_nmc_cert depends on Go version, which Tor lags behind on.
+    if [ "${PROJECT}" = "generate_nmc_cert" ] && grep "version: 1.17" ./projects/go/config
+    then
+        echo "$PROJECT: project depends on Go version; skipping"
+        continue
+    fi
+
     # rbm showconf will fail for projects that don't have a git_hash variable,
     # so we catch the failure and move on to the next project.
     GIT_REV=$(./rbm/rbm showconf ${PROJECT} git_hash) || continue

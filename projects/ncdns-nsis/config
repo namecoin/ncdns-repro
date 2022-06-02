@@ -7,7 +7,6 @@ gpg_keyring: namecoin.gpg
 filename: 'ncdns-[% c("version") %]-[% c("arch") %]-install-[% c("var/build_id") %].exe'
 
 var:
-  bind_version: '9.16.28'
   consensusj_namecoin_version: '0.3.2.1'
   dnssec_trigger_version: '0.17'
   namecoin_core_version: '0.21.0.1'
@@ -24,20 +23,14 @@ targets:
   windows-x86_64:
     var:
       arch_nsis_args: '-DNCDNS_64BIT=1'
-      bind_arch: 'x64'
   windows-i686:
     var:
       arch_nsis_args: '-DNO_NAMECOIN_CORE'
-      bind_arch: 'x86'
 
 input_files:
   - project: container-image
   - project: plain-binaries
     name: plain-binaries
-  - name: bind
-    URL: 'https://ftp.isc.org/isc/bind/[% c("var/bind_version") %]/BIND[% c("var/bind_version") %].[% c("var/bind_arch") %].zip'
-    file_gpg_id: 1
-    gpg_keyring: isc.gpg
   - name: dnssec-trigger
     URL: 'https://www.nlnetlabs.nl/downloads/dnssec-trigger/dnssec_trigger_setup_[% c("var/dnssec_trigger_version") %].exe'
     file_gpg_id: 1

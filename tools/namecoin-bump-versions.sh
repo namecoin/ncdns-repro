@@ -120,23 +120,6 @@ done
 
 # ncdns-nsis dependencies
 
-BIND_VERSION=$(./rbm/rbm showconf ncdns-nsis var/bind_version)
-# As per https://www.isc.org/download/#BIND , "9.16.x is the last branch of
-# BIND with native Windows support."
-LATEST_BIND_VERSION=$(curl https://ftp.isc.org/isc/bind/ | grep --only-matching '"[0-9]*\.[0-9]*\.[0-9]*/"' | grep '9\.16' | tail --lines=1 | grep --only-matching '[0-9]*\.[0-9]*\.[0-9]*')
-
-if [ "${BIND_VERSION}" != "${LATEST_BIND_VERSION}" ]
-then
-    UPDATE_NEEDED=1
-    echo "BIND: ncdns-nsis uses ${BIND_VERSION}, latest tag is ${LATEST_BIND_VERSION}"
-
-    sed --in-place "s/${BIND_VERSION}/${LATEST_BIND_VERSION}/g" "./projects/ncdns-nsis/config"
-    git add "./projects/ncdns-nsis/config"
-    git commit --message="Bump BIND to ${LATEST_BIND_VERSION}"
-else
-    echo "BIND: up to date"
-fi
-
 CONSENSUSJ_VERSION=$(./rbm/rbm showconf ncdns-nsis var/consensusj_namecoin_version)
 LATEST_CONSENSUSJ_VERSION=$(curl https://www.namecoin.org/download/betas/ | grep --only-matching 'consensusj-namecoin-[0-9\.]*' | tail --lines=1 | grep --only-matching '[0-9\.]*')
 

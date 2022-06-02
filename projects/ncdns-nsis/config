@@ -41,9 +41,8 @@ input_files:
     enable: '[% c("var/windows-x86_64") %]'
   - name: electrum-nmc
     URL: 'https://www.namecoin.org/files/electrum-nmc/electrum-nmc-[% c("var/electrum_nmc_version") %]/electrum-nmc-nc[% c("var/electrum_nmc_version") %]-setup.exe'
-    # TODO: RBM doesn't support clearsigned SHA256SUMS files.  We should
-    # convert this to Signify or something later.
-    sha256sum: eeb8eb5759382e488bb3c63e94f5455ada1bc7b8ddcba143cdadeb9290d9d859
+    file_gpg_id: 1
+    gpg_keyring: namecoin.gpg
   - name: consensusj-namecoin
     URL: 'https://www.namecoin.org/files/ConsensusJ-Namecoin/[% c("var/consensusj_namecoin_version") %]/namecoinj-daemon-0.3.2-SNAPSHOT.jar'
     sha256sum: 6b35d5a31eb74b4870c8a6c37dd53563aa63b64810fdedb5192f2a77396e190f
